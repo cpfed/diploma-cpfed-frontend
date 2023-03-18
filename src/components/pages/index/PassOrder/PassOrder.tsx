@@ -14,7 +14,7 @@ const PassOrder = () => {
                     <div className={classes.passOrder__cardList}>
                         {elements.map((element, index, self) => {
                             return (
-                                <div className={classes.passOrder__cardList_card}>
+                                <div key={index} className={classes.passOrder__cardList_card}>
                                     <p className={classes.passOrder__cardList_card_number}>{index + 1}</p>
                                     <p className={classes.passOrder__cardList_card_description}>{element.description}</p>
                                 </div>

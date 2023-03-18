@@ -3,10 +3,18 @@ import Link from "next/link";
 
 import Container from "@/components/ui/Container";
 import classes from "./Header.module.scss";
-
 import { elements } from ".";
 
+import { useRef } from 'react'
+
 const Header = () => {
+    const headerRef = useRef<HTMLElement>(null)
+
+	const handleHeaderToggle = () => {
+		(headerRef.current as HTMLElement).classList.toggle(classes.header_active)
+		document.body.classList.toggle('lock')
+	}
+
     return (
         <header className={classes.header}>
             <Container>
@@ -15,7 +23,6 @@ const Header = () => {
                         className={[
                             classes.list,
                             classes.list_desktop,
-                            classes.header__list,
                         ].join(" ")}
                     >
                         {elements.map((element, index, self) => {
@@ -26,9 +33,6 @@ const Header = () => {
                                     key={index}
                                     role="link"
                                     className={[
-                                        !isLast
-                                            ? classes.list__item_notlast
-                                            : "",
                                         classes.list__item,
                                     ].join(" ")}
                                 >
@@ -39,9 +43,12 @@ const Header = () => {
                             );
                         })}
                     </ul>
-                    <a className={classes.list__item} href="#">
+                    <Link className={[
+                            classes.list_desktop,
+                            classes.list__item,
+                        ].join(" ")} href="#">
                       Мой аккаунт
-                    </a>
+                    </Link>
                 </nav>
             </Container>
         </header>

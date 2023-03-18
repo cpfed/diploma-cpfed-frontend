@@ -25,7 +25,7 @@ const FAQ = () => {
                     <div className={classes.faq__cardList}>
                         {list.map((element, index, self) => {
                             return (
-                                <div>
+                                <div key={index}>
                                     <div className={classes.faq__cardList_card}>
                                         <div className={classes.faq__cardList_card_question}>
                                             <p className={classes.faq__cardList_card_question_text}>

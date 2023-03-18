@@ -1,12 +1,8 @@
 @import "/src/styles/variables";
 
 .header {
-    left: 0;
-    top: 0;
-    width: 100%;
-    padding: 31px 70px 30px 70px;
-
     background-color: $cyan;
+    padding: 31px 67px 30px 67px;
 
     &__navigation {
         display: flex;
@@ -20,8 +16,15 @@
     align-items: center;
     list-style: none;
 
+    &_desktop {
+        @media screen and (max-width: $break-l) {
+			display: none;
+		}
+    }
+
     &__item {
-        @include font(13px, 600, 16px, $white);
+        @include font(12px, 600, 16px, $white);
+        text-align: center;
 
         &:not(:last-child) {
             margin-right: 12px;
