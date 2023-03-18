@@ -7,7 +7,14 @@ section#intro {
 
 .intro {
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 50px 0px;
+
+    @media screen and (max-width: $break-l) {
+        justify-content: center;
+    }
 
     &__content {
         display: flex;
@@ -19,8 +26,13 @@ section#intro {
     &__description {
         @include font(32px, 700, 39px, $black);
         max-width: 400px;
-        text-align: center
+        text-align: center;
 
+        margin-bottom: 84px;
+
+        @media screen and (max-width: $break-l) {
+            margin-bottom: 20px;
+        }
     }
 
     &__button {
