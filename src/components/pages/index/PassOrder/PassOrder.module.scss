@@ -12,7 +12,6 @@ section#container {
     justify-content: center;
     padding: 100px 0px 50px 0px;
 
-
     &__title {
         @include font(32px, 700, 39px, $white);
         text-align: center
