@@ -3,6 +3,7 @@ import PassOrder from "@/components/pages/index/PassOrder";
 import FAQ from "@/components/pages/index/FAQ";
 import About from "@/components/pages/index/About";
 import Benefits from "@/components/pages/index/Benefits";
+import Registration from "@/components/pages/index/Registration";
 
 export default function Home() {
   return <>
@@ -11,6 +12,7 @@ export default function Home() {
 		<Benefits></Benefits>
 		<PassOrder></PassOrder>
 		<FAQ></FAQ>
+		<Registration></Registration>
 	</>
 }
 

@@ -16,6 +16,12 @@ section#intro {
         justify-content: center;
     }
 
+    img {
+        @media screen and (max-width: $break-s) {
+            width: 400px;
+        }
+    }
+
     &__content {
         display: flex;
         flex-direction: column;
