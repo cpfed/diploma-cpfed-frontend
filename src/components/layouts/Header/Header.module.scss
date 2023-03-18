@@ -1,0 +1,36 @@
+@import "/src/styles/variables";
+
+.header {
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 31px 70px 30px 70px;
+
+    background-color: $cyan;
+
+    &__navigation {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+
+    &__item {
+        @include font(14px, 400, 1.2, white);
+
+        &:not(:last-child) {
+            margin-right: 12px;
+            border-right: 1px solid white;
+            padding-right: 13px;
+        }
+
+        @media screen and (min-width: $break-l) {
+            font-size: 16px;
+        }
+    }
+}

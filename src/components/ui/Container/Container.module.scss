@@ -1,0 +1,12 @@
+@import "/src/styles/variables";
+
+.container {
+	width: 100%;
+	max-width: 1920px;
+	margin: 0 auto;
+	padding: 0 16px;
+
+	@media screen and (min-width: $break-m) {
+		padding: 0 24px;
+	}
+}

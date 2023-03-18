@@ -1,0 +1,28 @@
+@import "/src/styles/variables";
+
+.footer {
+	padding: 35px 0;
+	background-color: $white;
+
+	&__body {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+        &_first {
+
+            img {
+                margin-right: 10px;
+            }
+        }
+	}
+
+	&__logo {
+		width: 30px;
+		height: 30px;
+	}
+
+	&__copyright {
+		@include font(14px, 500, 1.25, $black);
+	}
+}

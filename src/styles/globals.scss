@@ -1,0 +1,123 @@
+@import './variables';
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 14px;
+
+	scroll-behavior: smooth;
+	scrollbar-width: thin;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	font-size: 1rem;
+	color: $black;
+
+	width: 100%;
+	overflow-x: hidden;
+	background-color: $light;
+	scroll-behavior: smooth;
+
+	&.lock {
+		overflow-y: hidden;
+	}
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+button {
+	font-family: 'Poppins', sans-serif;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	transition: opacity 0.5s ease 0s;
+
+	&:hover {
+		outline: none;
+	}
+
+	&:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+}
+
+main {
+	flex: 1 1 auto;
+
+	position: relative;
+	z-index: 1;
+}
+
+section {
+	width: 100%;
+	margin: 24px 0 80px;
+
+	@media screen and (min-width: $break-s) {
+		margin: 28px 0 90px;
+	}
+
+	@media screen and (min-width: $break-m) {
+		margin: 32px 0 100px;
+	}
+
+	@media screen and (min-width: $break-l) {
+		margin: 36px 0 110px;
+	}
+
+	@media screen and (min-width: $break-xl) {
+		margin: 40px 0 120px;
+	}
+}
+
+input {
+	font-family: 'Poppins', sans-serif;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type=number] {
+	-moz-appearance: textfield;
+	appearance: textfield;
+}
+
+img {
+	&::selection {
+		background: transparent;
+	}
+}
+
+.underlined {
+	display: inline-block;
+	position: relative;
+}
+
+.underlined:after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	transform: scaleX(0);
+	height: 1px;
+	bottom: 0;
+	left: 0;
+	background-color: white;
+	transform-origin: bottom right;
+	transition: transform 0.25s ease-out;
+}
+
+.underlined:hover:after {
+	transform: scaleX(1);
+	transform-origin: bottom left;
+}

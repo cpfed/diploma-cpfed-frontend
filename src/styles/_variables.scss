@@ -1,0 +1,48 @@
+$dark: #09090b;
+$light: #F7F7F7;
+$yellow: #FFFC31;
+$violet: #7f56d9;
+$ivory: #F6F7EB;
+$cinnabar: #E94F37;
+$onyx: #393E41;
+$golden: #F9DC4F;
+$cyan: #4575DC;
+$white: #FFFFFF;
+
+
+$black: #131315;
+$black-tint: #202330;
+$black-light: #171922;
+
+$status-red: #D73E3E;
+$status-green: #20CC65;
+
+$break-xxs: 375px;
+$break-xs: 425px;
+$break-s: 576px;
+$break-sl: 640px;
+$break-m: 768px;
+$break-ml: 820px;
+$break-l: 1024px;
+$break-xl: 1200px;
+$break-xxl: 1440px;
+
+@mixin font($size, $weight, $height, $color) {
+	font-size: $size;
+	font-weight: $weight;
+	line-height: $height;
+	color: $color;
+}
+
+@mixin font-colorless($size, $weight, $height) {
+	font-size: $size;
+	font-weight: $weight;
+	line-height: $height;
+}
+
+@mixin flex($align: flex-start, $justify: flex-start, $direction: row) {
+	display: flex;
+	align-items: $align;
+	justify-content: $justify;
+	flex-direction: $direction;
+}
