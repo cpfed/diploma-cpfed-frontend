@@ -1,0 +1,66 @@
+@import "/src/styles/variables";
+
+section#container {
+    background-color: $white;
+    margin: 0px;
+}
+
+.faq {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 100px 0px 50px 0px;
+
+    &__title {
+        @include font(32px, 700, 39px, $black);
+        text-align: center
+    }
+
+    &__cardList {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 100%;
+        margin: 50px 0px 50px 0px;
+
+        &_card {
+            
+            &_question {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                border: solid 1px #00000033;
+                margin: 2px 0px 2px 0px;
+                padding: 30px 50px 30px 50px;
+
+                &_text {
+                    @include font(25px, 600, 31px, $black);
+                }
+
+                &_plus{
+                    @include font(30px, 600, 31px, $black);
+                    float: right;
+                    cursor: pointer;
+                }
+            }
+            
+
+            &_answer {
+                @include font(25px, 600, 31px, $black);
+            }
+        }
+    }
+}
+
+.hidden {
+    font-size: 0;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    /* fade out, then shrink */
+    transition: opacity .125s,
+                font-size .2s .125s,
+                margin .2s .125s,
+                padding .2s .125s;
+}
