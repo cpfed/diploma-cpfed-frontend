@@ -1,10 +1,14 @@
 import Intro from "@/components/pages/index/Intro";
-import Container from "@/components/ui/Container";
+import PassOrder from "@/components/pages/index/PassOrder";
+import FAQ from "@/components/pages/index/FAQ";
 
 export default function Home() {
-  return (
-		<Intro></Intro>
-	)
+  return <>
+	<Intro></Intro>
+	<PassOrder></PassOrder>
+	<FAQ></FAQ>
+  </>
+
 }
 
 
