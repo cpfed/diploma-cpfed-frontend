@@ -1,13 +1,10 @@
-import dynamic from 'next/dynamic'
-
+import Intro from "@/components/pages/index/Intro";
+import Container from "@/components/ui/Container";
 
 export default function Home() {
   return (
-		<>
-    Hello world
-		</>
+		<Intro></Intro>
 	)
-   
 }
 
 

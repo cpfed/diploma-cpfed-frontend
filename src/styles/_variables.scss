@@ -27,7 +27,11 @@ $break-l: 1024px;
 $break-xl: 1200px;
 $break-xxl: 1440px;
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap');
+
 @mixin font($size, $weight, $height, $color) {
+	font-family: 'Montserrat', sans-serif;
+	font-style: normal;
 	font-size: $size;
 	font-weight: $weight;
 	line-height: $height;

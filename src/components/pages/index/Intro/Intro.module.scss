@@ -1,0 +1,28 @@
+@import "/src/styles/variables";
+
+.intro {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__description {
+        @include font(32px, 700, 39px, $black);
+        max-width: 400px;
+        text-align: center
+
+    }
+
+    &__button {
+        @include font(13px, 700, 16px   , $white);
+        background: #4575DC;
+        border-radius: 20px;
+        padding: 40px 16px;
+    }
+}

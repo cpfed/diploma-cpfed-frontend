@@ -21,16 +21,12 @@
     list-style: none;
 
     &__item {
-        @include font(14px, 400, 1.2, white);
+        @include font(13px, 600, 16px, $white);
 
         &:not(:last-child) {
             margin-right: 12px;
-            border-right: 1px solid white;
+            border-right: 1px solid $white;
             padding-right: 13px;
-        }
-
-        @media screen and (min-width: $break-l) {
-            font-size: 16px;
         }
     }
 }
