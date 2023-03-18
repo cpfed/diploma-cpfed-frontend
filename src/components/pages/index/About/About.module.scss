@@ -1,5 +1,11 @@
 @import "/src/styles/variables";
 
+section#about {
+    background-color: $cyan;
+    margin: 0px;
+    padding: 70px 98px 105px 98px;
+}
+
 .about {
 
     &__content {
@@ -16,10 +22,5 @@
             @include font(25px, 600, 30px, $white);
             text-align: center;
         }
-    }
-
-    &__section {
-        background-color: $cyan;
-        padding: 69px 98px 106px 98px;
     }
 }
