@@ -1,0 +1,25 @@
+@import "/src/styles/variables";
+
+.about {
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &_title {
+            @include font(32px, 700, 39px, $white);
+            text-align: center;
+        }
+
+        &_subtitle {
+            @include font(25px, 600, 30px, $white);
+            text-align: center;
+        }
+    }
+
+    &__section {
+        background-color: $cyan;
+        padding: 69px 98px 106px 98px;
+    }
+}

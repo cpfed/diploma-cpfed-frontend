@@ -1,10 +1,12 @@
 import Intro from "@/components/pages/index/Intro";
+import About from "@/components/pages/index/About";
 import Container from "@/components/ui/Container";
 
 export default function Home() {
-  return (
+  return <>
 		<Intro></Intro>
-	)
+		<About></About>
+	</>
 }
 
 
