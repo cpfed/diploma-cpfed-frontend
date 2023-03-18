@@ -2,14 +2,13 @@
 
 .intro {
     display: flex;
-    align-items: center;
     justify-content: space-between;
     
     &__content {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-between;
+        justify-content: space-evenly;
     }
 
     &__description {
@@ -23,6 +22,6 @@
         @include font(13px, 700, 16px   , $white);
         background: #4575DC;
         border-radius: 20px;
-        padding: 40px 16px;
+        padding: 16px 40px;
     }
 }
