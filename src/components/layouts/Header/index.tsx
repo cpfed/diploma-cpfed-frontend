@@ -10,7 +10,7 @@ export const elements: LinkElement[] = [
 	},
 	{
 		title: 'Порядок прохождения',
-		link: '#pass-order',
+		link: '#passOrder',
 	},
 	{
 		title: 'Преимущества участия в чемпионате',
@@ -22,7 +22,7 @@ export const elements: LinkElement[] = [
 	},
 	{
 		title: 'Полезные документы',
-		link: '#useful-documents',
+		link: '#usefulDocuments',
 	},
 	{
 		title: 'Спонсоры и партнеры',
