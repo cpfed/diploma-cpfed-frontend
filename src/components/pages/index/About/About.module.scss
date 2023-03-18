@@ -16,6 +16,7 @@ section#about {
         &_title {
             @include font(32px, 700, 39px, $white);
             text-align: center;
+            margin-bottom: 13px;
         }
 
         &_subtitle {
