@@ -13,6 +13,10 @@ export const elements: LinkElement[] = [
 		link: '#pass-order',
 	},
 	{
+		title: 'Преимущества участия в чемпионате',
+		link: '#benefits'
+	},
+	{
 		title: 'Вопросы-Ответы',
 		link: '#faq',
 	},
