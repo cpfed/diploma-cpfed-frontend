@@ -1,9 +1,13 @@
 @import "/src/styles/variables";
 
+section#intro {
+    background-color: $white;
+}
+
 .intro {
     display: flex;
     justify-content: space-between;
-    
+
     &__content {
         display: flex;
         flex-direction: column;
