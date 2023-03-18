@@ -6,7 +6,7 @@ import Container from "@/components/ui/Container";
 import classes from "./About.module.scss";
 
 const About = () => {
-    return <section id={classes.about}>
+    return <section className={classes.about} id="about">
             <Container>
                 <div className={classes.about__content}>
                     <p className={classes.about__content_title}>О чемпионате</p>
