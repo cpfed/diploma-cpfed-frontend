@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Container from "@/components/ui/Container";
-
+import { signIn, signOut, useSession } from "next-auth/react";
 import classes from "./Profile.module.scss";
+import useAxiosAuth from "lib/hooks/useAxiosAuth";
 
 const Profile = () => {
     const [firstname, setFirstname] = useState("");
@@ -11,8 +12,30 @@ const Profile = () => {
     const [bio, setBio] = useState("");
     const [team, setTeam] = useState("");
 
+    const axiosAuth = useAxiosAuth();
+
+    const fetchInfo = async() => {
+        try {
+            const res = await axiosAuth.get("api/authentication/v1/profile/me/");
+
+            const response = res.data;
+            console.log(response);
+    
+            setEmail(response.email);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {fetchInfo()}, [])
+
+
     return (
         <section className={classes.profile} id="profile">
+            <button onClick={fetchInfo}>
+                Отправить
+            </button>
+            <h1>{email}</h1>
             <Container>
                 <div className={classes.profile}>
                     <div className={classes.profile__image_and_small_info}>
@@ -68,7 +91,7 @@ const Profile = () => {
                                     onChange={(event) =>
                                         setEmail(event.currentTarget.value)
                                     }
-                                    placeholder="Электронная почта"
+                                    placeholder={email}
                                     className={classes.smallinfo__input}
                                 />
                             </div>
