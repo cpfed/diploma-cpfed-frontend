@@ -25,11 +25,36 @@
     &__item {
         @include font(12px, 600, 16px, $white);
         text-align: center;
+        list-style: none;
 
         &:not(:last-child) {
             margin-right: 12px;
             border-right: 1px solid $white;
             padding-right: 13px;
+        }
+    }
+}
+
+.locale_and_account {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &__desktop {
+        @media screen and (max-width: $break-l) {
+			display: none;
+		}
+    }
+
+    &__item {
+        @include font(12px, 600, 16px, $white);
+        text-align: center;
+        list-style: none;
+
+        &:not(:first-child) {
+            margin-left: 12px;
+            border-left: 1px solid $white;
+            padding-left: 13px;
         }
     }
 }

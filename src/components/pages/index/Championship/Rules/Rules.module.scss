@@ -1,0 +1,58 @@
+@import "/src/styles/variables";
+
+section#container {
+    background-color: $white;
+    margin: 0px;
+}
+
+.rules {
+    display: flex;
+    flex-direction: column;
+    padding: 60px 0px 0px 0px;
+
+    &__title {
+        @include font(25px, 700, 31px, $black);
+        margin: 0px 0px 40px 0px;
+    }
+
+    &__image_and_description {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+
+    &__text {
+        @include font(25px, 500, 31px, $black);
+        text-indent: 60px;
+    }
+}
+
+.rule {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px 30px 0px;
+
+    &__text {
+        @include font(25px, 500, 31px, $black);
+    }
+
+    &__img {
+        margin: 0px 0px 40px 80px;
+        width: 60%;
+    }
+
+    &__link {
+        @include font(25px, 500, 31px, $black);
+        text-decoration: underline;
+    }
+
+    &__sub_rule {
+        margin: 0px 0px 0px 0px;
+    }
+
+}

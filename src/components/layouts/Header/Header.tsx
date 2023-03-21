@@ -4,11 +4,13 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import classes from "./Header.module.scss";
 import { elements } from ".";
+import { useRouter } from "next/router"
 
 import { useRef } from 'react'
 
 const Header = () => {
-    const headerRef = useRef<HTMLElement>(null)
+    const headerRef = useRef<HTMLElement>(null);
+    const router = useRouter();
 
 	const handleHeaderToggle = () => {
 		(headerRef.current as HTMLElement).classList.toggle(classes.header_active)
@@ -26,8 +28,6 @@ const Header = () => {
                         ].join(" ")}
                     >
                         {elements.map((element, index, self) => {
-                            const isLast = index === self.length - 1;
-
                             return (
                                 <li
                                     key={index}
@@ -43,12 +43,27 @@ const Header = () => {
                             );
                         })}
                     </ul>
-                    <Link className={[
-                            classes.list_desktop,
-                            classes.list__item,
-                        ].join(" ")} href="#">
-                      Мой аккаунт
-                    </Link>
+                    
+                    <div className={[
+                        classes.locale_and_account, 
+                        classes.locale_and_account__desktop,
+                    ].join(" ")}>
+                        <ul className={classes.locale_and_account__item}>
+                            {router.locales?.map(locale => (
+                                <li>
+                                    <Link href={router.asPath} locale={locale}>
+                                        {locale.toUpperCase()}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                        <Link className={[
+                                classes.locale_and_account__desktop,
+                                classes.locale_and_account__item,
+                            ].join(" ")} href="#">
+                        Мой аккаунт
+                        </Link>
+                    </div>
                 </nav>
             </Container>
         </header>
