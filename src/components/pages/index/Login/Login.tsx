@@ -1,5 +1,5 @@
 import Container from "@/components/ui/Container";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import React, { FormEvent, useRef, useState } from "react";
 import { useRouter } from "next/router";
 
@@ -8,6 +8,17 @@ import Link from "next/link";
 
 const Login = () => {
     const router = useRouter();
+    
+    const session = useSession();
+    if(session && session.data && session.data.user)
+    {
+        const currentTime = Math.round((new Date()).getTime() / 1000);
+        if(session.data.user.exp - currentTime >= 5)
+        {
+            router.push("/profile");
+        }
+    }
+
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setIsIncorrect(false);
@@ -62,7 +73,7 @@ const Login = () => {
                         <button type="submit" className={classes.form__button}>
                             Продолжить
                         </button>
-                        <Link className={classes.login__extension} href="">Еще не зарегистрирован?</Link>
+                        <Link className={classes.login__extension} href="/signUp">Еще не зарегистрирован?</Link>
                         <Link className={classes.login__extension} href="">Забыли пароль?</Link>
                     </form>
                 </div>
