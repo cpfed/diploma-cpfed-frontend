@@ -1,7 +1,7 @@
-import Profile from "@/components/pages/index/Profile";
+import Experience from "@/components/pages/index/Profile/Experience";
 
 export default function Home() {
-  return <Profile></Profile>
+  return <Experience></Experience>
 }
 
 

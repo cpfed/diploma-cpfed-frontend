@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 
 import Container from "@/components/ui/Container";
-import { signIn, signOut, useSession } from "next-auth/react";
-import classes from "./Profile.module.scss";
+import { useSession } from "next-auth/react";
+import classes from "./Credentials.module.scss";
 import useAxiosAuth from "lib/hooks/useAxiosAuth";
 
-const Profile = () => {
+const Credentials = () => {
     const [firstname, setFirstname] = useState("");
     const [surname, setSurname] = useState("");
     const [email, setEmail] = useState("");
@@ -29,16 +29,15 @@ const Profile = () => {
 
     useEffect(() => {fetchInfo()}, [status])
 
-
     return (
-        <section className={classes.profile} id="profile">
+        <section className={classes.credentials}>
             <button onClick={fetchInfo}>
                 Отправить
             </button>
             <h1>{email}</h1>
             <Container>
-                <div className={classes.profile}>
-                    <div className={classes.profile__image_and_small_info}>
+                <div className={classes.credentials}>
+                    <div className={classes.credentials__image_and_small_info}>
                         <img src="images/Kama.png"></img>
                         <div className={classes.smallinfo}>
                             <div className={classes.smallinfo__item}>
@@ -137,4 +136,4 @@ const Profile = () => {
     );
 };
 
-export default Profile;
+export default Credentials;

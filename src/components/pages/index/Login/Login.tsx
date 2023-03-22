@@ -10,14 +10,14 @@ const Login = () => {
     const router = useRouter();
     
     const session = useSession();
-    if(session && session.data && session.data.user)
-    {
-        const currentTime = Math.round((new Date()).getTime() / 1000);
-        if(session.data.user.exp - currentTime >= 5)
-        {
-            router.push("/profile");
-        }
-    }
+    // if(session && session.data && session.data.user)
+    // {
+    //     const currentTime = Math.round((new Date()).getTime() / 1000);
+    //     if(session.data.user.exp - currentTime >= 5)
+    //     {
+    //         router.push("/profile");
+    //     }
+    // }
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -28,6 +28,8 @@ const Login = () => {
             password: passwordRef.current?.value,
             redirect: false,
         });
+
+        console.log(result?.status);
 
         if(result)
         {
