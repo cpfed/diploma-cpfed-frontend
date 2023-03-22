@@ -34,7 +34,7 @@ const SignUp = () => {
                         <button type="submit" className={classes.form__button}>
                             Зарегистрироваться
                         </button>
-                        <Link className={classes.signUp__forgetpassword} href="">Забыли пароль?</Link>
+                        <Link className={classes.signUp__extension} href="">Уже есть аккаунт?</Link>
                     </form>
                 </div>
             </Container>

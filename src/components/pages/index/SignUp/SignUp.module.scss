@@ -2,12 +2,6 @@
 
 section.signUp {
     background-color: $white;
-    margin: 20% 0%;
-    padding: 50px;
-
-    @media screen and (max-width: $break-l) {
-        padding: 20px;
-    }
 }
 
 .signUp {
@@ -20,7 +14,7 @@ section.signUp {
         margin-bottom: 49px;
     }
 
-    &__forgetpassword {
+    &__extension {
         @include font(16px, 600, 20px, rgba(0, 0, 0, 0.56));
         width: 100%;
         text-align: end;
