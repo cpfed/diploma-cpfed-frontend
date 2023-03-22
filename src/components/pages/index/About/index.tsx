@@ -1,16 +1,20 @@
 interface Place {
-	description: string
+    place: string
+	fund: string
 }
 
 export const elements: Place[] = [
 	{
-        description: "about:fund-first-place",
+        place: "about:first-place",
+        fund: "about:fund-first-place",
 	},
     {
-        description: "about:fund-second-place",
+        place: "about:second-place",
+        fund: "about:fund-second-place",
 	},
     {
-        description: "about:fund-third-place",
+        place: "about:third-place",
+        fund: "about:fund-third-place",
 	}
 ]
 

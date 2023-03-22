@@ -9,16 +9,17 @@ section#intro {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
     padding: 50px 0px;
 
     @media screen and (max-width: $break-l) {
         justify-content: center;
+        flex-wrap: wrap;
     }
 
     img {
         @media screen and (max-width: $break-s) {
-            width: 400px;
+            width: 350px;
         }
     }
 
