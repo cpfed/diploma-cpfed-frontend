@@ -4,7 +4,6 @@ import Container from "@/components/ui/Container";
 import { signIn, signOut, useSession } from "next-auth/react";
 import classes from "./Profile.module.scss";
 import useAxiosAuth from "lib/hooks/useAxiosAuth";
-import { stat } from "fs";
 
 const Profile = () => {
     const [firstname, setFirstname] = useState("");
@@ -28,7 +27,7 @@ const Profile = () => {
         }
     }
 
-    useEffect(() => {fetchInfo()}, [session, status])
+    useEffect(() => {fetchInfo()}, [status])
 
 
     return (
