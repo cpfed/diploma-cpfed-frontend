@@ -27,21 +27,21 @@ const FAQ = () => {
                         {list.map((element, index, self) => {
                             return (
                                 <div key={index} className={classes.faq__cardList_card}>
-                                    <div className={classes.faq__cardList_card_question}>
+                                    <div className={classes.faq__cardList_card_question} onClick={() => handleClick(index)}>
                                         <p className={classes.faq__cardList_card_question_text}>
                                             {element.question} 
-                                            <span 
-                                                onClick={() => handleClick(index)} 
-                                                className={classes.faq__cardList_card_question_plus}
-                                            >
+                                            <span className={classes.faq__cardList_card_question_plus}>
                                                 &#43;
                                             </span>
                                         </p>
+                                        {!element.isHidden ? (
+                                            <p className={classes.faq__cardList_card_answer}>
+                                                {element.answer}
+                                            </p>
+                                        ) : (
+                                            <></>
+                                        )}
                                     </div>
-
-                                    <p className={`${classes.faq__cardList_card_answer} ${element.isHidden ? classes.hidden : ""}`}>
-                                        {element.answer}
-                                    </p>
                                 </div>
                             );
                         })}

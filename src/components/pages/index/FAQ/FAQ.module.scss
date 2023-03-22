@@ -22,7 +22,7 @@ section#container {
         flex-direction: column;
         flex-wrap: wrap;
         width: 100%;
-        margin: 50px 0px 0px 0px;
+        margin: 50px 0px 50px 0px;
 
         &_card {
             
@@ -33,6 +33,7 @@ section#container {
                 border: solid 1px #00000033;
                 margin: 2px 0px 2px 0px;
                 padding: 30px 50px 30px 50px;
+                cursor: pointer;
 
                 &_text {
                     @include font(25px, 600, 31px, $black);
@@ -41,13 +42,12 @@ section#container {
                 &_plus{
                     @include font(30px, 600, 31px, $black);
                     float: right;
-                    cursor: pointer;
                 }
             }
-            
 
             &_answer {
-                @include font(25px, 600, 31px, $black);
+                @include font(25px, 500, 31px, $black);
+                margin: 10px 0px 0px 0px;
             }
         }
     }
