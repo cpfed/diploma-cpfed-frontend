@@ -51,6 +51,33 @@ section.about {
 
             &_place {
                 @include font(32px, 700, 39px, $white);
+                
+                display: flex;
+                flex-direction: row;
+                text-align: center;
+
+                &_item {
+                    text-align: center;
+                    &:not(:last-child) 
+                    {
+                        @media screen and (min-width: $break-s) {
+                            margin-right: 30px;
+                        }
+                    }
+                }
+
+
+                @media screen and (max-width: $break-s) {
+                    @include font(25px, 700, 39px, $white);
+                    flex-direction: column;
+                }
+
+                @media screen and (max-width: $break-xxs) {
+                    @include font(15px, 700, 39px, $white);
+                    flex-direction: column;
+                }
+
+                
             }
         }
     }

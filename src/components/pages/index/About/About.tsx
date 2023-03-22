@@ -25,7 +25,10 @@ const About = () => {
                     <ul className={classes.about__fund_places}>
                     {elements.map((element, index, self) => {
                         return (
-                            <li key={index} className={classes.about__fund_places_place}>{t(element.description)}</li>
+                            <li key={index} className={classes.about__fund_places_place}>
+                                <p className={classes.about__fund_places_place_item}>{t(element.place)}</p>
+                                <p className={classes.about__fund_places_place_item}>{t(element.fund)}</p>
+                            </li>
                         )
                     })}
                     </ul>
