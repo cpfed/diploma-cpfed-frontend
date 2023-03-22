@@ -24,4 +24,34 @@ section.about {
             text-align: center;
         }
     }
+
+    &__more {
+        @include font(30px, 700, 39px, $white);
+        text-decoration: underline;
+        background: none;
+        margin: 30px 0px 30px 0px;
+    }
+
+    &__fund {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &_title {
+            @include font(32px, 700, 39px, $orange);
+            text-align: center;
+            margin-bottom: 13px;
+        }
+
+        &_places {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+
+
+            &_place {
+                @include font(32px, 700, 39px, $white);
+            }
+        }
+    }
 }
