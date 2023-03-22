@@ -4,6 +4,7 @@ import Container from "@/components/ui/Container";
 import { signIn, signOut, useSession } from "next-auth/react";
 import classes from "./Profile.module.scss";
 import useAxiosAuth from "lib/hooks/useAxiosAuth";
+import { stat } from "fs";
 
 const Profile = () => {
     const [firstname, setFirstname] = useState("");
@@ -12,22 +13,22 @@ const Profile = () => {
     const [bio, setBio] = useState("");
     const [team, setTeam] = useState("");
 
+    const { data: session, status } = useSession({required: true});
+
     const axiosAuth = useAxiosAuth();
 
     const fetchInfo = async() => {
-        try {
+        if (status !== "loading") {
             const res = await axiosAuth.get("api/authentication/v1/profile/me/");
-
+    
             const response = res.data;
             console.log(response);
     
             setEmail(response.email);
-        } catch (error) {
-            console.log(error);
         }
     }
 
-    useEffect(() => {fetchInfo()}, [])
+    useEffect(() => {fetchInfo()}, [session, status])
 
 
     return (

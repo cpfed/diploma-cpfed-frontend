@@ -19,9 +19,7 @@ const Rules = () => {
                     <ul>
                         {elements.map((element, index, self) => {
                             return (
-                                <li
-                                    key={index}
-                                >
+                                <li key={index}>
                                     <div className={classes.rule}>
                                         {element.withLink ? (
                                             <div>
@@ -31,6 +29,22 @@ const Rules = () => {
                                             </div>
                                         ) : (
                                             <p className={classes.rule__text}>{t(element.description as string)}</p>
+                                        )}
+
+                                        {element.subRules != null ? (
+                                            <div>
+                                                <ul>
+                                                    {element.subRules.map((element, index, self) => {
+                                                        return (
+                                                        <li className={classes.rule__sub_rule}>
+                                                            <p className={classes.rule__text}>{t(element.description as string)}</p>
+                                                        </li>
+                                                    )
+                                                    })}
+                                                </ul>
+                                            </div>
+                                        ) : (
+                                            <></>
                                         )}
 
                                         {element.imageUrl != null ? (

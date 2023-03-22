@@ -14,7 +14,7 @@ const Header = () => {
 
 	const handleHeaderToggle = () => {
 		(headerRef.current as HTMLElement).classList.toggle(classes.header_active)
-		document.body.classList.toggle('lock')
+	    document.body.classList.toggle('lock')
 	}
 
     return (
@@ -49,8 +49,8 @@ const Header = () => {
                         classes.locale_and_account__desktop,
                     ].join(" ")}>
                         <ul className={classes.locale_and_account__item}>
-                            {router.locales?.map(locale => (
-                                <li>
+                            {router.locales?.map((locale, index) => (
+                                <li key={index}>
                                     <Link href={router.asPath} locale={locale}>
                                         {locale.toUpperCase()}
                                     </Link>
