@@ -42,7 +42,7 @@ section#intro {
     }
 
     &__button {
-        @include font(13px, 700, 16px   , $white);
+        @include font(13px, 700, 16px, $white);
         background: #4575DC;
         border-radius: 20px;
         padding: 16px 40px;

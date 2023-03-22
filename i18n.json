@@ -2,6 +2,6 @@
     "locales": ["en", "ru", "kz"],
     "defaultLocale": "ru",
     "pages": {
-        "*": ["championship-intro", "championship-rules", "championship-scoring", "footer"] 
+        "*": ["championship-intro", "championship-rules", "championship-scoring", "footer", "documents"] 
     }
 }
