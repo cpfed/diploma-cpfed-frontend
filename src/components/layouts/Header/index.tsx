@@ -5,28 +5,20 @@ interface LinkElement {
 
 export const elements: LinkElement[] = [
 	{
-		title: 'О чемпионате',
-		link: '#about',
+		title: 'Главная',
+		link: '/',
 	},
 	{
-		title: 'Порядок прохождения',
-		link: '#passOrder',
-	},
-	{
-		title: 'Преимущества участия в чемпионате',
-		link: '#benefits'
-	},
-	{
-		title: 'Вопросы-Ответы',
-		link: '#faq',
+		title: 'Правила Чемпионата',
+		link: '/championship',
 	},
 	{
 		title: 'Полезные документы',
-		link: '#usefulDocuments',
+		link: '/documents',
 	},
 	{
 		title: 'Спонсоры и партнеры',
-		link: '#sponsors',
+		link: '/sponsors'
 	},
 ]
 
