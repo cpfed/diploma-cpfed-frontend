@@ -1,64 +1,74 @@
-"use client";
 import Container from "@/components/ui/Container";
-import { signIn, signOut, useSession } from "next-auth/react";
-import React, { useRef } from "react";
+import { signIn } from "next-auth/react";
+import React, { FormEvent, useRef, useState } from "react";
+import { useRouter } from "next/router";
 
 import classes from "./Login.module.scss";
+import Link from "next/link";
 
 const Login = () => {
+    const router = useRouter();
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setIsIncorrect(false);
 
-    const { data: session } = useSession({
-        required: true,
-    });
-    console.log({ session });
-
-    const onSubmit = async() => {
         const result = await signIn("credentials", {
             email: emailRef.current?.value,
             password: passwordRef.current?.value,
-            redirect: true,
-            callbackUrl: "/profile",
-        })
+            redirect: false,
+        });
+
+        if(result)
+        {
+            if(!result.error) router.push("/profile");
+            else setIsIncorrect(true);
+        } 
     };
 
     const emailRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
+    const [isIncorrect, setIsIncorrect ] = useState(false);
 
-    return(
-        <section>
+    return (
+        <section className={classes.login}>
             <Container>
-                <h1>{session?.user.phone_number}</h1>
-                <div className={classes.form__item}>
-                    <input
-                        id="email"
-                        type="email"
-                        name="email"
-                        ref={emailRef}
-                        placeholder="Электронная почта"
-                        className={classes.form__input}
-                        required
-                    />
+                <div className={classes.login}>
+                    <p className={classes.login__title}>Войти</p>
+
+                    <form onSubmit={handleSubmit} className={classes.form}>
+                        {
+                            isIncorrect 
+                            ? <p className={classes.login__message}>Неверный логин или пароль</p>
+                            : undefined
+                        }
+                        <input
+                            id="email"
+                            type="email"
+                            name="email"
+                            ref={emailRef}
+                            placeholder="Введите свою почту"
+                            className={classes.form__input}
+                            required
+                        />
+                        <input
+                            id="password"
+                            type="password"
+                            name="password"
+                            ref={passwordRef}
+                            placeholder="Введите пароль"
+                            className={classes.form__input}
+                            required
+                        />
+                        <button type="submit" className={classes.form__button}>
+                            Продолжить
+                        </button>
+                        <Link className={classes.login__extension} href="">Еще не зарегистрирован?</Link>
+                        <Link className={classes.login__extension} href="">Забыли пароль?</Link>
+                    </form>
                 </div>
-                <div className={classes.form__item}>
-                    <input
-                        id="password"
-                        type="password"
-                        name="password"
-                        ref={passwordRef}
-                        placeholder="Пароль"
-                        className={classes.form__input}
-                        title="Min length is 8"
-                        minLength={8}
-                        required
-                    />
-                </div>
-                <button onClick={onSubmit} className={classes.form__button}>
-                    Login
-                </button>
             </Container>
         </section>
     );
-    
 };
 
 export default Login;
