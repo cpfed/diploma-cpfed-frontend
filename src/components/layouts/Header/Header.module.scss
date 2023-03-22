@@ -1,16 +1,45 @@
 @import "/src/styles/variables";
 
+.disabled {
+    @media screen and (max-width: $break-l) {
+        display: none;
+    }
+}
+
 .header {
     display: flex;
     flex-direction: row;
     align-items: center;
     background-color: $cyan;
     height: 100px;
+    
+    &__active {
+        // tra
+        @media screen and (max-width: $break-l) {
+            transition: all 0.5s;
+            height: 100vh;
+            flex-direction: column;
+            padding-top: 40px;
+        }
+    }
 
     &__navigation {
         display: flex;
-        align-items: center;
+        // align-items: center;
         justify-content: space-between;
+    
+        &_desktop {
+            @media screen and (max-width: $break-l) {
+                display: none;
+            }
+        }
+
+        &_mobile {
+            flex-direction: column;
+            @media screen and (min-width: $break-l) {
+                display: none;
+            }
+        }
     }
 }
 
@@ -18,12 +47,6 @@
     display: flex;
     align-items: center;
     list-style: none;
-
-    &_desktop {
-        @media screen and (max-width: $break-l) {
-			display: none;
-		}
-    }
 
     &__item {
         @include font(20px, 600, 25px, $white);
@@ -36,18 +59,28 @@
             padding-right: 13px;
         }
     }
+
+    &_mobile {
+        flex-direction: column;
+
+        &_row {
+            flex-direction: row;
+        }
+
+        &__item {
+            @include font(20px, 600, 25px, $white);
+            text-align: center;
+            list-style: none;
+            margin-bottom: 12px;
+        }
+    }
 }
+
 
 .locale_and_account {
     display: flex;
     flex-direction: row;
     align-items: center;
-
-    &__desktop {
-        @media screen and (max-width: $break-l) {
-			display: none;
-		}
-    }
 
     &__item {
         @include font(20px, 600, 25px, $white);
@@ -58,6 +91,79 @@
             margin-left: 12px;
             border-left: 1px solid $white;
             padding-left: 13px;
+        }
+    }
+
+    &_mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &__item {
+            @include font(20px, 600, 25px, $white);
+            list-style: none;
+            margin-bottom: 12px;
+
+            display: flex;
+            flex-direction: row;
+
+            li {
+                &:not(:last-child)
+                {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}
+
+.burger {
+    display: flex;
+    position: relative;
+    z-index: 10;
+    width: 22px;
+    height: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+
+    // justify-self: right;
+    
+    @media screen and (min-width: $break-l) {
+        display: none;
+    }
+
+    &::before,
+    &::after {
+        content: '';
+        background-color: #fff;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        border-radius: 1rem;
+        transition: 0.3s ease 0.3s;
+    }
+
+    &::before {
+        top: 0;
+    }
+
+    &::after {
+        bottom: 0;
+    }
+
+    &__active {
+        margin-bottom: 30px;
+        transform: rotate(90deg);
+    
+        &::before {
+            transform: rotate(-45deg);
+            top: 7px;
+        }
+    
+        &::after {
+            transform: rotate(45deg);
+            bottom: 0;
         }
     }
 }
