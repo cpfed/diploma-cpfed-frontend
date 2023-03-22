@@ -1,0 +1,40 @@
+@import "/src/styles/variables";
+
+section#container {
+    background-color: $white;
+    margin: 0px;
+}
+
+.documents {
+    display: flex;
+    flex-direction: column;
+    padding: 100px 0px 100px 0px;
+
+    &__title {
+        @include font(31px, 700, 39px, $black);
+        margin: 0px 0px 60px 0px;
+        text-align: center;
+    }
+}
+
+.document {
+    margin: 0px 0px 30px 0px;
+    list-style: none;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: solid 1px #00000033;
+    margin: 2px 0px 2px 0px;
+    padding: 30px 50px 30px 50px;
+    cursor: pointer;
+
+    &__text {
+        @include font(25px, 700, 31px, $black);
+    }
+
+    &__img {
+        width: 40px;
+        height: 40px;
+    }
+}
