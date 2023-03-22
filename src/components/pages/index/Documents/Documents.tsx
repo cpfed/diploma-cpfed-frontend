@@ -20,8 +20,8 @@ const Documents = () => {
                     <ul>
                         {elements.map((element, index, self) => {
                             return (
-                                <Link href={element.link}>
-                                    <li key={index} className={classes.document}>
+                                <Link key={index} href={element.link}>
+                                    <li className={classes.document}>
                                         <p className={classes.document__text}>{t(element.title)}</p>
                                         <img src="images/document_link_button.png" className={classes.document__img}></img>
                                     </li>
