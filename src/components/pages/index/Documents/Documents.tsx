@@ -13,7 +13,7 @@ const Documents = () => {
     const { t } = useTranslation();
 
     return (
-        <section id={classes.container}>
+        <section className={classes.documents} id="documents">
             <Container>
                 <div className={classes.documents}>
                     <h1 className={classes.documents__title}>{t('documents:title')}</h1>

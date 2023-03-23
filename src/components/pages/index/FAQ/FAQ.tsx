@@ -18,7 +18,7 @@ const FAQ = () => {
     }
     
     return (
-        <section id={classes.container}>
+        <section className={classes.faq} id="faq">
             <Container>
                 <div className={classes.faq}>
                     <h1 className={classes.faq__title}>Вопрос-Ответ</h1>
