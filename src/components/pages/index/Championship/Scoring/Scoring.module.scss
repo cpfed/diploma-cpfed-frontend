@@ -13,6 +13,9 @@ section.scoring {
     &__title {
         @include font(25px, 700, 31px, $black);
         margin: 0px 0px 40px 0px;
+        @media screen and (max-width: $break-l) {
+            @include font(20px, 700, 25px, $black);
+        }
     }
 }
 
@@ -20,5 +23,8 @@ section.scoring {
     margin: 0px 0px 30px 0px;
     &__text {
         @include font(25px, 500, 31px, $black);
+        @media screen and (max-width: $break-l) {
+            @include font(20px, 500, 25px, $black);
+        }
     }
 }

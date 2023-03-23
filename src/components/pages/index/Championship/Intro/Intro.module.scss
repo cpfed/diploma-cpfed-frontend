@@ -16,6 +16,9 @@ section.intro {
         @include font(32px, 700, 39px, $black);
         text-align: center;
         margin: 0px 0px 40px 0px;
+        @media screen and (max-width: $break-l) {
+            @include font(20px, 700, 25px, $black);
+        }
     }
 
     &__image_and_description {
@@ -37,8 +40,10 @@ section.intro {
     &__text {
         @include font(25px, 500, 31px, $black);
         text-indent: 60px;
+        margin: 0px 20px 0px 20px;
         @media screen and (max-width: $break-l) {
             text-indent: 0px;
+            @include font(20px, 500, 25px, $black);
         }
     }
 

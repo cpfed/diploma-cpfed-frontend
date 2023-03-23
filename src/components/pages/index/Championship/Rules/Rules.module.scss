@@ -13,6 +13,9 @@ section.rules {
     &__title {
         @include font(25px, 700, 31px, $black);
         margin: 0px 0px 40px 0px;
+        @media screen and (max-width: $break-l) {
+            @include font(20px, 700, 25px, $black);
+        }
     }
 
     &__image_and_description {
@@ -29,6 +32,9 @@ section.rules {
     &__text {
         @include font(25px, 500, 31px, $black);
         text-indent: 60px;
+        @media screen and (max-width: $break-l) {
+            @include font(20px, 500, 25px, $black);
+        }
     }
 }
 
@@ -39,15 +45,21 @@ section.rules {
 
     &__text {
         @include font(25px, 500, 31px, $black);
+        @media screen and (max-width: $break-l) {
+            @include font(20px, 500, 25px, $black);
+        }
     }
 
     &__link {
         @include font(25px, 500, 31px, $black);
         text-decoration: underline;
+        @media screen and (max-width: $break-l) {
+            @include font(20px, 500, 25px, $black);
+        }
     }
 
     &__sub_rule {
-        margin: 0px 0px 0px 30px;
+        margin: 10px 0px 0px 30px;
     }
 
     th, td {
@@ -56,6 +68,9 @@ section.rules {
         width: 50%;
         vertical-align: top;
         @include font(25px, 500, 31px, $black);
+        @media screen and (max-width: $break-l) {
+            @include font(12px, 500, 15px, $black);
+        }
     }
 
     table {
