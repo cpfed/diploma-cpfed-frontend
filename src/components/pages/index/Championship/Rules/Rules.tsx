@@ -12,7 +12,7 @@ const Rules = () => {
     const { t } = useTranslation();
 
     return (
-        <section id={classes.container}>
+        <section className={classes.rules} id="rules">
             <Container>
                 <div className={classes.rules}>
                     <h1 className={classes.rules__title}>{t("championship-rules:title")}</h1>
