@@ -14,7 +14,7 @@ const Intro = () => {
                 <div className={classes.intro}>
                     <h1 className={classes.intro__title}>{t('championship-intro:title')}</h1>
                     <div className={classes.intro__image_and_description}>
-                        <img src="images/championship_intro.png"></img>
+                        <img className={classes.description__img} src="images/championship_intro.png"></img>
                         <div className={classes.description}>
                             <p className={classes.description__text}>{t('championship-intro:description-part-1')}</p>
                             <br></br>

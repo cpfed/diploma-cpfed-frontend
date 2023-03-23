@@ -8,7 +8,7 @@ section#container {
 .rules {
     display: flex;
     flex-direction: column;
-    padding: 60px 0px 0px 0px;
+    padding: 60px 20px 0px 20px;
 
     &__title {
         @include font(25px, 700, 31px, $black);
@@ -42,8 +42,12 @@ section#container {
     }
 
     &__img {
-        margin: 0px 0px 40px 80px;
+        margin: 10px 0px 10px 80px;
         width: 60%;
+        @media screen and (max-width: $break-l) {
+            margin: 10px 0px 0px 0px;
+            width: 100%;
+        }
     }
 
     &__link {

@@ -11,6 +11,7 @@ section#container {
     align-items: center;
     padding: 60px 0px 0px 0px;
 
+
     &__title {
         @include font(32px, 700, 39px, $black);
         text-align: center;
@@ -21,15 +22,29 @@ section#container {
         display: flex;
         flex-direction: row;
         align-items: center;
+
+        @media screen and (max-width: $break-s) {
+            flex-direction: column;
+        }
     }
 }
 
 .description {
     display: flex;
     flex-direction: column;
+    padding: 20px;
 
     &__text {
         @include font(25px, 500, 31px, $black);
         text-indent: 60px;
+        @media screen and (max-width: $break-l) {
+            text-indent: 0px;
+        }
+    }
+
+    &__img {
+        @media screen and (max-width: $break-l) {
+            width: 300px;
+        }
     }
 }
