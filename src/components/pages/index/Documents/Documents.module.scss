@@ -8,7 +8,7 @@ section.documents {
 .documents {
     display: flex;
     flex-direction: column;
-    padding: 20px 0px 100px 0px;
+    padding: 20px 0px 0px 0px;
 
     &__title {
         @include font(31px, 700, 39px, $black);

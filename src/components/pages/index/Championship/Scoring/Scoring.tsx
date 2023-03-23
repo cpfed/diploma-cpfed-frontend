@@ -11,7 +11,7 @@ const Scoring = () => {
     const { t } = useTranslation();
 
     return (
-        <section id={classes.container}>
+        <section className={classes.scoring} id="scoring">
             <Container>
                 <div className={classes.scoring}>
                     <h1 className={classes.scoring__title}>{t('championship-scoring:title')}</h1>

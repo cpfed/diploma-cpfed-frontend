@@ -9,7 +9,7 @@ const Intro = () => {
     const { t } = useTranslation();
 
     return (
-        <section id={classes.container}>
+        <section className={classes.intro} id="intro">
             <Container>
                 <div className={classes.intro}>
                     <h1 className={classes.intro__title}>{t('championship-intro:title')}</h1>
