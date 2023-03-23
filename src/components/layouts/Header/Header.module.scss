@@ -13,13 +13,15 @@
     background-color: $cyan;
     height: 100px;
     
+    transition: height 0.5s;
+        
+        
     &__active {
-        // tra
         @media screen and (max-width: $break-l) {
-            transition: all 0.5s;
             height: 100vh;
             flex-direction: column;
             padding-top: 40px;
+            justify-content: stretch;
         }
     }
 
@@ -68,10 +70,10 @@
         }
 
         &__item {
-            @include font(13px, 600, 16px, $white);
+            @include font(20px, 600, 16px, $white);
             text-align: center;
             list-style: none;
-            margin-bottom: 12px;
+            margin-bottom: 24px;
         }
     }
 }
@@ -100,9 +102,9 @@
         align-items: center;
 
         &__item {
-            @include font(13px, 600, 16px, $white);
+            @include font(20px, 600, 16px, $white);
             list-style: none;
-            margin-bottom: 12px;
+            margin-bottom: 24px;
 
             display: flex;
             flex-direction: row;
@@ -125,8 +127,6 @@
     height: 10px;
     cursor: pointer;
     transition: 0.3s ease;
-
-    // justify-self: right;
     
     @media screen and (min-width: $break-l) {
         display: none;

@@ -1,33 +1,27 @@
 import React, { useEffect, useState } from "react";
 
 import Container from "@/components/ui/Container";
-import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 import classes from "./Credentials.module.scss";
-import useAxiosAuth from "lib/hooks/useAxiosAuth";
+import { API } from "@/api/cpdefAPI";
+
 
 const Credentials = () => {
+    const router = useRouter();
     const [firstname, setFirstname] = useState("");
     const [surname, setSurname] = useState("");
     const [email, setEmail] = useState("");
     const [bio, setBio] = useState("");
     const [team, setTeam] = useState("");
 
-    const { data: session, status } = useSession({required: true});
 
-    const axiosAuth = useAxiosAuth();
+    const fetchInfo = async () => {
+        const res = await API.profileMe();
 
-    const fetchInfo = async() => {
-        if (status !== "loading") {
-            const res = await axiosAuth.get("api/authentication/v1/profile/me/");
-    
-            const response = res.data;
-            console.log(response);
-    
-            setEmail(response.email);
-        }
+        setEmail(res.email);
     }
 
-    useEffect(() => {fetchInfo()}, [status])
+    useEffect(()=>{fetchInfo()}, [])
 
     return (
         <section className={classes.credentials}>

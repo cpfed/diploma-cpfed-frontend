@@ -1,32 +1,19 @@
 import React, { FormEvent, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useSession } from "next-auth/react";
+import { API } from "@/api/cpdefAPI";
 
 import Container from "@/components/ui/Container";
 
 import classes from "./SignUp.module.scss";
-import axios from "lib/axios";
 
 const SignUp = () => {
     const router = useRouter();
-    const session = useSession();
-    if(session && session.data && session.data.user)
-    {
-        const currentTime = Math.round((new Date()).getTime() / 1000);
-        if(session.data.user.exp - currentTime >= 5)
-        {
-            router.push("/profile");
-        }
-    }
 
     const handleSubmit = async(event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        axios.post("api/authentication/v1/sign-up/", {
-            email: emailRef.current?.value,
-            password: passwordRef.current?.value
-        })
+        API.signUp(emailRef.current!.value, passwordRef.current!.value)
         .then(_=>router.push('/login'))
         .catch(_=>console.log)
     }
