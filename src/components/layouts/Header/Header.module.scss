@@ -49,7 +49,7 @@
     list-style: none;
 
     &__item {
-        @include font(20px, 600, 25px, $white);
+        @include font(13px, 600, 16px, $white);
         text-align: center;
         list-style: none;
 
@@ -68,7 +68,7 @@
         }
 
         &__item {
-            @include font(20px, 600, 25px, $white);
+            @include font(13px, 600, 16px, $white);
             text-align: center;
             list-style: none;
             margin-bottom: 12px;
@@ -83,7 +83,7 @@
     align-items: center;
 
     &__item {
-        @include font(20px, 600, 25px, $white);
+        @include font(13px, 600, 16px, $white);
         text-align: center;
         list-style: none;
 
@@ -100,7 +100,7 @@
         align-items: center;
 
         &__item {
-            @include font(20px, 600, 25px, $white);
+            @include font(13px, 600, 16px, $white);
             list-style: none;
             margin-bottom: 12px;
 
