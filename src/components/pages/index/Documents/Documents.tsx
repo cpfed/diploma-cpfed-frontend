@@ -2,31 +2,37 @@ import React from "react";
 
 import Container from "@/components/ui/Container";
 import classes from "./Documents.module.scss";
-import useTranslation from "next-translate/useTranslation"
+import useTranslation from "next-translate/useTranslation";
 
-import Link from "next/link"
+import Link from "next/link";
 
 import { elements } from ".";
 
 const Documents = () => {
-    
     const { t } = useTranslation();
 
     return (
         <section className={classes.documents} id="documents">
             <Container>
                 <div className={classes.documents}>
-                    <h1 className={classes.documents__title}>{t('documents:title')}</h1>
+                    <h1 className={classes.documents__title}>
+                        {t("documents:title")}
+                    </h1>
                     <ul>
                         {elements.map((element, index, self) => {
                             return (
-                                <Link key={index} href={element.link}>
-                                    <li className={classes.document}>
-                                        <p className={classes.document__text}>{t(element.title)}</p>
-                                        <img src="images/document_link_button.png" className={classes.document__img}></img>
-                                    </li>
-                                </Link>
-                            )
+                                <li key={index} className={classes.document}>
+                                    <Link href={element.link}>
+                                        <p className={classes.document__text}>
+                                            {t(element.title)}
+                                        </p>
+                                        <img
+                                            src="images/document_link_button.png"
+                                            className={classes.document__img}
+                                        ></img>
+                                    </Link>
+                                </li>
+                            );
                         })}
                     </ul>
                 </div>
