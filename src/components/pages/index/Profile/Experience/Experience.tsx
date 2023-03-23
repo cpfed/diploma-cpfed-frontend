@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Container from "@/components/ui/Container";
 import { useSession } from "next-auth/react";
 import classes from "./Experience.module.scss";
-import useAxiosAuth from "lib/hooks/useAxiosAuth";
+import useAxiosAuth from "@/hooks/useAxiosAuth";
 
 import { Platform } from ".";
 import useTranslation from "next-translate/useTranslation";
