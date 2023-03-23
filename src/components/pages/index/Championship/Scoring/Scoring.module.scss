@@ -8,7 +8,7 @@ section#container {
 .scoring {
     display: flex;
     flex-direction: column;
-    padding: 60px 20px 0px 20px;
+    padding: 60px 20px 60px 20px;
 
     &__title {
         @include font(25px, 700, 31px, $black);

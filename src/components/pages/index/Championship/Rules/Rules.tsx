@@ -47,8 +47,22 @@ const Rules = () => {
                                             <></>
                                         )}
 
-                                        {element.imageUrl != null ? (
-                                            <img src={element.imageUrl} className={classes.rule__img}></img>
+                                        {element.table != null ? (
+                                            <table>
+                                                <tbody>
+                                                    {element.table.map((row, index, self) => {
+                                                        return (
+                                                            <tr>
+                                                            {row.columns.map((col, index, selft) => {
+                                                                return (
+                                                                    <th>{t(col)}</th>
+                                                                )
+                                                                })}
+                                                            </tr>
+                                                        )
+                                                    })}
+                                                </tbody>
+                                            </table>
                                         ) : (
                                             <></>
                                         )}
