@@ -7,7 +7,7 @@ import { elements } from ".";
 
 const PassOrder = () => {
     return (
-        <section id={classes.container}>
+        <section className={classes.passOrder} id="passOrder">
             <Container>
                 <div className={classes.passOrder}>
                     <h1 className={classes.passOrder__title}>Порядок прохождения</h1>

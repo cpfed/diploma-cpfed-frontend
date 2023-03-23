@@ -7,7 +7,7 @@ import classes from "./Intro.module.scss";
 
 const Intro = () => {
     return (
-        <section id={classes.intro}>
+        <section className={classes.intro} id="intro">
             <Container>
                 <div className={classes.intro}>
                     <img src="images/intro.png"></img>
