@@ -1,0 +1,27 @@
+@import "/src/styles/variables";
+
+.subanchors {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	list-style: none;
+	flex-wrap: wrap;
+
+	padding: 21px 0px;
+	
+	@media screen and (max-width: $break-l) {
+		display: none;
+	}
+
+	&__item {
+		@include font(13px, 600, 16px, $black);
+
+		&:not(:last-child) {
+			margin-right: 13px;
+		}
+	}
+
+	&__seperator {
+		@include font(20px, 500, 20px, $black);
+	}
+}

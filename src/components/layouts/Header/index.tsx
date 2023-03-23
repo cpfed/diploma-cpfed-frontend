@@ -1,7 +1,4 @@
-interface LinkElement {
-	title: string
-	link?: string
-}
+import { LinkElement } from '@/interfaces/linkElement'
 
 export const elements: LinkElement[] = [
 	{
