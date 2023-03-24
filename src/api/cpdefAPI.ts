@@ -1,4 +1,5 @@
 import { CpfedAccount } from '@/interfaces/account';
+import { CpfedCredentials } from '@/interfaces/credentials';
 import { ContestPlatform } from '@/interfaces/contestPlatforms';
 import { Tokens } from '@/interfaces/tokens';
 import { UserToPlatform } from '@/interfaces/userToPlatform';
@@ -67,9 +68,9 @@ export const API = {
 		}
 	},
 
-	login: async (email?: string, password?: string): Promise<CpfedAccount> => {
+	login: async (email?: string, password?: string): Promise<CpfedCredentials> => {
 		try {
-			const res = await publicInstance.post<CpfedAccount>("/authentication/v1/login/", {
+			const res = await publicInstance.post<CpfedCredentials>("/authentication/v1/login/", {
 				email,
 				password
 			});
@@ -92,7 +93,7 @@ export const API = {
 		}
 	},
 
-	profileMe: async () => {
+	profileMe: async (): Promise<CpfedAccount> => {
 		try {
 			const res = await privateInstance.get<CpfedAccount>("/authentication/v1/profile/me/");
 			return res.data;

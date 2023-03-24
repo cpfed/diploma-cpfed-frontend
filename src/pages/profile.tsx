@@ -1,11 +1,12 @@
-import Credentials from "@/components/pages/index/Profile/Credentials";
 import Handles from "@/components/pages/index/Profile/Experience/Handles";
+import PersonalInfo from "@/components/pages/index/Profile/PersonalInfo";
 
 export default function Home() {
     return (
         <>
-            <Credentials></Credentials>
-            <Handles></Handles>
+            <PersonalInfo></PersonalInfo>
+            {/* <Handles></Handles> */}
+            {/* <Experience></Experience> */}
         </>
     );
 }

@@ -1,0 +1,135 @@
+@import "/src/styles/variables";
+
+section.personalInfo {
+    background-color: $white;
+}
+
+.personalInfo {
+    &__avatar {
+        display: flex;
+        align-items: center;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 60px;
+        padding: 64px 56px;
+
+        img {
+            width: 136px;
+            height: 136px;
+        }
+
+        @media screen and (max-width: $break-sl) {
+            padding: 32px 28px;
+            border-radius: 30px;
+
+            img {
+                width: 68px;
+                height: 68px;
+            }
+        }
+    }
+}
+
+
+.form {
+    display: flex;
+	flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+    &__group {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        &:not(:last-child) {
+            margin-right: 50px;
+
+            @media screen and (max-width: $break-sl) {
+                margin-right: 0px;
+                flex-basis: 100%;
+            }
+        }
+
+        &_item {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            
+            &:not(:last-child) {
+                margin-bottom: 5px;
+            }
+        }
+    
+    }
+
+    label {
+		@include font(14px, 400, 18px, rgba(0, 0, 0, 0.56));
+		margin-bottom: 4px;
+
+        @media screen and (max-width: $break-sl) {
+            @include font(12px, 400, 18px, #667085);
+        }
+    }
+
+    label.radio {
+        text-align: center;
+    }
+
+    label.little {
+        @include font(12px, 500, 24px, #667085);
+
+        @media screen and (max-width: $break-sl) {
+            @include font(6px, 500, 24px, #667085);
+        }
+    }
+
+    &__radiobuttons {
+        display: flex;
+        flex-direction: row;
+
+        div {
+            &:not(:last-child) {
+                margin-right: 12px;
+            }
+        }
+    }
+
+
+    input, PhoneInput {
+		@include font(20px, 500, 24px, #667085);
+        width: 511px;
+        height: 52px;
+
+		padding: 12px;
+
+		background: $white;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 6px;
+
+		display: flex;
+
+		&:focus {
+            outline: none !important;
+            border: 2px solid $orange;
+        }
+
+        @media screen and (max-width: $break-sl) {
+            @include font(16px, 500, 24px, #667085);
+            width: 320px;
+            height: 36px;
+            border-radius: 3px;
+        }
+	}
+
+
+    input[type='radio'] {
+        width: 30px;
+        height: 30px;
+
+        @media screen and (max-width: $break-sl) {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}

@@ -1,9 +1,14 @@
-import { Tokens } from "./tokens"
+import { Gender } from "@/enums/gender.enum"
+import { TShirtSize } from "@/enums/t-shirt-size.enum"
 
 export interface CpfedAccount {
-    id: number
-    uin: string
-    phone_number: string
+    first_name: string
+    last_name: string
     email: string
-    tokens: Tokens
+    phone_number: string
+    last_education_institution: string
+    year_of_education: number
+    uin: string 
+    t_shirt_size: TShirtSize
+    gender: Gender
 }

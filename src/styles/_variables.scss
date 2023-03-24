@@ -52,8 +52,9 @@ $break-xxl: 1440px;
 	flex-direction: $direction;
 }
 
+
 .input_select_text {
-    @include font(18px, 600, 20px, $black);
+	@include font(18px, 600, 20px, $black);
     padding: 12px;
     color: #000000AD;
 }
