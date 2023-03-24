@@ -16,13 +16,16 @@
 	&__item {
 		@include font(13px, 600, 16px, $black);
 		display: flex;
-
+		flex-direction: row;
+		align-items: center;
+		
 		&:not(:last-child) {
 			margin-right: 13px;
 		}
-
+		
 		a {
 			margin-right: 13px;
+			text-align: center;
 		}
 	}
 

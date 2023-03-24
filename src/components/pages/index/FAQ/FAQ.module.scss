@@ -14,7 +14,11 @@ section.faq {
 
     &__title {
         @include font(32px, 700, 39px, $black);
-        text-align: center
+        text-align: center;
+
+        @media screen and (max-width: $break-l) {
+            @include font(25px, 700, 31px, $black);
+        }
     }
 
     &__cardList {
@@ -37,17 +41,28 @@ section.faq {
 
                 &_text {
                     @include font(25px, 600, 31px, $black);
+
+                    @media screen and (max-width: $break-l) {
+                        @include font(20px, 600, 25px, $black);
+                    }
                 }
 
                 &_plus{
                     @include font(30px, 600, 31px, $black);
                     float: right;
+
+                    @media screen and (max-width: $break-l) {
+                        @include font(25px, 600, 31px, $black);
+                    }
                 }
             }
 
             &_answer {
                 @include font(25px, 500, 31px, $black);
                 margin: 10px 0px 0px 0px;
+                @media screen and (max-width: $break-l) {
+                    @include font(20px, 500, 25px, $black);
+                }
             }
         }
     }

@@ -39,6 +39,7 @@ section.intro {
 
         @media screen and (max-width: $break-l) {
             margin-bottom: 20px;
+            @include font(25px, 700, 31px, $black);
         }
     }
 

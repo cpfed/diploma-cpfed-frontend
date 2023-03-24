@@ -21,8 +21,8 @@ const Documents = () => {
                     <ul>
                         {elements.map((element, index, self) => {
                             return (
-                                <li key={index} className={classes.document}>
-                                    <Link href={element.link}>
+                                <li key={index} className={classes.item}>
+                                    <Link href={element.link} className={classes.document}>
                                         <p className={classes.document__text}>
                                             {t(element.title)}
                                         </p>

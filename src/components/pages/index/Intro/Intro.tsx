@@ -4,8 +4,11 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 
 import classes from "./Intro.module.scss";
+import useTranslation from "next-translate/useTranslation";
 
 const Intro = () => {
+    const { t } = useTranslation();
+
     return (
         <section className={classes.intro} id="intro">
             <Container>
@@ -13,10 +16,10 @@ const Intro = () => {
                     <img src="images/intro.png"></img>
                     <div className={classes.intro__content}>
                         <p className={classes.intro__description}>
-                            Чемпионат Казахстана по спортивному программированию
+                            {t('intro:title')}
                         </p>
                         <button className={classes.intro__button}>
-                            Зарегистрироваться
+                            {t('intro:button')}
                         </button>
                     </div>
                 </div>

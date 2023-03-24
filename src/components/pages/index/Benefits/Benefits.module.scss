@@ -11,6 +11,10 @@ section.benefits {
         @include font(32px, 700, 39px, $black);
         text-align: center;
         margin-bottom: 100px;
+
+        @media screen and (max-width: $break-l) {
+            @include font(25px, 700, 31px, $black);
+        }
     }
 
     &__list {

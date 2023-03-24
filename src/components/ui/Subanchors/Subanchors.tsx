@@ -23,7 +23,7 @@ const Subanchors = ({ anchorsName }: SubanchorsProps) => {
                                 >
                                     /
                                 </span>
-                            ) : undefined}
+                            ) : <></>}
                         </li>
                     );
                 })}

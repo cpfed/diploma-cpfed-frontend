@@ -14,12 +14,19 @@ section.documents {
         @include font(31px, 700, 39px, $black);
         margin: 0px 0px 60px 0px;
         text-align: center;
+
+        @media screen and (max-width: $break-l) {
+            @include font(25px, 700, 31px, $black);
+        }
     }
+}
+
+.item {
+    list-style: none;
 }
 
 .document {
     margin: 0px 0px 30px 0px;
-    list-style: none;
 
     display: flex;
     flex-direction: row;
@@ -31,6 +38,10 @@ section.documents {
 
     &__text {
         @include font(25px, 700, 31px, $black);
+
+        @media screen and (max-width: $break-l) {
+            @include font(20px, 700, 25px, $black);
+        }
     }
 
     &__img {
