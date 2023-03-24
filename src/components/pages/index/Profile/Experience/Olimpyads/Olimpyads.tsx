@@ -33,18 +33,18 @@ const Handles = () => {
             })
     }
 
-    const postUserToPlatform = async () => {
-        API.postUserToPlatform({
-            platform_id: selectedPlatform,
-            handle: handle,
-        })
-            .then(() => {
-                resetForm();
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }
+    // const addUserToPlatformList = async () => {
+    //     API.addUserToPlatformList({
+    //         platform_id: selectedPlatform,
+    //         handle: handle,
+    //     })
+    //         .then(() => {
+    //             resetForm();
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //         });
+    // }
 
     useEffect(() => { fetchPlatforms() }, [])
 
@@ -103,7 +103,7 @@ const Handles = () => {
                             <div className={classes.buttons}>
                                 <div className={classes.buttons__container}>
                                     <button
-                                        onClick={postUserToPlatform}
+                                        // onClick={postUserToPlatform}
                                         className={classes.buttons__save}>
                                         {t("common:save")}
                                     </button>
