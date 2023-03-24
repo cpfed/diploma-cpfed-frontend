@@ -1,10 +1,11 @@
 import Credentials from "@/components/pages/index/Profile/Credentials";
+import Handles from "@/components/pages/index/Profile/Experience/Handles";
 
 export default function Home() {
     return (
         <>
             <Credentials></Credentials>
-            {/* <Experience></Experience> */}
+            <Handles></Handles>
         </>
     );
 }

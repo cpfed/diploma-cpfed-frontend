@@ -1,5 +1,7 @@
 import { CpfedAccount } from '@/interfaces/account';
+import { ContestPlatform } from '@/interfaces/contestPlatforms';
 import { Tokens } from '@/interfaces/tokens';
+import { UserToPlatform } from '@/interfaces/userToPlatform';
 import { setTokens, getTokens } from '@/utils';
 import axios from 'axios';
 import Cookies from 'js-cookie';
@@ -97,8 +99,22 @@ export const API = {
 		} catch (error) {
 			throw error;
 		}
+	},
+
+	getContestPlatforms: async () => {
+		try {
+			const res = await privateInstance.get<ContestPlatform[]>("/platforms/v1/contest-platforms/");
+			return res.data;
+		} catch (error) {
+			throw error;
+		}
+	},
+
+	postUserToPlatformList:async (userToPlatformList: UserToPlatform[]) => {
+		try {
+			await privateInstance.post("/user-info/v1/handles/", userToPlatformList);
+		} catch (error) {
+			throw error;
+		}
 	}
 }
-
-
-
