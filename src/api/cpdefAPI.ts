@@ -2,7 +2,7 @@ import { CpfedAccount } from '@/interfaces/account';
 import { CpfedCredentials } from '@/interfaces/credentials';
 import { ContestPlatform } from '@/interfaces/contestPlatforms';
 import { Tokens } from '@/interfaces/tokens';
-import { UserToPlatform } from '@/interfaces/userToPlatform';
+import { NewUserToPlatform, UserToPlatformList, UpdatedUserToPlatform } from '@/interfaces/userToPlatform';
 import { setTokens, getTokens } from '@/utils';
 import axios from 'axios';
 import Cookies from 'js-cookie';
@@ -111,9 +111,26 @@ export const API = {
 		}
 	},
 
-	postUserToPlatformList:async (userToPlatformList: UserToPlatform[]) => {
+	addUserToPlatformList:async (userToPlatformList: NewUserToPlatform[]) => {
 		try {
 			await privateInstance.post("/user-info/v1/handles/", userToPlatformList);
+		} catch (error) {
+			throw error;
+		}
+	},
+
+	fetchUserToPlatformList: async () => {
+		try {
+			const res = await privateInstance.get<UserToPlatformList>("/user-info/v1/handles/");
+			return res.data;
+		} catch (error) {
+			throw error;
+		}
+	},
+
+	updateUserToPlatform: async (userToPlatform: UpdatedUserToPlatform) => {
+		try {
+			await privateInstance.put("/user-info/v1/handles/", userToPlatform);
 		} catch (error) {
 			throw error;
 		}
