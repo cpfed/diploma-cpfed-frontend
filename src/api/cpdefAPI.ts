@@ -3,7 +3,7 @@ import { CpfedCredentials } from '@/interfaces/credentials';
 import { ContestPlatform } from '@/interfaces/contestPlatforms';
 import { Tokens } from '@/interfaces/tokens';
 import { NewUserToPlatform, UserToPlatformList, UpdatedUserToPlatform } from '@/interfaces/userToPlatform';
-import { setTokens, getTokens } from '@/utils';
+import { setTokens, getTokens } from '@/utils/tokens';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
