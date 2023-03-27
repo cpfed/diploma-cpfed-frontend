@@ -10,7 +10,7 @@ section.intro {
     align-items: center;
     justify-content: space-between;
     // flex-wrap: wrap;
-    padding: 50px 0px;
+    padding: 0px 0px 18px 0px;
 
     @media screen and (max-width: $break-l) {
         justify-content: center;
@@ -27,7 +27,7 @@ section.intro {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-evenly;
+        justify-content: space-between;
     }
 
     &__description {
@@ -40,6 +40,29 @@ section.intro {
         @media screen and (max-width: $break-l) {
             margin-bottom: 20px;
             @include font(25px, 700, 31px, $black);
+        }
+    }
+
+    &__partner {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+
+        p {
+            @include font(15px, 700, 18px, #387C22);
+        }
+
+        img {
+            width: 200px;
+            height: 92px;
+        }
+
+        margin-bottom: 50px;
+
+        @media screen and (max-width: $break-l) {
+            margin-bottom: 0px;
         }
     }
 
