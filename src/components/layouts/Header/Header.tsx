@@ -148,14 +148,20 @@ const Header = () => {
                                     </li>
                                 ))}
                             </ul>
-                            <Link
-                                className={
-                                    classes.locale_and_account_mobile__item
-                                }
-                                href="#"
-                            >
-                                Мой аккаунт
-                            </Link>
+                            {
+                                (
+                                    isLoggedIn 
+                                    ? dropdownElements.loggedIn
+                                    : dropdownElements.loggedOut
+                                ).map((element, index) => {
+                                    console.log(element.title);
+                                    
+                                    return <li key={index} className={classes.locale_and_account_mobile__item}>
+                                        <img src={element.iconSrc}/>
+                                        <Link href={element.href}>{element.title}</Link>
+                                    </li>
+                                })
+                            }
                         </div>
                     </div>
                 </nav>
