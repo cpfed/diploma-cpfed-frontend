@@ -1,4 +1,4 @@
-import React, { HtmlHTMLAttributes, useEffect, useRef } from "react";
+import React, { HtmlHTMLAttributes, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 import Container from "@/components/ui/Container";
@@ -15,7 +15,8 @@ const Header = () => {
     const mobileContentRef = useRef<HTMLDivElement>(null);
 
     
-    const isLoggedIn = getTokens().access !== undefined;
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>();
+
     
     const onBurger = () => {
         headerRef.current?.classList.toggle(classes.header__active);
@@ -25,6 +26,8 @@ const Header = () => {
     };
     
     useEffect(() => {
+        setIsLoggedIn(getTokens().access !== undefined);
+
         window.addEventListener("resize", (event) => {
             if (
                 document.body.clientWidth > 1024 &&
@@ -84,8 +87,6 @@ const Header = () => {
                                         ? dropdownElements.loggedIn
                                         : dropdownElements.loggedOut
                                     ).map((element, index) => {
-                                        console.log(element.title);
-                                        
                                         return <li key={index}>
                                             <img src={element.iconSrc}/>
                                             <Link href={element.href}>{element.title}</Link>
@@ -154,8 +155,6 @@ const Header = () => {
                                     ? dropdownElements.loggedIn
                                     : dropdownElements.loggedOut
                                 ).map((element, index) => {
-                                    console.log(element.title);
-                                    
                                     return <li key={index} className={classes.locale_and_account_mobile__item}>
                                         <img src={element.iconSrc}/>
                                         <Link href={element.href}>{element.title}</Link>
