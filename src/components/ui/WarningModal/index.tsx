@@ -1,1 +1,1 @@
-export { default } from './WarningModal'
+export { default, WarningModalProps } from './WarningModal'

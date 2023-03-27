@@ -3,7 +3,7 @@ import classes from "./WarningModal.module.scss";
 import { ButtonElement } from "@/interfaces/buttonElement";
 import { useState } from "react";
 
-interface WarningModalProps {
+export interface WarningModalProps {
     isOpen: boolean;
     message: string,
     confirmButtons: ButtonElement[]
