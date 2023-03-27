@@ -102,6 +102,15 @@ export const API = {
 		}
 	},
 
+	updateProfileMe: async(account: CpfedAccount): Promise<CpfedAccount> => {
+		try {
+			const res = await privateInstance.put<CpfedAccount>("/authentication/v1/profile/me/", account);
+			return res.data;
+		} catch (error) {
+			throw error;
+		}
+	},
+
 	getContestPlatforms: async () => {
 		try {
 			const res = await privateInstance.get<ContestPlatform[]>("/platforms/v1/contest-platforms/");
@@ -135,4 +144,5 @@ export const API = {
 			throw error;
 		}
 	}
+
 }

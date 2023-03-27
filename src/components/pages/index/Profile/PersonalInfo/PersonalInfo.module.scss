@@ -2,6 +2,7 @@
 
 section.personalInfo {
     background-color: $white;
+    margin: 0px;
 }
 
 .personalInfo {
@@ -39,12 +40,10 @@ section.personalInfo {
     &__group {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        // justify-content: space-between;
         align-items: center;
 
         &:not(:last-child) {
-            margin-right: 50px;
-
             @media screen and (max-width: $break-sl) {
                 margin-right: 0px;
                 flex-basis: 100%;
@@ -131,5 +130,11 @@ section.personalInfo {
             width: 20px;
             height: 20px;
         }
+    }
+
+    button {
+        @extend .button_save;
+        margin-top: 20px;
+        // flex-basis: 100%;
     }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 
 import Container from "@/components/ui/Container";
 import classes from "./PersonalInfo.module.scss";
@@ -44,6 +44,27 @@ const PersonalInfo = () => {
         setTShirtSize(res.t_shirt_size ?? TShirtSize.M);
     };
 
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        
+        API.updateProfileMe({
+            email,
+            first_name: firstname,
+            gender,
+            last_education_institution: educationInstitution,
+            last_name: surname,
+            phone_number: phone,
+            t_shirt_size: tShirtSize,
+            uin,
+            year_of_education: yearOfEducation
+        }).catch(err=>{
+            const messages: string[] = err.response?.data?.message?.split('\n') ?? [];
+            for(const message of messages) {
+                alert(message.split(':')[0])
+            }
+        });
+    }
+
     useEffect(() => {
         fetchInfo();
     }, []);
@@ -51,7 +72,7 @@ const PersonalInfo = () => {
     return (
         <section className={classes.personalInfo}>
             <Container>
-                <form className={classes.form}>
+                <form className={classes.form} onSubmit={handleSubmit}>
                     <div className={classes.form__group}>
                         <div
                             className={[
@@ -214,13 +235,25 @@ const PersonalInfo = () => {
                             <label className={classes.form__label}>
                                 Телефон*
                             </label>
-                            <PhoneInput
+                            {/* <PhoneInput
                                 inputClass={classes.form__input}
                                 country={"kz"}
                                 prefix="+"
                                 specialLabel=""
                                 onChange={(value) => setPhone(value)}
                                 value={phone}
+                            /> */}
+                            <input
+                                className={classes.form__input}
+                                type="tel"
+                                prefix="+7"
+                                value={phone}
+                                onChange={(event) =>
+                                    setPhone(
+                                        event.currentTarget.value
+                                    )
+                                }
+                                required
                             />
                         </div>
                         <div className={classes.form__group_item}>
@@ -259,6 +292,7 @@ const PersonalInfo = () => {
                                 required
                             />
                         </div>
+                        <button type="submit">Сохранить</button>
                     </div>
                 </form>
             </Container>
