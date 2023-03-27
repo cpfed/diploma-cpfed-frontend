@@ -2,8 +2,9 @@ import React, { HtmlHTMLAttributes, useEffect, useRef } from "react";
 import Link from "next/link";
 
 import Container from "@/components/ui/Container";
+import { getTokens } from '@/utils/tokens';
 import classes from "./Header.module.scss";
-import { elements } from ".";
+import { elements, dropdownElements } from ".";
 import { useRouter } from "next/router";
 
 const Header = () => {
@@ -13,25 +14,26 @@ const Header = () => {
     const burgerRef = useRef<HTMLDivElement>(null);
     const mobileContentRef = useRef<HTMLDivElement>(null);
 
+    
+    const isLoggedIn = getTokens().access !== undefined;
+    
     const onBurger = () => {
         headerRef.current?.classList.toggle(classes.header__active);
         burgerRef.current?.classList.toggle(classes.burger__active);
         mobileContentRef.current?.classList.toggle(classes.disabled);
         document.body.classList.toggle("lock");
     };
-
-    useEffect(()=>
-    {
-        window.addEventListener("resize", (event)=>
-        {
-            if(document.body.clientWidth > 1024 && burgerRef.current?.classList.contains(classes.burger__active))
-            {
+    
+    useEffect(() => {
+        window.addEventListener("resize", (event) => {
+            if (
+                document.body.clientWidth > 1024 &&
+                burgerRef.current?.classList.contains(classes.burger__active)
+            ) {
                 onBurger();
             }
         });
-
-    })
-
+    });
 
     return (
         <header className={classes.header} ref={headerRef}>
@@ -68,12 +70,30 @@ const Header = () => {
                                 </li>
                             ))}
                         </ul>
-                        <Link
-                            className={classes.locale_and_account__item}
-                            href="#"
+                        <div
+                            className={[
+                                classes.locale_and_account__item,
+                                classes.dropdown,
+                            ].join(" ")}
                         >
-                            Мой аккаунт
-                        </Link>
+                            <Link href="#">Мой аккаунт</Link>
+                            <ul>
+                                {
+                                    (
+                                        isLoggedIn 
+                                        ? dropdownElements.loggedIn
+                                        : dropdownElements.loggedOut
+                                    ).map((element, index) => {
+                                        console.log(element.title);
+                                        
+                                        return <li key={index}>
+                                            <img src={element.iconSrc}/>
+                                            <Link href={element.href}>{element.title}</Link>
+                                        </li>
+                                    })
+                                }
+                            </ul>
+                        </div>
                     </div>
                 </nav>
                 <nav
@@ -113,9 +133,9 @@ const Header = () => {
 
                         <div className={classes.locale_and_account_mobile}>
                             <ul
-                                className={
-                                    [classes.locale_and_account_mobile__item].join(" ")
-                                }
+                                className={[
+                                    classes.locale_and_account_mobile__item,
+                                ].join(" ")}
                             >
                                 {router.locales?.map((locale, index) => (
                                     <li key={index}>
@@ -129,7 +149,9 @@ const Header = () => {
                                 ))}
                             </ul>
                             <Link
-                                className={classes.locale_and_account_mobile__item}
+                                className={
+                                    classes.locale_and_account_mobile__item
+                                }
                                 href="#"
                             >
                                 Мой аккаунт

@@ -12,10 +12,9 @@
     align-items: center;
     background-color: $cyan;
     height: 100px;
-    
+
     transition: height 0.5s;
-        
-        
+
     &__active {
         @media screen and (max-width: $break-l) {
             height: 100vh;
@@ -29,7 +28,7 @@
         display: flex;
         // align-items: center;
         justify-content: space-between;
-    
+
         &_desktop {
             @media screen and (max-width: $break-l) {
                 display: none;
@@ -78,7 +77,6 @@
     }
 }
 
-
 .locale_and_account {
     display: flex;
     flex-direction: row;
@@ -110,8 +108,7 @@
             flex-direction: row;
 
             li {
-                &:not(:last-child)
-                {
+                &:not(:last-child) {
                     margin-right: 5px;
                 }
             }
@@ -127,14 +124,14 @@
     height: 10px;
     cursor: pointer;
     transition: 0.3s ease;
-    
+
     @media screen and (min-width: $break-l) {
         display: none;
     }
 
     &::before,
     &::after {
-        content: '';
+        content: "";
         background-color: #fff;
         position: absolute;
         left: 0;
@@ -155,15 +152,64 @@
     &__active {
         margin-bottom: 30px;
         transform: rotate(90deg);
-    
+
         &::before {
             transform: rotate(-45deg);
             top: 7px;
         }
-    
+
         &::after {
             transform: rotate(45deg);
             bottom: 0;
+        }
+    }
+}
+
+.dropdown {
+    z-index: 9999;
+    ul {
+        position: absolute;
+        margin: 50px 0 0 -90px;
+        visibility: hidden;
+        opacity: 0;
+        list-style: none;
+        display: block;
+        padding: 0;
+        background: $white;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        padding: 17px 17px;
+
+        transition: opacity 2s, visibility 2s;
+
+        li {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 151px;
+
+            img {
+                width: 15px;
+                height: 15px;
+
+                margin-right: 15px;
+            }
+
+            a {
+                @include font(13px, 500, 16px, $black);
+            }
+
+            &:not(:last-child) {
+                margin-bottom: 13px;
+            }
+
+        }
+    }
+
+    &:hover{
+        ul {
+            visibility: visible;
+            opacity: 100;
         }
     }
 }

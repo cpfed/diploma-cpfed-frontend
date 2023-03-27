@@ -4,7 +4,7 @@ import { ReactNode } from 'react'
 import dynamic from 'next/dynamic'
 
 import Head from 'next/head'
-import Header from '../Header'
+import Header from '@/components/layouts/Header'
 
 const Footer = dynamic(() => import('../Footer'))
 
