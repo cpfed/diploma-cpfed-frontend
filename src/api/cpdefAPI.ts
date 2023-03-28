@@ -6,6 +6,7 @@ import { NewUserToPlatform, UserToPlatformList, UpdatedUserToPlatform } from '@/
 import { setTokens, getTokens } from '@/utils/tokens';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { Championship } from '@/interfaces/championship';
 
 const publicInstance = axios.create({
     baseURL: process.env.CPFED_API_URL,
@@ -152,4 +153,23 @@ export const API = {
 			throw error;
 		}
 	},
+
+	activeChampionship: async ():Promise<Championship> => {
+		try {
+			const res = await privateInstance.get<Championship>('/api/platforms/v1/get-active-championship');
+			return res.data;
+		} catch (error) {
+			throw error;
+		}
+	},
+
+	registerChampionship: async () => {
+		try {
+			await privateInstance.post('/authentication/v1/championship-register/');
+		} catch (error) {
+			throw error;
+		}
+	}
+
+
 }

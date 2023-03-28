@@ -9,10 +9,14 @@ import useTranslation from "next-translate/useTranslation";
 import icons from "@/utils/icons";
 import { API } from "@/api/cpdefAPI";
 import { CpfedAccount } from "@/interfaces/account";
+import { Championship } from "@/interfaces/championship";
+import toast from "@/utils/toast";
 
 const Intro = () => {
     const { t } = useTranslation();
     const [account, setAccount] = useState<CpfedAccount | undefined>(undefined);
+    const [championship, setChampionship] = useState<Championship | undefined>(undefined);
+
     const [modalState, setModalState] = useState<WarningModalProps>({
         isOpen: false,
         confirmButtons: [],
@@ -22,6 +26,7 @@ const Intro = () => {
 
     useEffect(() => {
         API.profileMe().then(setAccount);
+        API.activeChampionship().then(setChampionship);
     }, []);
 
     const onRegister = () => {
@@ -71,7 +76,16 @@ const Intro = () => {
                 {
                     title: "Ок",
                     callback: () => {
-                        /**TODO: add register logic */
+                        API.registerChampionship()
+                        .then(res=>{
+                            toast.success("Вы успешно зарегестрированы");
+                        })
+                        .catch(err=>{
+                            toast.error("Произошла ошибка. Свяжитесь с тех подержкой")
+                        })
+                        .finally(()=>{
+                            setModalState({ ...modalState, isOpen: false });
+                        })
                     },
                 },
             ],
