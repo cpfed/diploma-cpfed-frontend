@@ -30,6 +30,24 @@ const Intro = () => {
     }, []);
 
     const onRegister = () => {
+        if(!championship || championship.id == null)
+        {
+            setModalState({
+                isOpen: true,
+                message: "Чемпионат не доступен для регистрации",
+                confirmButtons: [
+                    {
+                        title: "Ок",
+                        callback: () => {
+                            setModalState({ ...modalState, isOpen: false });
+                        },
+                    },
+                ],
+                declineButtons: [],
+            });
+            return;
+        }
+
         if (!account) {
             setModalState({
                 isOpen: true,
@@ -47,27 +65,27 @@ const Intro = () => {
             return;
         }
 
-        if (
-            Object.values(account!).some(
-                (value) => value === undefined || value === null
-            )
-        ) {
-            setModalState({
-                isOpen: true,
-                message:
-                    "Внимание, для регистрации необходимо заполнить все данные в профиле",
-                confirmButtons: [
-                    {
-                        title: "Ок",
-                        callback: () => {
-                            setModalState({ ...modalState, isOpen: false });
-                        },
-                    },
-                ],
-                declineButtons: [],
-            });
-            return;
-        }
+        // if (
+        //     Object.values(account!).some(
+        //         (value) => value === undefined || value === null
+        //     )
+        // ) {
+        //     setModalState({
+        //         isOpen: true,
+        //         message:
+        //             "Внимание, для регистрации необходимо заполнить все данные в профиле",
+        //         confirmButtons: [
+        //             {
+        //                 title: "Ок",
+        //                 callback: () => {
+        //                     setModalState({ ...modalState, isOpen: false });
+        //                 },
+        //             },
+        //         ],
+        //         declineButtons: [],
+        //     });
+        //     return;
+        // }
 
         setModalState({
             isOpen: true,
@@ -97,6 +115,12 @@ const Intro = () => {
                     },
                 },
             ],
+            rules: [
+                {
+                    text: "ASD",
+                    link: "ASDASDAS"
+                }
+            ]
         });
     };
 
@@ -127,6 +151,7 @@ const Intro = () => {
                     declineButtons={modalState.declineButtons}
                     message={modalState.message}
                     isOpen={modalState.isOpen}
+                    rules={modalState.rules}
                 />
             </Container>
         </section>
