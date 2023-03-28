@@ -54,10 +54,16 @@ section.about {
         flex-direction: column;
         align-items: center;
 
+        &:not(:last-child) {
+            margin-bottom: 50px;
+        }
+
         &_title {
             @include font(32px, 700, 39px, $orange);
             text-align: center;
             margin-bottom: 13px;
+
+            max-width: 563px;
 
             @media screen and (max-width: $break-l) {
                 @include font(25px, 700, 31px, $orange);
@@ -76,6 +82,7 @@ section.about {
                 display: flex;
                 flex-direction: row;
                 text-align: center;
+                justify-content: space-between;
 
                 &_item {
                     text-align: center;
@@ -85,6 +92,12 @@ section.about {
                             margin-right: 30px;
                         }
                     }
+
+                    
+                }
+
+                &:nth-child(3) {
+                    margin-bottom: 50px;
                 }
 
                 @media screen and (max-width: $break-l) {
