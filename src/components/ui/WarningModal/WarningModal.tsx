@@ -11,14 +11,13 @@ export interface WarningModalProps {
 }
 
 const WarningModal = (props: WarningModalProps) => {
-    const [isUsed, setIsUsed] = useState(false);
-
     return <div className={[classes.modal, props.isOpen ? undefined : classes.modal_hide].join(" ")}>
         <p className={classes.modal__message}>{props.message}</p>
         <div className={classes.modal__buttons}>
-            {props.confirmButtons.map(button=>{
+            {props.confirmButtons.map((button, index)=>{
                 return (
                 <button 
+                    key={index}
                     onClick={()=>button.callback()}
                     className={classes.modal__buttons_confirm}
                 >
@@ -26,9 +25,10 @@ const WarningModal = (props: WarningModalProps) => {
                 </button>
                 );
             })}
-            {props.declineButtons.map(button=>{
+            {props.declineButtons.map((button, index)=>{
                 return (
                 <button 
+                    key={index + props.confirmButtons.length}
                     onClick={()=>button.callback()}
                     className={classes.modal__buttons_decline}
                 >
