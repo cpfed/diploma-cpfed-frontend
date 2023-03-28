@@ -10,9 +10,17 @@
             "documents", 
             "about",
             "common",
-            "profile-experience-handles",
+            "profile-handles",
+            "profile-olympiads",
             "intro",
-            "benefits"
+            "benefits",
+            "profile-menu-list",
+            "profile"
+        ] 
+    },
+    "layouts": {
+        "*": [
+            "profile-menu-list"
         ] 
     }
 }

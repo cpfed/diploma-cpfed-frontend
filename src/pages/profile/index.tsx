@@ -1,12 +1,12 @@
-import Handles from "@/components/pages/index/Profile/Experience/Handles";
+import Handles from "@/components/pages/index/Profile/Handles";
 import PersonalInfo from "@/components/pages/index/Profile/PersonalInfo";
+import { LinkElement } from "@/interfaces/linkElement";
+
 
 export default function Home() {
     return (
         <>
             <PersonalInfo></PersonalInfo>
-            {/* <Handles></Handles> */}
-            {/* <Experience></Experience> */}
         </>
     );
 }

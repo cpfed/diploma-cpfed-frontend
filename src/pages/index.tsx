@@ -32,7 +32,6 @@ const subanchors: LinkElement[] = [
 		title: "Полезные документы",
 		link: "#documents"
 	}
-	
 ]
 
 export default function Home() {

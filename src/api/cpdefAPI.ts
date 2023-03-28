@@ -139,10 +139,17 @@ export const API = {
 
 	updateUserToPlatform: async (userToPlatform: UpdatedUserToPlatform) => {
 		try {
-			await privateInstance.put("/user-info/v1/handles/", userToPlatform);
+			await privateInstance.put(`/user-info/v1/handles/${userToPlatform.id}/`, userToPlatform);
 		} catch (error) {
 			throw error;
 		}
-	}
+	},
 
+	deleterUserToPlatform: async (id: number) => {
+		try {
+			await privateInstance.delete(`/user-info/v1/handles/${id}/`);
+		} catch (error) {
+			throw error;
+		}
+	},
 }

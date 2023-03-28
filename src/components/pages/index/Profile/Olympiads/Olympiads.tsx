@@ -25,6 +25,13 @@ const Handles = () => {
         setUserToPlatformList(newArr);
     }
 
+    const handleFetchedUpdate = () => {
+        if (fetchedUserToPlatformList !== undefined) {
+            const newArr = [...fetchedUserToPlatformList];
+            setFetchedUserToPlatformList(newArr);
+        }
+    }
+
     const handleAdd = () => {
         const newArr = [...userToPlatformList];
         newArr.push(defaultState);
@@ -38,6 +45,14 @@ const Handles = () => {
         }
         newArr.pop();
         setUserToPlatformList(newArr);
+    }
+
+    const setIsEditing = (index: number, isEditing: boolean) => {
+        if (fetchedUserToPlatformList != undefined) {
+            fetchedUserToPlatformList[index].isEditing = isEditing;
+            const newArr = [...fetchedUserToPlatformList]
+            setFetchedUserToPlatformList(newArr);
+        }
     }
 
     const fetchPlatforms = async () => {
@@ -61,9 +76,11 @@ const Handles = () => {
     }
 
     const addUserToPlatformList = async () => {
+        event!.preventDefault();
         API.addUserToPlatformList(userToPlatformList)
             .then(() => {
                 resetForm();
+                fetchUserToPlatformList();
             })
             .catch((error) => {
                 console.log(error);
@@ -78,7 +95,16 @@ const Handles = () => {
             handle = handle;
         }())
             .then(() => {
+                console.log("HELL YEAAA");
+            }).catch((error) => {
+                console.log(error);
+            })
+    }
 
+    const deleteUserToPlatform = (id: number) => {
+        API.deleterUserToPlatform(id)
+            .then(() => {
+                fetchUserToPlatformList();
             }).catch((error) => {
                 console.log(error);
             })
@@ -91,8 +117,11 @@ const Handles = () => {
         <section className={classes.handles}>
             <Container>
                 <div className={classes.handles}>
-                    <div className={classes.handles__main_container}>
-                        <p className={classes.handles__title}>{t("profile-experience-handles:handles")}</p>
+                    <div className={classes.olympiads__main_container}>
+                        <div className={classes.note}>
+                            <p className={classes.note__text}>{t("profile:experience")}</p>
+                        </div>
+                        <p className={classes.olympiads__title}>{t("profile-experience-handles:handles")}</p>
                         {fetchedUserToPlatformList?.map((userToPlatform, index, self) => {
                             return (
                                 <div className={[
@@ -100,22 +129,32 @@ const Handles = () => {
                                     userToPlatform.isEditing ? classes.is_editing : undefined,
                                 ].join(" ")}>
                                     <span className={[
-                                    classes.editable__text,
-                                    userToPlatform.isEditing ? classes.is_editing__text : undefined,
-                                ].join(" ")}>{userToPlatform.platform.name}</span>
+                                        classes.editable__text,
+                                        userToPlatform.isEditing ? classes.is_editing__text : undefined,
+                                    ].join(" ")}>
+                                        {userToPlatform.platform.name}
+                                    </span>
                                     {!userToPlatform.isEditing ? (
                                         <>
                                             <span className={classes.editable__text}>{userToPlatform.handle}</span>
-                                            <img
-                                                src="images/edit_button.png"
-                                                onClick={() => {
-                                                    fetchedUserToPlatformList[index].isEditing = true;
-                                                    const newArr = [...fetchedUserToPlatformList]
-                                                    setFetchedUserToPlatformList(newArr);
-                                                }}
-                                                className={classes.editable__img}
-                                            >
-                                            </img>
+                                            <div className={classes.editable__images_box}>
+                                                <img
+                                                    src="/images/edit_button.png"
+                                                    onClick={() => {
+                                                        setIsEditing(index, true);
+                                                    }}
+                                                    className={classes.editable__img}
+                                                >
+                                                </img>
+                                                <img
+                                                    src="/images/delete_button.png"
+                                                    onClick={() => {
+                                                        deleteUserToPlatform(fetchedUserToPlatformList[index].id);
+                                                    }}
+                                                    className={classes.editable__img}
+                                                >
+                                                </img>
+                                            </div>
                                         </>
                                     ) : (
                                         <form onSubmit={() => {
@@ -123,14 +162,12 @@ const Handles = () => {
                                                     userToPlatform.id,
                                                     userToPlatform.handle
                                                 )
-                                                fetchedUserToPlatformList[index].isEditing = false;
-                                                const newArr = [...fetchedUserToPlatformList]
-                                                setFetchedUserToPlatformList(newArr);
+                                                setIsEditing(index, false);
                                             }} className={classes.form}>
-                                            <div className={classes.handles__subcontainer}>
+                                            <div className={classes.olympiads__subcontainer}>
                                                 <label
                                                     htmlFor="name"
-                                                    className={classes.handles__label}
+                                                    className={classes.olympiads__label}
                                                 >
                                                     {t("profile-experience-handles:handle")}
                                                 </label>
@@ -141,10 +178,10 @@ const Handles = () => {
                                                     value={fetchedUserToPlatformList[index].handle}
                                                     onChange={(event) => {
                                                         fetchedUserToPlatformList[index].handle = event.currentTarget.value;
-                                                        handleUpdate();
+                                                        handleFetchedUpdate();
                                                     }}
                                                     placeholder={t("profile-experience-handles:handle")}
-                                                    className={classes.handles__input}
+                                                    className={classes.olympiads__input}
                                                     required
                                                 />
                                             </div>
@@ -157,9 +194,7 @@ const Handles = () => {
                                                     </button>
                                                     <button
                                                         onClick={() => {
-                                                            fetchedUserToPlatformList[index].isEditing = false;
-                                                            const newArr = [...fetchedUserToPlatformList]
-                                                            setFetchedUserToPlatformList(newArr);
+                                                            setIsEditing(index, false);
                                                         }}
                                                         className={classes.buttons__cancel}>
                                                         {t("common:cancel")}
@@ -174,11 +209,11 @@ const Handles = () => {
                         <form onSubmit={addUserToPlatformList}>
                             {userToPlatformList.map((userToPlatform, index, self) => {
                                 return (
-                                    <div className={classes.handles__container}>
-                                        <div className={classes.handles__subcontainer}>
+                                    <div className={classes.olympiads__container}>
+                                        <div className={classes.olympiads__subcontainer}>
                                             <label
                                                 htmlFor="name"
-                                                className={classes.handles__label}
+                                                className={classes.olympiads__label}
                                             >
                                                 {t("profile-experience-handles:platform-name")}
                                             </label>
@@ -188,13 +223,13 @@ const Handles = () => {
                                                     handleUpdate();
                                                 }}
                                                 required
-                                                className={classes.handles__select}>
+                                                className={classes.olympiads__select}>
                                                 <option
                                                     disabled
                                                     selected
                                                     hidden
                                                     value=""
-                                                    className={classes.handles__select_option}
+                                                    className={classes.olympiads__select_option}
                                                 >
                                                     -- select an option --
                                                 </option>
@@ -204,7 +239,7 @@ const Handles = () => {
                                                             <option
                                                                 key={index}
                                                                 value={platform.id}
-                                                                className={classes.handles__select_option}
+                                                                className={classes.olympiads__select_option}
                                                             >
                                                                 {platform.name}
                                                             </option>
@@ -213,12 +248,12 @@ const Handles = () => {
                                                 }
                                             </select>
                                         </div>
-                                        <div className={classes.handles__subcontainer}>
+                                        <div className={classes.olympiads__subcontainer}>
                                             <label
                                                 htmlFor="name"
-                                                className={classes.handles__label}
+                                                className={classes.olympiads__label}
                                             >
-                                                {t("profile-experience-handles:handle")}
+                                                {t("profile-olympiads:olympiad-name")}
                                             </label>
                                             <input
                                                 id="handle"
@@ -229,8 +264,8 @@ const Handles = () => {
                                                     userToPlatformList[index].handle = event.currentTarget.value;
                                                     handleUpdate();
                                                 }}
-                                                placeholder={t("profile-experience-handles:handle")}
-                                                className={classes.handles__input}
+                                                placeholder={t("profile-olympiads:olympiad-name")}
+                                                className={classes.olympiads__input}
                                                 required
                                             />
                                         </div>
