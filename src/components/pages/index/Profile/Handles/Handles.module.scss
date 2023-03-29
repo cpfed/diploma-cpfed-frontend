@@ -28,6 +28,10 @@ $main_container_width: 700px;
         width: 100%;
         text-align: left;
         margin: 0px 0px 50px 0px;
+
+        @media screen and (max-width: $break-l) {
+            @include font(25px, 500, 31px, $black);
+        }
     }
 
     &__main_container {

@@ -28,6 +28,10 @@ $main_container_width: 700px;
         width: 100%;
         text-align: left;
         margin: 0px 0px 50px 0px;
+        
+        @media screen and (max-width: $break-l) {
+            @include font(25px, 500, 31px, $black);
+        }
     }
 
     &__main_container {
@@ -38,7 +42,7 @@ $main_container_width: 700px;
         width: $main_container_width;
 
         @media screen and (max-width: $break-l) {
-            width: 320px;
+            width: 100%;
         }
     }
 
@@ -47,7 +51,7 @@ $main_container_width: 700px;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-        height: 230px;
+        height: 350px;
         width: $main_container_width;
         padding: 0px 0px 30px 0px;
 
@@ -98,7 +102,7 @@ $main_container_width: 700px;
     flex-direction: column;
     justify-content: space-around;
     width: 100%;
-    height: 180px;
+    height: 350px;
     margin: 20px 0px 20px 0px;
 
     @media screen and (max-width: $break-l) {
@@ -115,10 +119,20 @@ $main_container_width: 700px;
     justify-content: space-between;
     margin: 0px 0px 30px 0px;
 
+    @media screen and (max-width: $break-l) {
+        width: 100%;
+        flex-direction: column;
+        padding: 0px 0px 20px 0px;
+        border-bottom: 1px solid $black;
+    }
+
     &__text {
         @include font(15px, 600, 20px, $black);
-        width: 50%;
         overflow: hidden;
+        @media screen and (max-width: $break-l) {
+            text-align: center;
+            margin: 0px 0px 20px 0px;
+        }
     }
 
     &__images_box {
