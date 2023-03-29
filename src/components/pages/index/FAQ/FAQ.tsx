@@ -2,13 +2,15 @@ import React, { useState } from "react";
 
 import Container from "@/components/ui/Container";
 import classes from "./FAQ.module.scss";
+import useTranslation from 'next-translate/useTranslation'
 
-import { elements, FAQElement } from ".";
+import { elements } from ".";
 
 
 
 const FAQ = () => {
 
+    const { t } = useTranslation();
     const [list, setList] = useState(elements)
 
     const handleClick = (index: number) => {
@@ -29,14 +31,14 @@ const FAQ = () => {
                                 <div key={index} className={classes.faq__cardList_card}>
                                     <div className={classes.faq__cardList_card_question} onClick={() => handleClick(index)}>
                                         <p className={classes.faq__cardList_card_question_text}>
-                                            {element.question} 
+                                            {t(element.question)} 
                                             <span className={classes.faq__cardList_card_question_plus}>
                                                 &#43;
                                             </span>
                                         </p>
                                         {!element.isHidden ? (
                                             <p className={classes.faq__cardList_card_answer}>
-                                                {element.answer}
+                                                {t(element.answer)}
                                             </p>
                                         ) : (
                                             <></>

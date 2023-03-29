@@ -1,5 +1,5 @@
 {
-    "locales": ["en", "ru", "kz"],
+    "locales": ["ru", "kz"],
     "defaultLocale": "ru",
     "pages": {
         "*": [
@@ -16,7 +16,8 @@
             "benefits",
             "profile-menu-list",
             "profile",
-            "passorder"
+            "passorder",
+            "faq"
         ] 
     },
     "layouts": {
