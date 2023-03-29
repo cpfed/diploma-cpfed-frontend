@@ -1,11 +1,11 @@
-import Handles from "@/components/pages/index/Profile/Handles";
+import Olympiads from "@/components/pages/index/Profile/Olympiads";
 import { LinkElement } from "@/interfaces/linkElement";
 
 
 export default function Home() {
     return (
         <>
-            {/* <Handles></Handles> */}
+            <Olympiads></Olympiads>
         </>
     );
 }

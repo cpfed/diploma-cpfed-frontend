@@ -6,6 +6,7 @@ import { NewUserToPlatform, UserToPlatformList, UpdatedUserToPlatform } from '@/
 import { setTokens, getTokens, clearTokens } from '@/utils/tokens';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { NewUserOlympiad, UpdatedUserOlympiad, UserOlympiadList } from '@/interfaces/userOlympiad';
 import { Championship, ChampionshipCheckRegistration } from '@/interfaces/championship';
 
 const publicInstance = axios.create({
@@ -153,6 +154,40 @@ export const API = {
 		}
 	},
 
+	addUserOlympiadList: async (userOlympiadList: NewUserOlympiad[]) => {
+		try {
+			await privateInstance.post(`/user-info/v1/olympiads/`, userOlympiadList);
+		} catch (error) {
+			throw error;
+		}
+	},
+
+	fetchUserOlympiadList: async () => {
+		try {
+			const res = await privateInstance.get<UserOlympiadList>(`/user-info/v1/olympiads/`);
+			return res.data;
+		} catch (error) {
+			throw error;
+		}
+	},
+
+	updateUserOlympiad: async (userOlympiad: UpdatedUserOlympiad) => {
+		try {
+			await privateInstance.put(`/user-info/v1/olympiads/${userOlympiad.id}/`, userOlympiad);
+		} catch (error) {
+			throw error;
+		}
+	},
+
+	deleterUserOlympiad: async (id: number) => {
+		try {
+			await privateInstance.delete(`/user-info/v1/olympiads/${id}/`);
+		} catch (error) {
+			throw error;
+		}
+	},
+
+
 	activeChampionship: async ():Promise<Championship> => {
 		try {
 			const res = await privateInstance.get<Championship>('/platforms/v1/get-active-championship');
@@ -178,6 +213,4 @@ export const API = {
 			throw error;
 		}
 	}
-
-
 }

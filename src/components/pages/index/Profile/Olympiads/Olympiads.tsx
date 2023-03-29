@@ -1,117 +1,244 @@
 import React, { useEffect, useState } from "react";
 
 import Container from "@/components/ui/Container";
-import classes from "./Handles.module.scss";
+import classes from "./Olympiads.module.scss";
 import { API } from "@/api/cpdefAPI";
 
 import { ContestPlatform } from "@/interfaces/contestPlatforms";
 import useTranslation from "next-translate/useTranslation";
-import { NewUserToPlatform, UserToPlatform, UpdatedUserToPlatform } from "@/interfaces/userToPlatform";
+import { NewUserOlympiad, UserOlympiad, UpdatedUserOlympiad } from "@/interfaces/userOlympiad";
+import { Achievement } from "@/enums/achievement.enum";
 
-const Handles = () => {
-    const defaultState = { platform_id: 0, handle: "" } as NewUserToPlatform
-    const [fetchedUserToPlatformList, setFetchedUserToPlatformList] = useState<UserToPlatform[]>();
-    const [userToPlatformList, setUserToPlatformList] = useState<NewUserToPlatform[]>([]);
-    const [platforms, setPlatforms] = useState<ContestPlatform[]>([]);
+const Olympiads = () => {
+    const defaultState = { id: 0, name: "", achievement: "", year: 2000 } as NewUserOlympiad;
+    const [fetchedUserOlympiadList, setFetchedUserOlympiadList] = useState<UserOlympiad[]>();
+    const [userOlympiadList, setUserOlympiadList] = useState<NewUserOlympiad[]>([]);
+    const [achievements, setAchievements] = useState<Achievement[]>([
+        Achievement.GOLD,
+        Achievement.SILVER,
+        Achievement.BRONZE,
+        Achievement.PARTICIPANT,
+    ]);
 
     const { t } = useTranslation();
 
     const resetForm = async () => {
-        setUserToPlatformList([]);
+        setUserOlympiadList([]);
     }
 
     const handleUpdate = () => {
-        const newArr = [...userToPlatformList];
-        setUserToPlatformList(newArr);
+        const newArr = [...userOlympiadList];
+        setUserOlympiadList(newArr);
     }
 
     const handleFetchedUpdate = () => {
-        if (fetchedUserToPlatformList !== undefined) {
-            const newArr = [...fetchedUserToPlatformList];
-            setFetchedUserToPlatformList(newArr);
+        if (fetchedUserOlympiadList !== undefined) {
+            const newArr = [...fetchedUserOlympiadList];
+            setFetchedUserOlympiadList(newArr);
         }
     }
 
     const handleAdd = () => {
-        const newArr = [...userToPlatformList];
+        const newArr = [...userOlympiadList];
         newArr.push(defaultState);
-        setUserToPlatformList(newArr)
+        setUserOlympiadList(newArr)
     }
 
     const handleCancel = () => {
-        const newArr = [...userToPlatformList];
+        const newArr = [...userOlympiadList];
         if (newArr.length === 0) {
             return;
         }
         newArr.pop();
-        setUserToPlatformList(newArr);
+        setUserOlympiadList(newArr);
     }
 
     const setIsEditing = (index: number, isEditing: boolean) => {
-        if (fetchedUserToPlatformList != undefined) {
-            fetchedUserToPlatformList[index].isEditing = isEditing;
-            const newArr = [...fetchedUserToPlatformList]
-            setFetchedUserToPlatformList(newArr);
+        if (fetchedUserOlympiadList != undefined) {
+            fetchedUserOlympiadList[index].isEditing = isEditing;
+            const newArr = [...fetchedUserOlympiadList]
+            setFetchedUserOlympiadList(newArr);
         }
     }
 
-    const fetchPlatforms = async () => {
-        API.getContestPlatforms()
-            .then((res) => {
-                setPlatforms(res);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-    }
-
-    const fetchUserToPlatformList = async () => {
-        API.fetchUserToPlatformList().
+    const fetchUserOlympiadList = async () => {
+        API.fetchUserOlympiadList().
             then((res) => {
-                setFetchedUserToPlatformList(res.results);
+                setFetchedUserOlympiadList(res.results);
             }).
             catch((error) => {
                 console.log(error);
             })
     }
 
-    const addUserToPlatformList = async () => {
+    const addUserOlympiadList = async () => {
         event!.preventDefault();
-        API.addUserToPlatformList(userToPlatformList)
+        API.addUserOlympiadList(userOlympiadList)
             .then(() => {
                 resetForm();
-                fetchUserToPlatformList();
+                fetchUserOlympiadList();
             })
             .catch((error) => {
                 console.log(error);
             });
     }
 
-    const updateUserToPlatform = (id: number, handle: string) => {
+    const updateUserOlympiad = (id: number, name: string, achievement: string, year: number) => {
         event!.preventDefault();
-        console.log(id, handle);
-        API.updateUserToPlatform(new class implements UpdatedUserToPlatform {
-            id = id;
-            handle = handle;
+        API.updateUserOlympiad(new class implements UpdatedUserOlympiad {
+            id = id
+            name = name
+            achievement = achievement
+            year = year
         }())
             .then(() => {
-                console.log("HELL YEAAA");
+
             }).catch((error) => {
                 console.log(error);
             })
     }
 
-    const deleteUserToPlatform = (id: number) => {
-        API.deleterUserToPlatform(id)
+    const deleteUserOlympiad = (id: number) => {
+        API.deleterUserOlympiad(id)
             .then(() => {
-                fetchUserToPlatformList();
+                fetchUserOlympiadList();
             }).catch((error) => {
                 console.log(error);
             })
     }
+    // add edit and delete functionality of existing olympiads
+    const modifyUserOlymiad = (isEditing: boolean) => {
+        return (
+            <form onSubmit={() => {
+                addUserOlympiadList();
+            }
+            }>
+                {userOlympiadList.map((userOlympiad, index, self) => {
+                    return (
+                        <div className={classes.olympiads__container}>
+                            <div className={classes.olympiads__subcontainer}>
+                                <label
+                                    htmlFor="name"
+                                    className={classes.olympiads__label}
+                                >
+                                    {t("profile-olympiads:olympiad-name")}
+                                </label>
+                                <input
+                                    id="name"
+                                    name="name"
+                                    type="text"
+                                    value={userOlympiadList[index].name}
+                                    onChange={(event) => {
+                                        (isEditing ? () => {
 
-    useEffect(() => { fetchPlatforms() }, [])
-    useEffect(() => { fetchUserToPlatformList() }, [])
+                                        } : () => {
+                                            userOlympiadList[index].name = event.currentTarget.value;
+                                            handleUpdate();
+                                        })()
+                                    }}
+                                    placeholder={t("profile-olympiads:olympiad-name")}
+                                    className={classes.olympiads__input}
+                                    required
+                                />
+                            </div>
+                            <div className={classes.olympiads__subcontainer}>
+                                <label
+                                    htmlFor="name"
+                                    className={classes.olympiads__label}
+                                >
+                                    {t("profile-olympiads:achievement")}
+                                </label>
+                                <select
+                                    onChange={(e) => {
+                                        (isEditing ? () => {
+
+                                        } : () => {
+                                            userOlympiadList[index].achievement = e.target.value;
+                                            handleUpdate();
+                                        })()
+                                    }}
+                                    required
+                                    className={classes.olympiads__select}>
+                                    <option
+                                        disabled
+                                        selected
+                                        hidden
+                                        value=""
+                                        className={classes.olympiads__select_option}
+                                    >
+                                        -- select an option --
+                                    </option>
+                                    {
+                                        achievements.map((achievement, index, self) => {
+                                            return (
+                                                <option
+                                                    key={index}
+                                                    value={achievement}
+                                                    className={classes.olympiads__select_option}
+                                                >
+                                                    {achievement}
+                                                </option>
+                                            )
+                                        })
+                                    }
+                                </select>
+                            </div>
+                            <div className={classes.olympiads__subcontainer}>
+                                <label
+                                    htmlFor="year"
+                                    className={classes.olympiads__label}
+                                >
+                                    {t("profile-olympiads:year")}
+                                </label>
+                                <input
+                                    id="year"
+                                    name="year"
+                                    type="number"
+                                    min={1900}
+                                    max={2300}
+                                    value={userOlympiadList[index].year}
+                                    onChange={(event) => {
+                                        (isEditing ? () => {
+
+                                        } : () => {
+                                            userOlympiadList[index].year = event.currentTarget.valueAsNumber;
+                                            handleUpdate();
+                                        })()
+                                    }}
+                                    placeholder={t("profile-olympiads:year")}
+                                    className={classes.olympiads__input}
+                                    required
+                                />
+                            </div>
+                        </div>
+                    )
+                })}
+
+                {userOlympiadList.length != 0 || isEditing ? (
+                    <div className={classes.buttons}>
+                        <div className={classes.buttons__container}>
+                            <button
+                                type="submit"
+                                className={classes.buttons__save}>
+                                {t("common:save")}
+                            </button>
+                            <button
+                                onClick={handleCancel}
+                                className={classes.buttons__cancel}>
+                                {t("common:cancel")}
+                            </button>
+                        </div>
+                    </div>
+                )
+                    : (
+                        <></>
+                    )
+                }
+            </form>
+        )
+    }
+
+    useEffect(() => { fetchUserOlympiadList() }, [])
 
     return (
         <section className={classes.handles}>
@@ -121,22 +248,18 @@ const Handles = () => {
                         <div className={classes.note}>
                             <p className={classes.note__text}>{t("profile:experience")}</p>
                         </div>
-                        <p className={classes.olympiads__title}>{t("profile-experience-handles:handles")}</p>
-                        {fetchedUserToPlatformList?.map((userToPlatform, index, self) => {
+                        <p className={classes.olympiads__title}>{t("profile-olympiads:olympiads")}</p>
+                        {fetchedUserOlympiadList?.map((userOlympiad, index, self) => {
                             return (
                                 <div className={[
                                     classes.editable,
-                                    userToPlatform.isEditing ? classes.is_editing : undefined,
+                                    userOlympiad.isEditing ? classes.is_editing : undefined,
                                 ].join(" ")}>
-                                    <span className={[
-                                        classes.editable__text,
-                                        userToPlatform.isEditing ? classes.is_editing__text : undefined,
-                                    ].join(" ")}>
-                                        {userToPlatform.platform.name}
-                                    </span>
-                                    {!userToPlatform.isEditing ? (
+                                    {!userOlympiad.isEditing ? (
                                         <>
-                                            <span className={classes.editable__text}>{userToPlatform.handle}</span>
+                                            <span className={classes.editable__text}>{userOlympiad.year}</span>
+                                            <span className={classes.editable__text}>{userOlympiad.name}</span>
+                                            <span className={classes.editable__text}>{userOlympiad.achievement}</span>
                                             <div className={classes.editable__images_box}>
                                                 <img
                                                     src="/images/edit_button.png"
@@ -149,7 +272,7 @@ const Handles = () => {
                                                 <img
                                                     src="/images/delete_button.png"
                                                     onClick={() => {
-                                                        deleteUserToPlatform(fetchedUserToPlatformList[index].id);
+                                                        deleteUserOlympiad(fetchedUserOlympiadList[index].id);
                                                     }}
                                                     className={classes.editable__img}
                                                 >
@@ -158,29 +281,92 @@ const Handles = () => {
                                         </>
                                     ) : (
                                         <form onSubmit={() => {
-                                                updateUserToPlatform(
-                                                    userToPlatform.id,
-                                                    userToPlatform.handle
-                                                )
-                                                setIsEditing(index, false);
-                                            }} className={classes.form}>
+                                            updateUserOlympiad(
+                                                userOlympiad.id,
+                                                userOlympiad.name,
+                                                userOlympiad.achievement,
+                                                userOlympiad.year
+                                            )
+                                            setIsEditing(index, false);
+                                        }} className={classes.form}>
                                             <div className={classes.olympiads__subcontainer}>
                                                 <label
                                                     htmlFor="name"
                                                     className={classes.olympiads__label}
                                                 >
-                                                    {t("profile-experience-handles:handle")}
+                                                    {t("profile-olympiads:olympiad-name")}
                                                 </label>
                                                 <input
-                                                    id="handle"
-                                                    name="handle"
+                                                    id="name"
+                                                    name="name"
                                                     type="text"
-                                                    value={fetchedUserToPlatformList[index].handle}
+                                                    value={fetchedUserOlympiadList[index].name}
                                                     onChange={(event) => {
-                                                        fetchedUserToPlatformList[index].handle = event.currentTarget.value;
+                                                        fetchedUserOlympiadList[index].name = event.currentTarget.value;
                                                         handleFetchedUpdate();
                                                     }}
-                                                    placeholder={t("profile-experience-handles:handle")}
+                                                    placeholder={t("profile-olympiads:olympiad-name")}
+                                                    className={classes.olympiads__input}
+                                                    required
+                                                />
+                                            </div>
+                                            <div className={classes.olympiads__subcontainer}>
+                                                <label
+                                                    htmlFor="name"
+                                                    className={classes.olympiads__label}
+                                                >
+                                                    {t("profile-olympiads:achievement")}
+                                                </label>
+                                                <select
+                                                    onChange={(e) => {
+                                                        fetchedUserOlympiadList[index].achievement = e.target.value;
+                                                        handleFetchedUpdate();
+                                                    }}
+                                                    required
+                                                    className={classes.olympiads__select}>
+                                                    <option
+                                                        disabled
+                                                        selected
+                                                        hidden
+                                                        value=""
+                                                        className={classes.olympiads__select_option}
+                                                    >
+                                                        -- select an option --
+                                                    </option>
+                                                    {
+                                                        achievements.map((achievement, index, self) => {
+                                                            return (
+                                                                <option
+                                                                    key={index}
+                                                                    value={achievement}
+                                                                    className={classes.olympiads__select_option}
+                                                                >
+                                                                    {achievement}
+                                                                </option>
+                                                            )
+                                                        })
+                                                    }
+                                                </select>
+                                            </div>
+                                            <div className={classes.olympiads__subcontainer}>
+                                                <label
+                                                    htmlFor="name"
+                                                    className={classes.olympiads__label}
+                                                >
+                                                    {t("profile-olympiads:olympiad-name")}
+                                                </label>
+                                                <input
+                                                    id="year"
+                                                    name="year"
+                                                    type="number"
+                                                    min={1900}
+                                                    max={2300}
+                                                    value={fetchedUserOlympiadList[index].year}
+                                                    onChange={(event) => {
+                                                        fetchedUserOlympiadList[index].year = event.currentTarget.valueAsNumber;
+                                                        handleFetchedUpdate();
+                                                    }}
+                                                    placeholder={t("profile-olympiad:year")}
                                                     className={classes.olympiads__input}
                                                     required
                                                 />
@@ -206,94 +392,8 @@ const Handles = () => {
                                 </div>
                             )
                         })}
-                        <form onSubmit={addUserToPlatformList}>
-                            {userToPlatformList.map((userToPlatform, index, self) => {
-                                return (
-                                    <div className={classes.olympiads__container}>
-                                        <div className={classes.olympiads__subcontainer}>
-                                            <label
-                                                htmlFor="name"
-                                                className={classes.olympiads__label}
-                                            >
-                                                {t("profile-experience-handles:platform-name")}
-                                            </label>
-                                            <select
-                                                onChange={(e) => {
-                                                    userToPlatformList[index].platform_id = parseInt(e.target.value);
-                                                    handleUpdate();
-                                                }}
-                                                required
-                                                className={classes.olympiads__select}>
-                                                <option
-                                                    disabled
-                                                    selected
-                                                    hidden
-                                                    value=""
-                                                    className={classes.olympiads__select_option}
-                                                >
-                                                    -- select an option --
-                                                </option>
-                                                {
-                                                    platforms.map((platform, index, self) => {
-                                                        return (
-                                                            <option
-                                                                key={index}
-                                                                value={platform.id}
-                                                                className={classes.olympiads__select_option}
-                                                            >
-                                                                {platform.name}
-                                                            </option>
-                                                        )
-                                                    })
-                                                }
-                                            </select>
-                                        </div>
-                                        <div className={classes.olympiads__subcontainer}>
-                                            <label
-                                                htmlFor="name"
-                                                className={classes.olympiads__label}
-                                            >
-                                                {t("profile-olympiads:olympiad-name")}
-                                            </label>
-                                            <input
-                                                id="handle"
-                                                name="handle"
-                                                type="text"
-                                                value={userToPlatformList[index].handle}
-                                                onChange={(event) => {
-                                                    userToPlatformList[index].handle = event.currentTarget.value;
-                                                    handleUpdate();
-                                                }}
-                                                placeholder={t("profile-olympiads:olympiad-name")}
-                                                className={classes.olympiads__input}
-                                                required
-                                            />
-                                        </div>
-                                    </div>
-                                )
-                            })}
 
-                            {userToPlatformList.length != 0 ? (
-                                <div className={classes.buttons}>
-                                    <div className={classes.buttons__container}>
-                                        <button
-                                            type="submit"
-                                            className={classes.buttons__save}>
-                                            {t("common:save")}
-                                        </button>
-                                        <button
-                                            onClick={handleCancel}
-                                            className={classes.buttons__cancel}>
-                                            {t("common:cancel")}
-                                        </button>
-                                    </div>
-                                </div>
-                            )
-                                : (
-                                    <></>
-                                )
-                            }
-                        </form>
+                        {modifyUserOlymiad(false)}
 
                         <div className={classes.add}>
                             <button
@@ -310,4 +410,4 @@ const Handles = () => {
     );
 };
 
-export default Handles;
+export default Olympiads;
