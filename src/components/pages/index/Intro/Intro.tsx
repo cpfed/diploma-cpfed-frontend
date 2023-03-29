@@ -11,8 +11,10 @@ import { API } from "@/api/cpdefAPI";
 import { CpfedAccount } from "@/interfaces/account";
 import { Championship } from "@/interfaces/championship";
 import toast from "@/utils/toast";
+import { useRouter } from "next/router";
 
 const Intro = () => {
+    const router = useRouter();
     const { t } = useTranslation();
     const [account, setAccount] = useState<CpfedAccount | undefined>(undefined);
     const [isRegistrationPossible, setIsRegistrationPossible] = useState<boolean>(false);
@@ -36,84 +38,6 @@ const Intro = () => {
 
     }, []);
 
-    const onRegister = () => {
-        return;
-        if (!account) {
-            setModalState({
-                isOpen: true,
-                message: "Внимание, вы не вошли в аккаунт",
-                confirmButtons: [
-                    {
-                        title: "Ок",
-                        callback: () => {
-                            setModalState({ ...modalState, isOpen: false });
-                        },
-                    },
-                ],
-                declineButtons: [],
-            });
-            return;
-        }
-
-        if (
-            Object.values(account!).some(
-                (value) => value === undefined || value === null
-            )
-        ) {
-            setModalState({
-                isOpen: true,
-                message:
-                    "Внимание, для регистрации необходимо заполнить все данные в профиле",
-                confirmButtons: [
-                    {
-                        title: "Ок",
-                        callback: () => {
-                            setModalState({ ...modalState, isOpen: false });
-                        },
-                    },
-                ],
-                declineButtons: [],
-            });
-            return;
-        }
-
-        setModalState({
-            isOpen: true,
-            message: "Регистрация на чемпионат",
-            confirmButtons: [
-                {
-                    title: "Ок",
-                    callback: () => {
-                        API.registerChampionship()
-                        .then(res=>{
-                            toast.success("Вы успешно зарегестрированы");
-                        })
-                        .catch(err=>{
-                            toast.error("Произошла ошибка. Свяжитесь с тех подержкой")
-                        })
-                        .finally(()=>{
-                            setModalState({ ...modalState, isOpen: false });
-                        })
-                    },
-                },
-            ],
-            declineButtons: [
-                {
-                    title: "Отмена",
-                    callback: () => {
-                        setModalState({ ...modalState, isOpen: false });
-                    },
-                },
-            ],
-            rules: [
-                {
-                    text: "ASD",
-                    link: "ASDASDAS"
-                }
-            ]
-        });
-    };
-
     return (
         <section className={classes.intro} id="intro">
             <Container>
@@ -130,7 +54,7 @@ const Intro = () => {
                         {
                             isRegistrationPossible && !isRegistered
                             ? <button
-                                onClick={onRegister}
+                                onClick={()=>router.push("/signUp")}
                                 className={classes.intro__button}
                             >
                                 {t("intro:button")}
