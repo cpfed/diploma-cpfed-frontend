@@ -15,7 +15,8 @@
             "intro",
             "benefits",
             "profile-menu-list",
-            "profile"
+            "profile",
+            "passorder"
         ] 
     },
     "layouts": {

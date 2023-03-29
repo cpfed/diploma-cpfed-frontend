@@ -3,6 +3,7 @@
 section.passOrder {
     background-color: $cyan;
     margin: 0px;
+    padding: 50px 0px 50px 0px; 
 }
 
 .passOrder {
@@ -10,7 +11,6 @@ section.passOrder {
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    padding: 30px 0px 10px 0px; 
 
     &__title {
         @include font(32px, 700, 39px, $white);
@@ -35,16 +35,9 @@ section.passOrder {
             flex-direction: column;
             justify-content: space-between;
             margin: 0px 50px 0px 50px;
-            height: 250px;
-            width: 300px;
-
-            @media screen and (max-width: $break-l) {
-                height: 180px;
-            }
             
             &_number {
                 @include font(100px, 600, 121px, $orange);
-                max-width: 400px;
                 text-align: center;
                 text-shadow: 0 0 5px $black;
                 @media screen and (max-width: $break-l) {
@@ -56,9 +49,8 @@ section.passOrder {
                 @include font(25px, 600, 31px, $white);
                 max-width: 400px;
                 text-align: center;
-                height: 100px;
-                @media screen and (max-width: $break-l) {
-                    @include font(20px, 700, 25px, $black);
+                    @media screen and (max-width: $break-l) {
+                    @include font(20px, 700, 25px, $white);
                 }
             }
         }

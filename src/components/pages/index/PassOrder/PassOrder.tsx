@@ -20,7 +20,7 @@ const PassOrder = () => {
                             return (
                                 <div key={index} className={classes.passOrder__cardList_card}>
                                     <p className={classes.passOrder__cardList_card_number}>{index + 1}</p>
-                                    <p className={classes.passOrder__cardList_card_description}>{t(element.description)}</p>
+                                    <p className={classes.passOrder__cardList_card_description}>{t(element.title)}</p>
                                 </div>
                             );
                         })}

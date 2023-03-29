@@ -1,23 +1,23 @@
 export { default } from './PassOrder'
 
 interface PassOrderElement {
-	description: string
+	title: string
 }
 
 export const elements: PassOrderElement[] = [
 	{
-		description: 'Пройдите регистрацию до 20-го апреля',
+		title: 'passorder:order-1',
 	},
 	{
-		description: 'Проведение пробного тура',
+		title: 'passorder:order-2',
 	},
 	{
-		description: '1-ый отборочный',
+		title: 'passorder:order-3',
 	},
 	{
-		description: '2-ый отборочный',
+		title: 'passorder:order-4',
 	},
 	{
-		description: 'Финал',
+		title: 'passorder:order-5',
 	},
 ]
