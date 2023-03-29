@@ -15,7 +15,8 @@ import toast from "@/utils/toast";
 const Intro = () => {
     const { t } = useTranslation();
     const [account, setAccount] = useState<CpfedAccount | undefined>(undefined);
-    const [championship, setChampionship] = useState<Championship | undefined>(undefined);
+    const [isRegistrationPossible, setIsRegistrationPossible] = useState<boolean>(false);
+    const [isRegistered, setIsRegistered] = useState<boolean>(false);
 
     const [modalState, setModalState] = useState<WarningModalProps>({
         isOpen: false,
@@ -26,28 +27,17 @@ const Intro = () => {
 
     useEffect(() => {
         API.profileMe().then(setAccount);
-        API.activeChampionship().then(setChampionship);
+        API.activeChampionship().then(res=>{
+            setIsRegistrationPossible(res.is_registration_possible);
+        });
+        API.checkChampionshipRegistration().then(res=>{
+            setIsRegistered(res.is_registered);
+        })
+
     }, []);
 
     const onRegister = () => {
-        if(!championship || championship.id == null)
-        {
-            setModalState({
-                isOpen: true,
-                message: "Чемпионат не доступен для регистрации",
-                confirmButtons: [
-                    {
-                        title: "Ок",
-                        callback: () => {
-                            setModalState({ ...modalState, isOpen: false });
-                        },
-                    },
-                ],
-                declineButtons: [],
-            });
-            return;
-        }
-
+        return;
         if (!account) {
             setModalState({
                 isOpen: true,
@@ -65,27 +55,27 @@ const Intro = () => {
             return;
         }
 
-        // if (
-        //     Object.values(account!).some(
-        //         (value) => value === undefined || value === null
-        //     )
-        // ) {
-        //     setModalState({
-        //         isOpen: true,
-        //         message:
-        //             "Внимание, для регистрации необходимо заполнить все данные в профиле",
-        //         confirmButtons: [
-        //             {
-        //                 title: "Ок",
-        //                 callback: () => {
-        //                     setModalState({ ...modalState, isOpen: false });
-        //                 },
-        //             },
-        //         ],
-        //         declineButtons: [],
-        //     });
-        //     return;
-        // }
+        if (
+            Object.values(account!).some(
+                (value) => value === undefined || value === null
+            )
+        ) {
+            setModalState({
+                isOpen: true,
+                message:
+                    "Внимание, для регистрации необходимо заполнить все данные в профиле",
+                confirmButtons: [
+                    {
+                        title: "Ок",
+                        callback: () => {
+                            setModalState({ ...modalState, isOpen: false });
+                        },
+                    },
+                ],
+                declineButtons: [],
+            });
+            return;
+        }
 
         setModalState({
             isOpen: true,
@@ -137,12 +127,16 @@ const Intro = () => {
                         <p className={classes.intro__description}>
                             {t("intro:title")}
                         </p>
-                        <button
-                            onClick={onRegister}
-                            className={classes.intro__button}
-                        >
-                            {t("intro:button")}
-                        </button>
+                        {
+                            isRegistrationPossible && !isRegistered
+                            ? <button
+                                onClick={onRegister}
+                                className={classes.intro__button}
+                            >
+                                {t("intro:button")}
+                            </button>
+                            : undefined
+                        }
                     </div>
                 </div>
 

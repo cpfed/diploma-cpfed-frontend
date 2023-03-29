@@ -1,4 +1,5 @@
 import { toast, ToastOptions } from 'react-toastify';
+import { parseBackendError } from './functions';
 
 const toastOptions: ToastOptions = {
     position: "bottom-right",
@@ -10,6 +11,10 @@ const toastOptions: ToastOptions = {
     progress: undefined,
     theme: "light",
 };
+
+const errorFromError = (err: any) => {
+    toast.error(parseBackendError(err).join("\n"))
+}
 
 const error = (message: string) => {
     console.log("ASD");
@@ -26,6 +31,7 @@ const success = (message: string) => {
 }
 
 export default {
+    errorFromError,
     error,
     warn,
     success

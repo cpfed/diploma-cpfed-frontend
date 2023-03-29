@@ -12,3 +12,7 @@ export interface CpfedAccount {
     t_shirt_size: TShirtSize
     gender: Gender
 }
+
+export interface CpfedAccountWithPassword extends CpfedAccount {
+    password: string
+}
