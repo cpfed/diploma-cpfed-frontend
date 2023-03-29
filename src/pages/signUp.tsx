@@ -1,7 +1,9 @@
-import SignUp from "@/components/pages/index/SignUp";
+import Registration from "@/components/pages/index/Registration";
 
 export default function Home() {
-  return <SignUp></SignUp>
+  return <>
+  	<Registration></Registration> 
+  </>
 }
 
 

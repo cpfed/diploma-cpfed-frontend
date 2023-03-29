@@ -1,4 +1,7 @@
 export interface Championship {
-    id: number
-    current_contest_id: number
+    is_registration_possible: boolean
+}
+
+export interface ChampionshipCheckRegistration {
+    is_registered: boolean
 }

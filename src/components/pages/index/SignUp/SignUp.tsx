@@ -7,15 +7,16 @@ import Container from "@/components/ui/Container";
 
 import classes from "./SignUp.module.scss";
 
+// depricated
 const SignUp = () => {
     const router = useRouter();
 
     const handleSubmit = async(event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        API.signUp(emailRef.current!.value, passwordRef.current!.value)
-        .then(_=>router.push('/login'))
-        .catch(_=>console.log)
+        // API.signUp(emailRef.current!.value, passwordRef.current!.value)
+        // .then(_=>router.push('/login'))
+        // .catch(_=>console.log)
     }
 
     const emailRef = useRef<HTMLInputElement>(null);
@@ -25,7 +26,7 @@ const SignUp = () => {
         <section className={classes.signUp}>
             <Container>
                 <div className={classes.signUp}>
-                    <p className={classes.signUp__title}>Создать аккаунт</p>
+                    <p className={classes.signUp__title}>Регистрация на чемпионат</p>
 
                     <form onSubmit={handleSubmit} className={classes.form}>
                         <input

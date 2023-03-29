@@ -6,3 +6,7 @@
 export const range = (to: number) => {
     return Array.from({length: to}, (value, index) => index + 1)
 }
+
+export const parseBackendError = (err: any): string[] => {
+    return err.response?.data?.message?.split("\n") ?? [];
+}

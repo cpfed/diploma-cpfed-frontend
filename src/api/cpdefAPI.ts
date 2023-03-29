@@ -1,13 +1,13 @@
-import { CpfedAccount } from '@/interfaces/account';
+import { CpfedAccount, CpfedAccountWithPassword } from '@/interfaces/account';
 import { CpfedCredentials } from '@/interfaces/credentials';
 import { ContestPlatform } from '@/interfaces/contestPlatforms';
 import { Tokens } from '@/interfaces/tokens';
 import { NewUserToPlatform, UserToPlatformList, UpdatedUserToPlatform } from '@/interfaces/userToPlatform';
-import { setTokens, getTokens } from '@/utils/tokens';
+import { setTokens, getTokens, clearTokens } from '@/utils/tokens';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import { Championship } from '@/interfaces/championship';
 import { NewUserOlympiad, UpdatedUserOlympiad, UserOlympiadList } from '@/interfaces/userOlympiad';
+import { Championship, ChampionshipCheckRegistration } from '@/interfaces/championship';
 
 const publicInstance = axios.create({
     baseURL: process.env.CPFED_API_URL,
@@ -47,6 +47,8 @@ privateInstance.interceptors.response.use(async (res) => res, async (error) => {
 			await API.refresh();
 		} catch (error)
 		{
+			console.log("Clear tokens they are expired");
+			clearTokens();
 			window.location.href = "/login";
 		}
 		prevRequest.headers["Authorization"] = `Bearer ${getTokens().refresh}`;
@@ -84,13 +86,10 @@ export const API = {
 		}
 	},
 
-	signUp: async (email: string, password: string): Promise<void> => {
+	signUp: async (account: CpfedAccountWithPassword): Promise<void> => {
 		try {
-			await publicInstance.post("/authentication/v1/sign-up/", {
-				email,
-				password
-			});
-		} catch (error: any) {
+			await publicInstance.post("/authentication/v1/sign-up/", account);
+		} catch (error) {
 			throw error;
 		}
 	},
@@ -191,7 +190,16 @@ export const API = {
 
 	activeChampionship: async ():Promise<Championship> => {
 		try {
-			const res = await privateInstance.get<Championship>('/api/platforms/v1/get-active-championship');
+			const res = await privateInstance.get<Championship>('/platforms/v1/get-active-championship');
+			return res.data;
+		} catch (error) {
+			throw error;
+		}
+	},
+
+	checkChampionshipRegistration: async ():Promise<ChampionshipCheckRegistration> => {
+		try {
+			const res = await privateInstance.get<ChampionshipCheckRegistration>('/platforms/v1/check_registration/');
 			return res.data;
 		} catch (error) {
 			throw error;
