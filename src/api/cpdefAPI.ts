@@ -3,7 +3,7 @@ import { CpfedCredentials } from '@/interfaces/credentials';
 import { ContestPlatform } from '@/interfaces/contestPlatforms';
 import { Tokens } from '@/interfaces/tokens';
 import { NewUserToPlatform, UserToPlatformList, UpdatedUserToPlatform } from '@/interfaces/userToPlatform';
-import { setTokens, getTokens } from '@/utils/tokens';
+import { setTokens, getTokens, clearTokens } from '@/utils/tokens';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { Championship } from '@/interfaces/championship';
@@ -46,6 +46,8 @@ privateInstance.interceptors.response.use(async (res) => res, async (error) => {
 			await API.refresh();
 		} catch (error)
 		{
+			console.log("Clear tokens they are expired");
+			clearTokens();
 			window.location.href = "/login";
 		}
 		prevRequest.headers["Authorization"] = `Bearer ${getTokens().refresh}`;
