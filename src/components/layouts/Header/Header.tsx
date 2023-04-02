@@ -2,9 +2,9 @@ import React, { HtmlHTMLAttributes, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 import Container from "@/components/ui/Container";
-import { getTokens } from '@/utils/tokens';
+import { getTokens } from "@/utils/tokens";
 import classes from "./Header.module.scss";
-import { elements, dropdownElements } from ".";
+import { elements, authElements } from ".";
 import { useRouter } from "next/router";
 
 const Header = () => {
@@ -14,17 +14,15 @@ const Header = () => {
     const burgerRef = useRef<HTMLDivElement>(null);
     const mobileContentRef = useRef<HTMLDivElement>(null);
 
-    
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>();
 
-    
     const onBurger = () => {
         headerRef.current?.classList.toggle(classes.header__active);
         burgerRef.current?.classList.toggle(classes.burger__active);
         mobileContentRef.current?.classList.toggle(classes.disabled);
         document.body.classList.toggle("lock");
     };
-    
+
     useEffect(() => {
         setIsLoggedIn(getTokens().access !== undefined);
 
@@ -73,28 +71,20 @@ const Header = () => {
                                 </li>
                             ))}
                         </ul>
-                        <div
-                            className={[
-                                classes.locale_and_account__item,
-                                classes.dropdown,
-                            ].join(" ")}
-                        >
-                            <Link href="#">Мой аккаунт</Link>
-                            <ul>
-                                {
-                                    (
-                                        isLoggedIn 
-                                        ? dropdownElements.loggedIn
-                                        : dropdownElements.loggedOut
-                                    ).map((element, index) => {
-                                        return <li key={index}>
-                                            <img src={element.iconSrc}/>
-                                            <Link href={element.href}>{element.title}</Link>
-                                        </li>
-                                    })
-                                }
-                            </ul>
-                        </div>
+                        <ul className={classes.locale_and_account__item}>
+                            {(isLoggedIn
+                                ? authElements.loggedIn
+                                : authElements.loggedOut
+                            ).map((value, index) => {
+                                return (
+                                    <li key={index}>
+                                        <Link href={value.href}>
+                                            {value.title}
+                                        </Link>
+                                    </li>
+                                );
+                            })}
+                        </ul>
                     </div>
                 </nav>
                 <nav
@@ -149,18 +139,24 @@ const Header = () => {
                                     </li>
                                 ))}
                             </ul>
-                            {
-                                (
-                                    isLoggedIn 
-                                    ? dropdownElements.loggedIn
-                                    : dropdownElements.loggedOut
-                                ).map((element, index) => {
-                                    return <li key={index} className={classes.locale_and_account_mobile__item}>
-                                        <img src={element.iconSrc}/>
-                                        <Link href={element.href}>{element.title}</Link>
+                            {(isLoggedIn
+                                ? authElements.loggedIn
+                                : authElements.loggedOut
+                            ).map((element, index) => {
+                                return (
+                                    <li
+                                        key={index}
+                                        className={
+                                            classes.locale_and_account_mobile__item
+                                        }
+                                    >
+                                        <img src={element.iconSrc} />
+                                        <Link href={element.href}>
+                                            {element.title}
+                                        </Link>
                                     </li>
-                                })
-                            }
+                                );
+                            })}
                         </div>
                     </div>
                 </nav>

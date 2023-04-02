@@ -33,7 +33,7 @@ const loggedIn: DropdownElement[] = [
 		href: "/profile"
 	},
 	{
-		title: "Выйти с аккаунта",
+		title: "Выйти",
 		iconSrc: icons.headerExit.src,
 		href: "/signOut"
 	}
@@ -41,18 +41,18 @@ const loggedIn: DropdownElement[] = [
 
 const loggedOut: DropdownElement[] = [
 	{
-		title: "Войти в аккаунт",
+		title: "Войти",
 		iconSrc: icons.headerEnter.src,
 		href: "/login"
 	},
 	{
-		title: "Создать аккаунт",
+		title: "Зарегистрироваться",
 		iconSrc: icons.headerAdd.src,
 		href: "/signUp"
 	}
 ]
 
-export const dropdownElements = {
+export const authElements = {
 	loggedIn,
 	loggedOut
 }
