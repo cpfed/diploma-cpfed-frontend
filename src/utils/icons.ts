@@ -8,6 +8,9 @@ import benefit1 from "public/images/benefits/benefit1.png";
 import benefit2 from "public/images/benefits/benefit2.png";
 import benefit3 from "public/images/benefits/benefit3.png";
 import benefit4 from "public/images/benefits/benefit4.png";
+import blueAvatar from "public/images/avatars/blue_avatar.png";
+import pinkAvatar from "public/images/avatars/pink_avatar.png";
+import purpleAvatar from "public/images/avatars/purple_avatar.png";
 
 const icons = {
     headerEnter,
@@ -19,7 +22,10 @@ const icons = {
     benefit1,
     benefit2,
     benefit3,
-    benefit4
+    benefit4,
+    blueAvatar,
+    pinkAvatar,
+    purpleAvatar,
 };
 
 export default icons;

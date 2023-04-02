@@ -3,9 +3,9 @@ import React, { FormEvent, useEffect, useState } from "react";
 import Container from "@/components/ui/Container";
 import classes from "./PersonalInfo.module.scss";
 import { API } from "@/api/cpdefAPI";
-import PhoneInput from "react-phone-input-2";
 import { Gender } from "@/enums/gender.enum";
 import { TShirtSize } from "@/enums/t-shirt-size.enum";
+import icons from "@/utils/icons";
 
 const PersonalInfo = () => {
     const [firstname, setFirstname] = useState<string>("");
@@ -22,11 +22,11 @@ const PersonalInfo = () => {
     const getAvatarSrc = () => {
         switch (gender) {
             case Gender.MAN:
-                return "images/blue_avatar.png";
+                return icons.blueAvatar.src;
             case Gender.WOMAN:
-                return "images/pink_avatar.png";
+                return icons.pinkAvatar.src;
             case Gender.NON_BINARY:
-                return "images/purple_avatar.png";
+                return icons.purpleAvatar.src;
         }
     };
 
