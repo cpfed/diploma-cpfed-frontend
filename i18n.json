@@ -20,7 +20,8 @@
             "faq",
             "header",
             "forgot-password",
-            "login"
+            "login",
+            "recover"
         ] 
     },
     "layouts": {
