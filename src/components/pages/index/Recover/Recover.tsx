@@ -5,15 +5,17 @@ import { API } from "@/api/cpdefAPI";
 
 import classes from "./Recover.module.scss";
 import toast from "@/utils/toast";
+import useTranslation from "next-translate/useTranslation";
 
 const Recover = () => {
     const router = useRouter();
+    const { t } = useTranslation();
 
     useEffect(() => {
         const { id } = router.query;
 
         API.checkRecoveryPasswordId(id as string).catch((err) => {
-            toast.error("Невозможно восставновить пароль");
+            toast.error(t("recover:error-recovery"));
             router.push("/");
         });
     }, []);
@@ -24,7 +26,7 @@ const Recover = () => {
 
         if (passwordRef.current?.value != passwordRepeatRef.current?.value) {
             passwordRepeatRef.current?.focus();
-            toast.error("Пароли не совпадают");
+            toast.error(t("recover:error-password-missmatch"));
             return;
         }
 
@@ -36,12 +38,12 @@ const Recover = () => {
         )
             .then((res) => {
                 console.log(res);
-                toast.success("Пароль успешно изменён");
+                toast.success(t("recover:success"));
                 router.push("/login");
             })
             .catch((err) => {
                 console.log(err);
-                toast.error("Невозможно восставновить пароль");
+                toast.error(t("recover:error-recovery"));
             });
     };
 
@@ -53,7 +55,7 @@ const Recover = () => {
             <Container>
                 <div className={classes.recover}>
                     <p className={classes.recover__title}>
-                        Вооставновить пароль
+                        {t("recover:title")}
                     </p>
 
                     <form onSubmit={handleSubmit} className={classes.form}>
@@ -61,7 +63,7 @@ const Recover = () => {
                             onError={() => console.log("ERROR!!")}
                             type="password"
                             ref={passwordRef}
-                            placeholder="Введите пароль"
+                            placeholder={t("recover:enter-password")}
                             className={classes.form__input}
                             minLength={8}
                             required
@@ -69,13 +71,13 @@ const Recover = () => {
                         <input
                             type="password"
                             ref={passwordRepeatRef}
-                            placeholder="Повторите пароль"
+                            placeholder={t("recover:re-enter-password")}
                             className={classes.form__input}
                             minLength={8}
                             required
                         />
                         <button type="submit" className={classes.form__button}>
-                            Изменить пароль
+                            {t("recover:change-password")}
                         </button>
                     </form>
                 </div>

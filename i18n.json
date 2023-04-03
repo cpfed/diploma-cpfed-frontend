@@ -17,11 +17,18 @@
             "profile-menu-list",
             "profile",
             "passorder",
-            "faq"
+            "faq",
+            "header",
+            "forgot-password",
+            "login",
+            "recover",
+            "registration",
+            "subanchors"
         ] 
     },
     "layouts": {
         "*": [
+            "header",
             "footer",
             "profile-menu-list"
         ] 

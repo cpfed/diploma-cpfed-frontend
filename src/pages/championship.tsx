@@ -6,15 +6,15 @@ import { LinkElement } from "@/interfaces/linkElement";
 
 const subanchors: LinkElement[] = [
 	{
-		title: "Правила чемпионата",
+		title: "subanchors:championship-intro",
 		link: "#intro"
 	},
 	{
-		title: "Порядок проведения Чемпионата",
+		title: "subanchors:championship-rules",
 		link: "#rules"
 	},
 	{
-		title: "Порядок начисления очков Чемпионата",
+		title: "subanchors:championship-scoring",
 		link: "#scoring"
 	}
 ]

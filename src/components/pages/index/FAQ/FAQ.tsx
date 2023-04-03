@@ -23,7 +23,7 @@ const FAQ = () => {
         <section className={classes.faq} id="faq">
             <Container>
                 <div className={classes.faq}>
-                    <h1 className={classes.faq__title}>Вопрос-Ответ</h1>
+                    <h1 className={classes.faq__title}>{t("faq:title")}</h1>
                     
                     <div className={classes.faq__cardList}>
                         {list.map((element, index, self) => {
@@ -48,10 +48,6 @@ const FAQ = () => {
                             );
                         })}
                     </div>
-
-                    <button className={classes.faq__button}>
-                        Задать свой вопрос
-                    </button>
                 </div>
             </Container>
         </section>

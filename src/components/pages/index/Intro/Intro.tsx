@@ -39,7 +39,7 @@ const Intro = () => {
                     <div className={classes.intro__content}>
                         <div className={classes.intro__partner}>
                             <img src={icons.freedomLogo.src} />
-                            <p>-генеральный партнер</p>
+                            <p>{t("intro:general-partner")}</p>
                         </div>
                         <p className={classes.intro__description}>
                             {t("intro:title")}

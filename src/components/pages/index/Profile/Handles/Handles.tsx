@@ -124,7 +124,9 @@ const Handles = () => {
                         <p className={classes.handles__title}>{t("profile-handles:handles")}</p>
                         {fetchedUserToPlatformList?.map((userToPlatform, index, self) => {
                             return (
-                                <div className={[
+                                <div 
+                                    key={index} 
+                                    className={[
                                     classes.editable,
                                     userToPlatform.isEditing ? classes.is_editing : undefined,
                                 ].join(" ")}>
@@ -209,7 +211,10 @@ const Handles = () => {
                         <form onSubmit={addUserToPlatformList}>
                             {userToPlatformList.map((userToPlatform, index, self) => {
                                 return (
-                                    <div className={classes.handles__container}>
+                                    <div 
+                                        key={index} 
+                                        className={classes.handles__container}
+                                    >
                                         <div className={classes.handles__subcontainer}>
                                             <label
                                                 htmlFor="name"

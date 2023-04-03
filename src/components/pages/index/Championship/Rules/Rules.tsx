@@ -36,10 +36,13 @@ const Rules = () => {
                                                 <ul>
                                                     {element.subRules.map((element, index, self) => {
                                                         return (
-                                                        <li className={classes.rule__sub_rule}>
-                                                            <p className={classes.rule__text}>{t(element.description as string)}</p>
-                                                        </li>
-                                                    )
+                                                            <li 
+                                                                key={index} 
+                                                                className={classes.rule__sub_rule}
+                                                            >
+                                                                <p className={classes.rule__text}>{t(element.description as string)}</p>
+                                                            </li>
+                                                        )
                                                     })}
                                                 </ul>
                                             </div>
@@ -52,10 +55,16 @@ const Rules = () => {
                                                 <tbody>
                                                     {element.table.map((row, index, self) => {
                                                         return (
-                                                            <tr>
+                                                            <tr 
+                                                                key={index}
+                                                            >
                                                             {row.columns.map((col, index, selft) => {
                                                                 return (
-                                                                    <th>{t(col)}</th>
+                                                                    <th 
+                                                                        key={index}
+                                                                    >
+                                                                        {t(col)}
+                                                                    </th>
                                                                 )
                                                                 })}
                                                             </tr>
@@ -67,7 +76,6 @@ const Rules = () => {
                                             <></>
                                         )}
                                     </div>
-                                    
                                 </li>
                             );
                         })}

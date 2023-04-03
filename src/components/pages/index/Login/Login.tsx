@@ -5,9 +5,11 @@ import { API } from "@/api/cpdefAPI";
 
 import classes from "./Login.module.scss";
 import Link from "next/link";
+import useTranslation from "next-translate/useTranslation";
 
 const Login = () => {
     const router = useRouter();
+    const { t } = useTranslation();
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -30,12 +32,12 @@ const Login = () => {
         <section className={classes.login}>
             <Container>
                 <div className={classes.login}>
-                    <p className={classes.login__title}>Войти</p>
+                    <p className={classes.login__title}>{t("login:title")}</p>
 
                     <form onSubmit={handleSubmit} className={classes.form}>
                         {isIncorrect ? (
                             <p className={classes.login__message}>
-                                Неверный логин или пароль
+                                {t("login:incorrect")}
                             </p>
                         ) : undefined}
                         <input
@@ -43,7 +45,7 @@ const Login = () => {
                             type="email"
                             name="email"
                             ref={emailRef}
-                            placeholder="Введите свою почту"
+                            placeholder={t("login:enter-email")}
                             className={classes.form__input}
                             required
                         />
@@ -52,21 +54,21 @@ const Login = () => {
                             type="password"
                             name="password"
                             ref={passwordRef}
-                            placeholder="Введите пароль"
+                            placeholder={t("login:enter-password")}
                             className={classes.form__input}
                             required
                         />
                         <button type="submit" className={classes.form__button}>
-                            Продолжить
+                            {t("login:continue")}
                         </button>
                         <Link
                             className={classes.login__extension}
                             href="/signUp"
                         >
-                            Еще не зарегистрирован?
+                            {t("login:not-registered-yet")}
                         </Link>
                         <Link className={classes.login__extension} href="/forgot-password">
-                            Забыли пароль?
+                            {t("login:forgot-password")}
                         </Link>
                     </form>
                 </div>

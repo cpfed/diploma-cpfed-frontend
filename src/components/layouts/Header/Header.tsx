@@ -6,9 +6,11 @@ import { getTokens } from "@/utils/tokens";
 import classes from "./Header.module.scss";
 import { elements, authElements } from ".";
 import { useRouter } from "next/router";
+import useTranslation from "next-translate/useTranslation"
 
 const Header = () => {
     const router = useRouter();
+    const { t } = useTranslation();
 
     const headerRef = useRef<HTMLElement>(null);
     const burgerRef = useRef<HTMLDivElement>(null);
@@ -54,7 +56,7 @@ const Header = () => {
                                     className={[classes.list__item].join(" ")}
                                 >
                                     <Link href={element.link!}>
-                                        {element.title}
+                                        {t(element.title)}
                                     </Link>
                                 </li>
                             );
@@ -79,7 +81,7 @@ const Header = () => {
                                 return (
                                     <li key={index}>
                                         <Link href={value.href}>
-                                            {value.title}
+                                            {t(value.title)}
                                         </Link>
                                     </li>
                                 );
@@ -115,7 +117,7 @@ const Header = () => {
                                         ].join(" ")}
                                     >
                                         <Link href={element.link!}>
-                                            {element.title}
+                                            {t(element.title)}
                                         </Link>
                                     </li>
                                 );
@@ -152,7 +154,7 @@ const Header = () => {
                                     >
                                         <img src={element.iconSrc} />
                                         <Link href={element.href}>
-                                            {element.title}
+                                            {t(element.title)}
                                         </Link>
                                     </li>
                                 );

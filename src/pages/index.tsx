@@ -9,27 +9,27 @@ import { LinkElement } from "@/interfaces/linkElement";
 
 const subanchors: LinkElement[] = [
 	{
-		title: "Главная",
+		title: "subanchors:intro-main",
 		link: "#intro"
 	},
 	{
-		title: "О Чемпионате",
+		title: "subanchors:intro-about",
 		link: "#about"
 	},
 	{
-		title: "Преимущества",
+		title: "subanchors:intro-benefits",
 		link: "#benefits"
 	},
 	{
-		title: "Порядок прохождения",
+		title: "subanchors:intro-passOrder",
 		link: "#passOrder"
 	},
 	{
-		title: "Вопрос-Ответ",
+		title: "subanchors:intro-faq",
 		link: "#faq"
 	},
 	{
-		title: "Полезные документы",
+		title: "subanchors:intro-documents",
 		link: "#documents"
 	}
 ]

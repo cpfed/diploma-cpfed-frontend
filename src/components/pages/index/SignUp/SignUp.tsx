@@ -1,15 +1,14 @@
 import React, { FormEvent, useRef } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { API } from "@/api/cpdefAPI";
 
 import Container from "@/components/ui/Container";
 
 import classes from "./SignUp.module.scss";
+import useTranslation from "next-translate/useTranslation";
 
 // depricated
 const SignUp = () => {
-    const router = useRouter();
+    const { t } = useTranslation();
 
     const handleSubmit = async(event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -26,7 +25,7 @@ const SignUp = () => {
         <section className={classes.signUp}>
             <Container>
                 <div className={classes.signUp}>
-                    <p className={classes.signUp__title}>Регистрация на чемпионат</p>
+                    <p className={classes.signUp__title}>{t("sign-up:registration")}</p>
 
                     <form onSubmit={handleSubmit} className={classes.form}>
                         <input
@@ -34,7 +33,7 @@ const SignUp = () => {
                             type="email"
                             name="email"
                             ref={emailRef}
-                            placeholder="Введите свою почту"
+                            placeholder={t("sign-up:enter-email")}
                             className={classes.form__input}
                             required
                         />
@@ -43,14 +42,14 @@ const SignUp = () => {
                             type="password"
                             name="password"
                             ref={passwordRef}
-                            placeholder="Придумайте пароль"
+                            placeholder={t("sign-up:enter-password")}
                             className={classes.form__input}
                             required
                         />
                         <button type="submit" className={classes.form__button}>
-                            Зарегистрироваться
+                            {t("sign-up:register")}
                         </button>
-                        <Link className={classes.signUp__extension} href="/login">Уже есть аккаунт?</Link>
+                        <Link className={classes.signUp__extension} href="/login">{t("sign-up:account-already-exists")}</Link>
                     </form>
                 </div>
             </Container>

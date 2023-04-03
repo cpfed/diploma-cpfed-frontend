@@ -4,10 +4,11 @@ import { useRouter } from "next/router";
 import { API } from "@/api/cpdefAPI";
 
 import classes from "./ForgotPassword.module.scss";
-import Link from "next/link";
+import useTranslation from "next-translate/useTranslation";
 import toast from "@/utils/toast";
 
 const ForgotPassword = () => {
+    const { t } = useTranslation();
     const [isSent, setIsSent] = useState<boolean>(false);
     const emailRef = useRef<HTMLInputElement>(null);
 
@@ -31,7 +32,7 @@ const ForgotPassword = () => {
                     {!isSent ? (
                         <>
                             <p className={classes.forgotPassword__title}>
-                                Вооставновить пароль
+                                {t("forgot-password:restore-password")}
                             </p>
                             <form
                                 onSubmit={handleSubmit}
@@ -41,7 +42,7 @@ const ForgotPassword = () => {
                                     onError={() => console.log("ERROR!!")}
                                     type="email"
                                     ref={emailRef}
-                                    placeholder="Введите email для восстановления пароля"
+                                    placeholder={t("forgot-password:enter-email")}
                                     className={classes.form__input}
                                     minLength={8}
                                     required
@@ -50,14 +51,13 @@ const ForgotPassword = () => {
                                     type="submit"
                                     className={classes.form__button}
                                 >
-                                    Восстановить
+                                    {t("forgot-password:restore")}
                                 </button>
                             </form>
                         </>
                     ) : (
                         <p className={classes.forgotPassword__subtitle}>
-                            Письмо с инструкцией по восстановлению пароля было
-                            отослано на ваш email
+                            {t("forgot-password:letter")}
                         </p>
                     )}
                 </div>

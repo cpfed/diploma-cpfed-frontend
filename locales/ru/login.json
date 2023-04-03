@@ -1,0 +1,9 @@
+{
+    "title": "Войти",
+    "incorrect": "Неверный логин или пароль",
+    "enter-email": "Введите свою почту",
+    "enter-password": "Введите пароль",
+    "continue": "Продолжить",
+    "not-registered-yet": "Еще не зарегистрирован?",
+    "forgot-password": "Забыли пароль?"
+}
