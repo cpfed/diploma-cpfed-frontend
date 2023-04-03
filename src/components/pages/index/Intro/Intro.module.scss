@@ -43,6 +43,16 @@ section.intro {
         }
     }
 
+    &__subdescription {
+        @include font(32px, 700, 39px, rgba(0,0,0, 0.63));
+        max-width: 400px;
+        text-align: center;
+
+        @media screen and (max-width: $break-l) {
+            @include font(25px, 700, 31px, rgba(0,0,0, 0.63));
+        }
+    }
+
     &__partner {
         display: flex;
         flex-direction: row;

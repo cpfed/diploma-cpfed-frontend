@@ -190,7 +190,7 @@ export const API = {
 
 	activeChampionship: async ():Promise<Championship> => {
 		try {
-			const res = await privateInstance.get<Championship>('/platforms/v1/get-active-championship');
+			const res = await publicInstance.get<Championship>('/platforms/v1/get-active-championship');
 			return res.data;
 		} catch (error) {
 			throw error;

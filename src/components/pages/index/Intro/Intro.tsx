@@ -17,16 +17,15 @@ const Intro = () => {
     const [isRegistered, setIsRegistered] = useState<boolean>(false);
 
     useEffect(() => {
-        // API.profileMe()
-        //     .then(setAccount)
-        //     .catch((err) => {});
         API.activeChampionship()
             .then((res) => {
+                console.log(res);
                 setIsRegistrationPossible(res.is_registration_possible);
             })
             .catch((err) => {});
         API.checkChampionshipRegistration()
             .then((res) => {
+                console.log(res);
                 setIsRegistered(res.is_registered);
             })
             .catch((err) => {});
@@ -45,14 +44,16 @@ const Intro = () => {
                         <p className={classes.intro__description}>
                             {t("intro:title")}
                         </p>
-                        {isRegistrationPossible && !isRegistered ? (
-                            <button
+                        {
+                            isRegistered ? <p className={classes.intro__subdescription}>Успешно зарегистрирован на чемп</p>
+                            : !isRegistrationPossible ? <p className={classes.intro__subdescription}>Регаться нельзя</p>
+                            : <button
                                 onClick={() => router.push("/signUp")}
                                 className={classes.intro__button}
                             >
                                 {t("intro:button")}
                             </button>
-                        ) : undefined}
+                        }
                     </div>
                 </div>
             </Container>
