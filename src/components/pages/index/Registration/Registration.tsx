@@ -9,9 +9,12 @@ import { TShirtSize } from "@/enums/t-shirt-size.enum";
 import toast from "@/utils/toast";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import useTranslation from "next-translate/useTranslation";
+import icons from "@/utils/icons";
 
 const Registration = () => {
     const router = useRouter();
+    const { t } = useTranslation();
 
     const ruleCheckboxRef = useRef<HTMLInputElement>(null);
 
@@ -30,11 +33,11 @@ const Registration = () => {
     const getAvatarSrc = () => {
         switch (gender) {
             case Gender.MAN:
-                return "images/blue_avatar.png";
+                return icons.blueAvatar.src;
             case Gender.WOMAN:
-                return "images/pink_avatar.png";
+                return icons.pinkAvatar.src;
             case Gender.NON_BINARY:
-                return "images/purple_avatar.png";
+                return icons.purpleAvatar.src;
         }
     };
 
@@ -43,7 +46,7 @@ const Registration = () => {
 
         if (ruleCheckboxRef.current?.checked == false) {
             toast.warn(
-                "Вы должны быть согласны с политикой конфиденциальности"
+                t("registration:warn")
             );
             return;
         }
@@ -65,7 +68,7 @@ const Registration = () => {
                     .then((_) => {
                         API.registerChampionship()
                             .then((_) => {
-                                toast.success("Успешно зарегистрирован");
+                                toast.success(t("registration:success"));
                                 router.push("/");
                             })
                             .catch((err) => {
@@ -81,7 +84,7 @@ const Registration = () => {
             });
     };
 
-    useEffect(() => {}, []);
+    useEffect(() => { }, []);
 
     return (
         <section className={classes.registration}>
@@ -104,7 +107,7 @@ const Registration = () => {
                                     classes.radio,
                                 ].join(" ")}
                             >
-                                Размер футболки*
+                                {t("registration:choose-t-shirt-size")}
                             </label>
                             <div className={classes.form__radiobuttons}>
                                 <div className={classes.form__group_item}>
@@ -157,7 +160,7 @@ const Registration = () => {
                                     classes.radio,
                                 ].join(" ")}
                             >
-                                Выберите пол*
+                                {t("registration:choose-gender")}
                             </label>
                             <div className={classes.form__radiobuttons}>
                                 <div className={classes.form__group_item}>
@@ -194,7 +197,9 @@ const Registration = () => {
 
                     <div className={classes.form__group}>
                         <div className={classes.form__group_item}>
-                            <label className={classes.form__label}>Имя*</label>
+                            <label className={classes.form__label}>
+                                {t("registration:name")}
+                            </label>
                             <input
                                 className={classes.form__input}
                                 type="text"
@@ -207,7 +212,7 @@ const Registration = () => {
                         </div>
                         <div className={classes.form__group_item}>
                             <label className={classes.form__label}>
-                                Фамилия*
+                                {t("registration:surname")}
                             </label>
                             <input
                                 className={classes.form__input}
@@ -221,7 +226,7 @@ const Registration = () => {
                         </div>
                         <div className={classes.form__group_item}>
                             <label className={classes.form__label}>
-                                Электронная почта*
+                                {t("registration:email")}
                             </label>
                             <input
                                 className={classes.form__input}
@@ -235,7 +240,7 @@ const Registration = () => {
                         </div>
                         <div className={classes.form__group_item}>
                             <label className={classes.form__label}>
-                                Пароль*
+                                {t("registration:password")}
                             </label>
                             <input
                                 className={classes.form__input}
@@ -249,7 +254,9 @@ const Registration = () => {
                             />
                         </div>
                         <div className={classes.form__group_item}>
-                            <label className={classes.form__label}>ИИН*</label>
+                            <label className={classes.form__label}>
+                                {t("registration:iin")}
+                            </label>
                             <input
                                 className={classes.form__input}
                                 type="text"
@@ -264,7 +271,7 @@ const Registration = () => {
                         </div>
                         <div className={classes.form__group_item}>
                             <label className={classes.form__label}>
-                                Телефон*
+                                {t("registration:telephone")}
                             </label>
                             <PhoneInput
                                 inputClass={classes.form__input}
@@ -287,7 +294,7 @@ const Registration = () => {
                         </div>
                         <div className={classes.form__group_item}>
                             <label className={classes.form__label}>
-                                Учебное заведение*
+                                {t("registration:education-institution")}
                             </label>
                             <input
                                 className={classes.form__input}
@@ -303,7 +310,7 @@ const Registration = () => {
                         </div>
                         <div className={classes.form__group_item}>
                             <label className={classes.form__label}>
-                                Год окончания*
+                                {t("registration:end-education-year")}
                             </label>
                             <input
                                 className={classes.form__input}
@@ -330,10 +337,10 @@ const Registration = () => {
                                 defaultChecked={false}
                             />
                             <Link href={"#"} target={"_blank"}>
-                                Согласен с политикой конфиденциальности
+                                {t("registration:checkbox")}
                             </Link>
                         </div>
-                        <button type="submit">Зарегистрироваться</button>
+                        <button type="submit">{t("registration:register")}</button>
                     </div>
                 </form>
             </Container>

@@ -1,0 +1,9 @@
+{
+    "title": "Вооставновить пароль",
+    "error-recovery": "Невозможно восставновить пароль",
+    "error-password-missmatch": "Пароли не совпадают",
+    "success": "Пароль успешно изменён",
+    "enter-password": "Введите пароль",
+    "re-enter-password": "Повторите пароль",
+    "change-password": "Изменить пароль"
+}

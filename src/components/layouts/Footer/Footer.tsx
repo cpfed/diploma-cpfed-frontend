@@ -11,7 +11,7 @@ const Footer = () => {
 			<Container>
 				<div className={classes.footer__body}>
                     <div className={classes.social_network}>
-                        <p className={classes.social_network__text}>{t("social-network")}</p>
+                        <p className={classes.social_network__text}>{t("footer:social-network")}</p>
                         <div className={classes.social_network__logos}>
                             <img
                                 src="/images/facebook.png"
