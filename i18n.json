@@ -22,6 +22,7 @@
     },
     "layouts": {
         "*": [
+            "footer",
             "profile-menu-list"
         ] 
     }
