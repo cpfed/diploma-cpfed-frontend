@@ -3,15 +3,15 @@ import icons from "@/utils/icons";
 
 export const elements: LinkElement[] = [
     {
-        title: "Главная",
+        title: "header:main",
         link: "/",
     },
     {
-        title: "Правила Чемпионата",
+        title: "header:championship",
         link: "/championship",
     },
     {
-        title: "Полезные документы",
+        title: "header:documents",
         link: "/documents",
     },
 ];
@@ -24,12 +24,12 @@ interface AuthElement {
 
 const loggedIn: AuthElement[] = [
     {
-        title: "Мой аккаунт",
+        title: "header:my-account",
         iconSrc: icons.headerProfile.src,
         href: "/profile",
     },
     {
-        title: "Выйти",
+        title: "header:sign-out",
         iconSrc: icons.headerExit.src,
         href: "/signOut",
     },
@@ -37,12 +37,12 @@ const loggedIn: AuthElement[] = [
 
 const loggedOut: AuthElement[] = [
     {
-        title: "Войти",
+        title: "header:login",
         iconSrc: icons.headerEnter.src,
         href: "/login",
     },
     {
-        title: "Зарегистрироваться",
+        title: "header:sign-up",
         iconSrc: icons.headerAdd.src,
         href: "/signUp",
     },

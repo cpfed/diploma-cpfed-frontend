@@ -17,11 +17,13 @@
             "profile-menu-list",
             "profile",
             "passorder",
-            "faq"
+            "faq",
+            "header"
         ] 
     },
     "layouts": {
         "*": [
+            "header",
             "footer",
             "profile-menu-list"
         ] 
