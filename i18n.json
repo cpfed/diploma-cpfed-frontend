@@ -18,7 +18,8 @@
             "profile",
             "passorder",
             "faq",
-            "header"
+            "header",
+            "forgot-password"
         ] 
     },
     "layouts": {
