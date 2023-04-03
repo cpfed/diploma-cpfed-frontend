@@ -65,7 +65,7 @@ const Login = () => {
                         >
                             Еще не зарегистрирован?
                         </Link>
-                        <Link className={classes.login__extension} href="">
+                        <Link className={classes.login__extension} href="/forgot-password">
                             Забыли пароль?
                         </Link>
                     </form>

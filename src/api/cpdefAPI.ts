@@ -212,5 +212,38 @@ export const API = {
 		} catch (error) {
 			throw error;
 		}
+	},
+
+	forgotPassword: async(email: string) => {
+		try {
+			const res = await publicInstance.post("/authentication/v1/password/recovery/", {
+				email
+			})
+			return res.data;
+		} catch (error) {
+			throw error;
+		}
+	},
+
+	//ba64406d-290c-4130-8702-e8bb9eaa730e
+	checkRecoveryPasswordId: async(id: string) => {
+		try {
+			const res = await publicInstance.get(`/authentication/v1/password/recovery/${id}/confirm/`);
+			return res.data;
+		} catch(error) {
+			throw error;
+		}
+	},
+
+	recoverPassword: async(id: string, new_password: string, new_password_confirm: string) => {
+		try {
+			const res = await publicInstance.post(`/authentication/v1/password/recovery/${id}/confirm/`, {
+				new_password, 
+				new_password_confirm
+			});
+			return res.data;
+		} catch(error) {
+			throw error;
+		}
 	}
 }
