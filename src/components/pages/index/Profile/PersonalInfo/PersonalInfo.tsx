@@ -6,8 +6,11 @@ import { API } from "@/api/cpdefAPI";
 import { Gender } from "@/enums/gender.enum";
 import { TShirtSize } from "@/enums/t-shirt-size.enum";
 import icons from "@/utils/icons";
+import { useRouter } from "next/router";
 
 const PersonalInfo = () => {
+    const router = useRouter();
+
     const [firstname, setFirstname] = useState<string>("");
     const [surname, setSurname] = useState<string>("");
     const [email, setEmail] = useState<string>("");
@@ -30,18 +33,23 @@ const PersonalInfo = () => {
         }
     };
 
-    const fetchInfo = async () => {
-        const res = await API.profileMe();
+    const fetchInfo = () => {
+        API.profileMe()
+        .then(res=>{
+            setFirstname(res.first_name ?? "");
+            setSurname(res.last_name ?? "");
+            setEmail(res.email ?? "");
+            setPhone(res.phone_number ?? "");
+            setEducationInstitution(res.last_education_institution ?? "");
+            setUin(res.uin ?? "");
+            setYearOfEducation(res.year_of_education ?? 2023);
+            setGender(res.gender ?? Gender.NON_BINARY);
+            setTShirtSize(res.t_shirt_size ?? TShirtSize.M);
+        })
+        .catch(err=>{
+            router.push("/");
+        })
 
-        setFirstname(res.first_name ?? "");
-        setSurname(res.last_name ?? "");
-        setEmail(res.email ?? "");
-        setPhone(res.phone_number ?? "");
-        setEducationInstitution(res.last_education_institution ?? "");
-        setUin(res.uin ?? "");
-        setYearOfEducation(res.year_of_education ?? 2023);
-        setGender(res.gender ?? Gender.NON_BINARY);
-        setTShirtSize(res.t_shirt_size ?? TShirtSize.M);
     };
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
