@@ -19,7 +19,8 @@
             "passorder",
             "faq",
             "header",
-            "forgot-password"
+            "forgot-password",
+            "login"
         ] 
     },
     "layouts": {

@@ -14,7 +14,7 @@ const PassOrder = () => {
         <section className={classes.passOrder} id="passOrder">
             <Container>
                 <div className={classes.passOrder}>
-                    <h1 className={classes.passOrder__title}>Порядок прохождения</h1>
+                    <h1 className={classes.passOrder__title}>{t("passorder:title")}</h1>
                     <div className={classes.passOrder__cardList}>
                         {elements.map((element, index, self) => {
                             return (
