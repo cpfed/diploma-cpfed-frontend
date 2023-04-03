@@ -9,7 +9,7 @@ import useTranslation from "next-translate/useTranslation";
 
 const Recover = () => {
     const router = useRouter();
-    const { t } = useTranslation
+    const { t } = useTranslation();
 
     useEffect(() => {
         const { id } = router.query;
