@@ -47,7 +47,6 @@ privateInstance.interceptors.response.use(async (res) => res, async (error) => {
 			await API.refresh();
 		} catch (error)
 		{
-			console.log("Clear tokens they are expired");
 			clearTokens();
 			window.location.href = "/login";
 		}

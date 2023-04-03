@@ -17,7 +17,6 @@ const ForgotPassword = () => {
 
         API.forgotPassword(emailRef.current!.value)
             .then((res) => {
-                console.log(res);
                 setIsSent(true);
             })
             .catch((err) => {
@@ -39,7 +38,6 @@ const ForgotPassword = () => {
                                 className={classes.form}
                             >
                                 <input
-                                    onError={() => console.log("ERROR!!")}
                                     type="email"
                                     ref={emailRef}
                                     placeholder={t("forgot-password:enter-email")}

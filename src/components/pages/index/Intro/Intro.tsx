@@ -19,13 +19,11 @@ const Intro = () => {
     useEffect(() => {
         API.activeChampionship()
             .then((res) => {
-                console.log(res);
                 setIsRegistrationPossible(res.is_registration_possible);
             })
             .catch((err) => {});
         API.checkChampionshipRegistration()
             .then((res) => {
-                console.log(res);
                 setIsRegistered(res.is_registered);
             })
             .catch((err) => {});
