@@ -22,7 +22,8 @@
             "forgot-password",
             "login",
             "recover",
-            "registration"
+            "registration",
+            "subanchors"
         ] 
     },
     "layouts": {
