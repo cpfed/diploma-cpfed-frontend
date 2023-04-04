@@ -28,6 +28,15 @@ section.registration {
             }
         }
     }
+
+    &__note {
+        @include font(15px, 500, 18px, rgba(0, 0, 0, 0.77));
+        border: 1px solid rgba(0, 0, 0, 0.48);
+        border-radius: 5px;
+        padding: 16px 8px;
+        text-align: center;
+        max-width: 565px;
+    }
 }
 
 
@@ -43,17 +52,16 @@ section.registration {
         // justify-content: space-between;
         align-items: center;
 
-        &:not(:last-child) {
-            @media screen and (max-width: $break-sl) {
-                margin-right: 0px;
-                flex-basis: 100%;
+
+        @media screen and (max-width: $break-sl) {
+            margin-right: 0px;
+            flex-basis: 100%;   
+       
+            &:last-child {
+                margin-top: 20px;
             }
         }
 
-        &:last-child {
-            margin-top: 20px;
-            flex-basis: 100%;
-        }
 
         &_item {
             display: flex;
@@ -80,21 +88,14 @@ section.registration {
         text-align: center;
     }
 
-    label.little {
-        @include font(12px, 500, 24px, #667085);
-
-        @media screen and (max-width: $break-sl) {
-            @include font(6px, 500, 24px, #667085);
-        }
-    }
-
     &__radiobuttons {
         display: flex;
         flex-direction: row;
+        justify-content: space-evenly;
 
         div {
             &:not(:last-child) {
-                margin-right: 12px;
+                margin-right: 19px;
             }
         }
     }

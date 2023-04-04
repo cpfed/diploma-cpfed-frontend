@@ -8,9 +8,10 @@ import { Gender } from "@/enums/gender.enum";
 import { TShirtSize } from "@/enums/t-shirt-size.enum";
 import toast from "@/utils/toast";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
 import icons from "@/utils/icons";
+import { EducationOrJob } from "@/enums/educationOrJob";
+import { Region } from "@/enums/region.enums";
 
 const Registration = () => {
     const router = useRouter();
@@ -23,13 +24,17 @@ const Registration = () => {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [phone, setPhone] = useState<string>("+7");
-    const [educationInstitution, setEducationInstitution] =
-        useState<string>("");
+    const [isCitizenOfKazakhstan, setIsCitizenOfKazakhstan] =
+        useState<boolean>(false);
+    const [educationOrJob, setEducationOrJob] = useState<EducationOrJob>(
+        EducationOrJob.NOTHING
+    );
+    const [educationOrJobPlace, setEducationOrJobPlace] = useState<string>("");
+    const [region, setRegion] = useState<Region>(Region.ASTANA)
     const [uin, setUin] = useState<string>("");
-    const [yearOfEducation, setYearOfEducation] = useState<number>(0);
+
     const [gender, setGender] = useState<Gender>(Gender.NON_BINARY);
     const [tShirtSize, setTShirtSize] = useState<TShirtSize>(TShirtSize.M);
-
     const getAvatarSrc = () => {
         switch (gender) {
             case Gender.MAN:
@@ -45,51 +50,51 @@ const Registration = () => {
         event.preventDefault();
 
         if (ruleCheckboxRef.current?.checked == false) {
-            toast.warn(
-                t("registration:warn")
-            );
+            toast.warn(t("registration:warn"));
             return;
         }
 
-        API.signUp({
-            email,
-            first_name: firstname,
-            gender,
-            last_education_institution: educationInstitution,
-            last_name: surname,
-            phone_number: phone,
-            t_shirt_size: tShirtSize,
-            uin: uin,
-            year_of_education: yearOfEducation,
-            password,
-        })
-            .then((_) => {
-                API.login(email, password)
-                    .then((_) => {
-                        API.registerChampionship()
-                            .then((_) => {
-                                toast.success(t("registration:success"));
-                                router.push("/");
-                            })
-                            .catch((err) => {
-                                toast.errorFromError(err);
-                            });
-                    })
-                    .catch((err) => {
-                        toast.errorFromError(err);
-                    });
-            })
-            .catch((err) => {
-                toast.errorFromError(err);
-            });
+        // API.signUp({
+        //     email,
+        //     first_name: firstname,
+        //     gender,
+        //     last_education_institution: educationInstitution,
+        //     last_name: surname,
+        //     phone_number: phone,
+        //     t_shirt_size: tShirtSize,
+        //     uin: uin,
+        //     year_of_education: yearOfEducation,
+        //     password,
+        // })
+        //     .then((_) => {
+        //         API.login(email, password)
+        //             .then((_) => {
+        //                 API.registerChampionship()
+        //                     .then((_) => {
+        //                         toast.success(t("registration:success"));
+        //                         router.push("/");
+        //                     })
+        //                     .catch((err) => {
+        //                         toast.errorFromError(err);
+        //                     });
+        //             })
+        //             .catch((err) => {
+        //                 toast.errorFromError(err);
+        //             });
+        //     })
+        //     .catch((err) => {
+        //         toast.errorFromError(err);
+        //     });
     };
 
-    useEffect(() => { }, []);
+    useEffect(() => {}, []);
 
     return (
         <section className={classes.registration}>
             <Container>
                 <form className={classes.form} onSubmit={handleSubmit}>
+                    
+                    {/* GROUP 1 */}
                     <div className={classes.form__group}>
                         <div
                             className={[
@@ -195,6 +200,7 @@ const Registration = () => {
                         </div>
                     </div>
 
+                    {/* GROUP 2 */}
                     <div className={classes.form__group}>
                         <div className={classes.form__group_item}>
                             <label className={classes.form__label}>
@@ -294,6 +300,38 @@ const Registration = () => {
                         </div>
                         <div className={classes.form__group_item}>
                             <label className={classes.form__label}>
+                                {t("registration:is-citizen-of-RK")}
+                            </label>
+                            <div className={classes.form__radiobuttons}>
+                                <div className={classes.form__group_item}>
+                                    <input
+                                        type="radio"
+                                        checked={isCitizenOfKazakhstan}
+                                        onChange={(_) => setIsCitizenOfKazakhstan(true)}
+                                    />
+                                    <label className={classes.radio}>{t("registration:yes")}</label>
+                                </div>
+                                <div className={classes.form__group_item}>
+                                    <input
+                                        type="radio"
+                                        checked={!isCitizenOfKazakhstan}
+                                        onChange={(_) => setIsCitizenOfKazakhstan(false)}
+                                    />
+                                    <label className={classes.radio}>{t("registration:no")}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={classes.form__group_item}>
+                            <p className={classes.registration__note}>
+                                {t("registration:kvota-note-1")}
+                                <br/>
+                                <br/>
+                                {t("registration:kvota-note-2")}
+                            </p>
+                        </div>
+
+                        {/* <div className={classes.form__group_item}>
+                            <label className={classes.form__label}>
                                 {t("registration:education-institution")}
                             </label>
                             <input
@@ -339,8 +377,10 @@ const Registration = () => {
                             <Link href={"#"} target={"_blank"}>
                                 {t("registration:checkbox")}
                             </Link>
-                        </div>
-                        <button type="submit">{t("registration:register")}</button>
+                        </div> */}
+                        <button type="submit">
+                            {t("registration:register")}
+                        </button>
                     </div>
                 </form>
             </Container>

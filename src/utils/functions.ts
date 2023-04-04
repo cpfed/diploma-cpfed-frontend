@@ -1,3 +1,5 @@
+import { EnumType } from "typescript";
+
 /**
  * 
  * @param to 
@@ -9,4 +11,8 @@ export const range = (to: number) => {
 
 export const parseBackendError = (err: any): string[] => {
     return err.response?.data?.message?.split("\n") ?? [];
+}
+
+export const getEnumValueIndex = (enumType: EnumType, enumValue: any): number => {
+    return Object.values(enumType).indexOf(enumValue);
 }

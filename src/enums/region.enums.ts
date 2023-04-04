@@ -1,0 +1,22 @@
+export enum Region {
+    ASTANA = "Астана",
+    ALMATY = "Алматы",
+    SHYMKENT = "Шымкент",
+    ALMATY_PROVINCE = "Алматинская область",
+    AKMOLA_PROVINCE = "Акмолинская область",
+    ATYRAU_PROVINCE = "Атырауская область",
+    AKTUBE_PROVINCE = "Актюбинская область",
+    EAST_PROVINCE = "Восточно-Казахстанская область",
+    ZHAMBYL_PROVINCE = "Жамбылская область",
+    WEST_PROVINCE = "Западно-Казахстанская область",
+    KARAGANDY_PROVINCE = "Карагандинская область",
+    KOSTANAY_PROVINCE = "Костанайская область",
+    KIZILORDA_PROVINCE = "Кызылординская область",
+    MANGISTAU_PROVINCE = "Мангистауская область",
+    PAVLODAR_PROVINCE = "Павлодарская область",
+    NORTH_PROVINCE = "Северо-Казахстанская область",
+    TURKESTAN_PROVINCE = "Туркестанская область",
+    ABAY_PROVINCE = "Абайская область",
+    ZHETISU_PROVINCE = "Жетысуйская область",
+    ULITAY_PROVINCE = "Улытауская область"       
+}
