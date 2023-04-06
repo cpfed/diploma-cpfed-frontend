@@ -2,7 +2,7 @@
 
 section.personalInfo {
     background-color: $white;
-    margin: 0px;
+    margin-top: 50px;
 }
 
 .personalInfo {
@@ -28,6 +28,21 @@ section.personalInfo {
             }
         }
     }
+
+    &__pencil {
+        width: 18px;
+        height: 18px;
+    }
+
+    &__note {
+        @include font(15px, 500, 18px, rgba(0, 0, 0, 0.77));
+        border: 1px solid rgba(0, 0, 0, 0.48);
+        border-radius: 5px;
+        padding: 16px 8px;
+        margin: 0px 0px 20px 0px;
+        text-align: center;
+        max-width: 565px;
+    }
 }
 
 
@@ -43,18 +58,33 @@ section.personalInfo {
         // justify-content: space-between;
         align-items: center;
 
-        &:not(:last-child) {
-            @media screen and (max-width: $break-sl) {
-                margin-right: 0px;
-                flex-basis: 100%;
+
+        @media screen and (max-width: $break-sl) {
+            margin-right: 0px;
+            flex-basis: 100%;   
+       
+            &:last-child {
+                margin-top: 20px;
             }
         }
+
 
         &_item {
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             
+            &:not(:last-child) {
+                margin-bottom: 5px;
+            }
+        }
+
+        &_itemhor {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+
             &:not(:last-child) {
                 margin-bottom: 5px;
             }
@@ -75,25 +105,25 @@ section.personalInfo {
         text-align: center;
     }
 
-    label.little {
-        @include font(12px, 500, 24px, #667085);
-
-        @media screen and (max-width: $break-sl) {
-            @include font(6px, 500, 24px, #667085);
-        }
-    }
-
     &__radiobuttons {
         display: flex;
         flex-direction: row;
+        justify-content: space-evenly;
 
         div {
             &:not(:last-child) {
-                margin-right: 12px;
+                margin-right: 19px;
             }
         }
     }
+    
+    &__checkbox {
+		@include font(16px, 600, 20px, rgba(38, 43, 47, 0.4));
 
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
 
     input, PhoneInput {
 		@include font(20px, 500, 24px, #667085);
@@ -122,7 +152,7 @@ section.personalInfo {
 	}
 
 
-    input[type='radio'] {
+    input[type='radio']{
         width: 30px;
         height: 30px;
 
@@ -132,9 +162,33 @@ section.personalInfo {
         }
     }
 
+    input[type='checkbox'] {
+        width: 18px;
+        height: 18px;
+        margin-right: 5px;
+    }
+
     button {
         @extend .button_save;
-        margin-top: 20px;
-        // flex-basis: 100%;
+        margin-top: 15px;
+    }
+
+    &__select {
+        @extend .input_select_text;
+        @extend .input_select_container;
+        @extend .select_container;
+        width: 511px;
+
+        &_option {
+            @extend .input_select_text;
+        }
+    }
+
+    &__editor {
+        @include font(16px, 700, 20px, $black);
+        
+        &:hover {
+            cursor: pointer;
+        }
     }
 }

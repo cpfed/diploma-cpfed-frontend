@@ -1,4 +1,4 @@
-import { CpfedAccount, CpfedAccountWithPassword } from '@/interfaces/account';
+import { CpfedAccount, CpfedAccountUpdate, CpfedAccountWithPassword } from '@/interfaces/account';
 import { CpfedCredentials } from '@/interfaces/credentials';
 import { ContestPlatform } from '@/interfaces/contestPlatforms';
 import { Tokens } from '@/interfaces/tokens';
@@ -105,9 +105,9 @@ export const API = {
 		}
 	},
 
-	updateProfileMe: async(account: CpfedAccount): Promise<CpfedAccount> => {
+	updateProfileMe: async(account: CpfedAccountUpdate): Promise<CpfedAccountUpdate> => {
 		try {
-			const res = await privateInstance.put<CpfedAccount>("/authentication/v1/profile/me/", account);
+			const res = await privateInstance.put<CpfedAccountUpdate>("/authentication/v1/profile/me/", account);
 			return res.data;
 		} catch (error) {
 			throw error;

@@ -11,6 +11,7 @@ import benefit4 from "public/images/benefits/benefit4.png";
 import blueAvatar from "public/images/avatars/blue_avatar.png";
 import pinkAvatar from "public/images/avatars/pink_avatar.png";
 import purpleAvatar from "public/images/avatars/purple_avatar.png";
+import pencil from 'public/images/pencil.png';
 
 const icons = {
     headerEnter,
@@ -26,6 +27,7 @@ const icons = {
     blueAvatar,
     pinkAvatar,
     purpleAvatar,
+    pencil,
 };
 
 export default icons;

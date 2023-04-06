@@ -2,6 +2,13 @@ import { EmploymentStatus } from "@/enums/employmentStatus"
 import { Gender } from "@/enums/gender.enum"
 import { TShirtSize } from "@/enums/t-shirt-size.enum"
 
+export const cpfedAccountUpdateFieldsExclude = [
+    "first_name",
+    "last_name",
+    "uin",
+    "region_id",
+]
+
 export interface CpfedAccount {
     email: string
     first_name: string
@@ -19,3 +26,5 @@ export interface CpfedAccount {
 export interface CpfedAccountWithPassword extends CpfedAccount {
     password: string
 }
+
+export type CpfedAccountUpdate = Omit<CpfedAccount,  "first_name"|"last_name"|"uin"|"region_id" >
