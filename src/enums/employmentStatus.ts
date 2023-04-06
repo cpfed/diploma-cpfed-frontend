@@ -1,0 +1,5 @@
+export enum EmploymentStatus {
+    WORKING = "WORKING",
+    STUDYING = "STUDYING",
+    NOT_WORKING_AND_STUDYING = "NOT_WORKING_AND_STUDYING"
+}

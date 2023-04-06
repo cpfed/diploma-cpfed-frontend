@@ -10,8 +10,8 @@ import toast from "@/utils/toast";
 import { useRouter } from "next/router";
 import useTranslation from "next-translate/useTranslation";
 import icons from "@/utils/icons";
-import { EducationOrJob } from "@/enums/educationOrJob";
-import { Region } from "@/enums/region.enums";
+import { EmploymentStatus } from "@/enums/employmentStatus";
+import { RegionList, Region } from "@/interfaces/region";
 
 const Registration = () => {
     const router = useRouter();
@@ -26,11 +26,17 @@ const Registration = () => {
     const [phone, setPhone] = useState<string>("+7");
     const [isCitizenOfKazakhstan, setIsCitizenOfKazakhstan] =
         useState<boolean>(false);
-    const [educationOrJob, setEducationOrJob] = useState<EducationOrJob>(
-        EducationOrJob.NOTHING
+    const [employmentStatus, setEmploymentStatus] = useState<EmploymentStatus>(
+        EmploymentStatus.NOT_WORKING_AND_STUDYING
     );
-    const [educationOrJobPlace, setEducationOrJobPlace] = useState<string>("");
-    const [region, setRegion] = useState<Region>(Region.ASTANA)
+    const [employmentStatusPlace, setEmploymentStatusPlace] = useState<string>("");
+    const [regionList, setRegionList] = useState<Region[]>([]);
+    const employmentStatusList = [
+        EmploymentStatus.NOT_WORKING_AND_STUDYING,
+        EmploymentStatus.STUDYING,
+        EmploymentStatus.WORKING,
+    ]
+    const [selectedRegion, setselectedRegion] = useState<number>(0);
     const [uin, setUin] = useState<string>("");
 
     const [gender, setGender] = useState<Gender>(Gender.NON_BINARY);
@@ -45,6 +51,18 @@ const Registration = () => {
                 return icons.purpleAvatar.src;
         }
     };
+
+    const fetchRegions = () => {
+        API.fetchRegions()
+            .then((res) => {
+                setRegionList(res.results);
+            })
+            .catch((err) => {
+                toast.error(err);
+            });
+    }
+
+    useEffect(() => { fetchRegions() }, []);
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -87,13 +105,13 @@ const Registration = () => {
         //     });
     };
 
-    useEffect(() => {}, []);
+    useEffect(() => { }, []);
 
     return (
         <section className={classes.registration}>
             <Container>
                 <form className={classes.form} onSubmit={handleSubmit}>
-                    
+
                     {/* GROUP 1 */}
                     <div className={classes.form__group}>
                         <div
@@ -324,11 +342,91 @@ const Registration = () => {
                         <div className={classes.form__group_item}>
                             <p className={classes.registration__note}>
                                 {t("registration:kvota-note-1")}
-                                <br/>
-                                <br/>
+                                <br />
+                                <br />
                                 {t("registration:kvota-note-2")}
                             </p>
                         </div>
+                        <div className={classes.form__group_item}>
+                            <label className={classes.form__label}>
+                                {t("registration:education-or-job")}
+                            </label>
+                            <select
+                                onChange={(e) => {
+                                    setEmploymentStatus(e.target.value as EmploymentStatus)
+                                }}
+                                required
+                                className={classes.form__select}
+                            >
+                                {
+                                    employmentStatusList.map((employmentStatus, index, self) => {
+                                        return (
+                                            <option
+                                                key={index}
+                                                value={employmentStatus}
+                                                className={classes.form__select_option}
+                                            >
+                                                {t("education-or-job:" + employmentStatus)}
+                                            </option>
+                                        )
+                                    })
+                                }
+                            </select>
+                        </div>
+                        {employmentStatus != EmploymentStatus.NOT_WORKING_AND_STUDYING ?
+                            <>
+                                <div className={classes.form__group_item}>
+                                    <label className={classes.form__label}>
+                                        {t("registration:education-or-job-place")}
+                                    </label>
+                                    <input
+                                        className={classes.form__input}
+                                        type="education-or-job-place"
+                                        value={employmentStatusPlace}
+                                        onChange={(event) =>
+                                            setEmploymentStatusPlace(event.currentTarget.value)
+                                        }
+                                        required
+                                    />
+                                </div>
+                                <div className={classes.form__group_item}>
+                                    <label className={classes.form__label}>
+                                        {t("registration:city-region")}
+                                    </label>
+                                    <select
+                                        onChange={(e) => {
+                                            setselectedRegion(Number(e.target.value))
+                                        }}
+                                        required
+                                        className={classes.form__select}
+                                    >
+                                        <option
+                                            disabled
+                                            selected
+                                            hidden
+                                            value=""
+                                            className={classes.form__select_option}
+                                        >
+                                            -- select an option --
+                                        </option>
+                                        {
+                                            regionList.map((region, index, self) => {
+                                                return (
+                                                    <option
+                                                        key={index}
+                                                        value={region.id}
+                                                        className={classes.form__select_option}
+                                                    >
+                                                        {t("regions:" + region.name)}
+                                                    </option>
+                                                )
+                                            })
+                                        }
+                                    </select>
+                                </div>
+                            </> :
+                            <>
+                            </>}
 
                         {/* <div className={classes.form__group_item}>
                             <label className={classes.form__label}>

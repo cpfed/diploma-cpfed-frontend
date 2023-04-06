@@ -6,10 +6,10 @@ export const menuLinks: LinkElement[] = [
 		link: "/profile"
 	},
 	// TODO: add after release
-	// {
-	// 	title: "profile-menu-list:contest-info",
-	// 	link: "/profile/contest-info"
-	// },
+	{
+		title: "profile-menu-list:contest-info",
+		link: "/profile/contest-info"
+	},
     // {
     //     title: "profile-menu-list:olympiads",
 	// 	link: "/profile/olympiads"

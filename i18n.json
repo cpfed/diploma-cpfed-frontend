@@ -23,7 +23,10 @@
             "login",
             "recover",
             "registration",
-            "subanchors"
+            "subanchors",
+            "regions",
+            "education-or-job",
+            "contest-info"
         ] 
     },
     "layouts": {

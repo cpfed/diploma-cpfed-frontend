@@ -8,6 +8,9 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { NewUserOlympiad, UpdatedUserOlympiad, UserOlympiadList } from '@/interfaces/userOlympiad';
 import { Championship, ChampionshipCheckRegistration } from '@/interfaces/championship';
+import { RegionList } from '@/interfaces/region';
+import { ContestCredentials } from '@/interfaces/contestCredentials';
+import { Contest } from '@/interfaces/contest';
 
 const publicInstance = axios.create({
     baseURL: process.env.CPFED_API_URL,
@@ -196,6 +199,15 @@ export const API = {
 		}
 	},
 
+	activeContest: async ():Promise<Contest> => {
+		try {
+			const res = await publicInstance.get<Contest>('/platforms/v1/get-active-contest');
+			return res.data;
+		} catch (error) {
+			throw error;
+		}
+	},
+
 	checkChampionshipRegistration: async ():Promise<ChampionshipCheckRegistration> => {
 		try {
 			const res = await privateInstance.get<ChampionshipCheckRegistration>('/platforms/v1/check_registration/');
@@ -244,5 +256,23 @@ export const API = {
 		} catch(error) {
 			throw error;
 		}
-	}
+	},
+
+	fetchRegions: async() => {
+		try {
+			const res = await publicInstance.get<RegionList>(`/locations/v1/regions/`);
+			return res.data;
+		} catch (error) {
+			throw error;
+		}
+	},
+
+	fetchContestCredentials: async(id: number) => {
+		try {
+			const res = await privateInstance.get<ContestCredentials>(`/platforms/v1/get-contest-credentials/${id}/`);
+			return res.data;
+		} catch(error) {
+			throw error;
+		}
+	},
 }

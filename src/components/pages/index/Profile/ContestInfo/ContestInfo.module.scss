@@ -1,0 +1,72 @@
+@import "/src/styles/variables";
+
+section.contestInfo {
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+}
+
+$main_container_width: 700px;
+
+.contestInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    // height: 500px;
+
+    &__main_container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        @media screen and (max-width: $break-l) {
+            width: 320px;
+        }
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        // height: 230px;
+        width: $main_container_width;
+        padding: 0px 0px 30px 0px;
+
+        @media screen and (max-width: $break-l) {
+            width: 320px;
+        }
+    }
+
+    &__label {
+        @include font(15px, 400, 18px, rgba(0, 0, 0, 0.56));
+    }
+
+    &__input {
+		@extend .input_select_text;
+        @extend .input_select_container;
+        width: 100%;
+        
+		display: flex;
+		align-items: flex-start;
+    }
+
+    &__subcontainer {
+        padding: 0px 0px 10px 0px;
+        width: 90%;
+        @media screen and (max-width: $break-l) {
+            width: 100%;
+        }
+    }
+
+    &__p {
+        @include font(20px, 600, 25px, rgba(0, 0, 0, 0.68));
+        padding: 10px;
+    }
+}

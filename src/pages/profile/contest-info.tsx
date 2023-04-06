@@ -1,11 +1,10 @@
-import Handles from "@/components/pages/index/Profile/Handles";
-import { LinkElement } from "@/interfaces/linkElement";
+import ContestInfo from "@/components/pages/index/Profile/ContestInfo";
 
 
 export default function Home() {
     return (
         <>
-            {/* <Handles></Handles> */}
+            <ContestInfo></ContestInfo>
         </>
     );
 }
