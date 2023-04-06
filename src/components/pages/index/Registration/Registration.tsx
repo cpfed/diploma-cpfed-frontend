@@ -72,37 +72,39 @@ const Registration = () => {
             return;
         }
 
-        // API.signUp({
-        //     email,
-        //     first_name: firstname,
-        //     gender,
-        //     last_education_institution: educationInstitution,
-        //     last_name: surname,
-        //     phone_number: phone,
-        //     t_shirt_size: tShirtSize,
-        //     uin: uin,
-        //     year_of_education: yearOfEducation,
-        //     password,
-        // })
-        //     .then((_) => {
-        //         API.login(email, password)
-        //             .then((_) => {
-        //                 API.registerChampionship()
-        //                     .then((_) => {
-        //                         toast.success(t("registration:success"));
-        //                         router.push("/");
-        //                     })
-        //                     .catch((err) => {
-        //                         toast.errorFromError(err);
-        //                     });
-        //             })
-        //             .catch((err) => {
-        //                 toast.errorFromError(err);
-        //             });
-        //     })
-        //     .catch((err) => {
-        //         toast.errorFromError(err);
-        //     });
+        API.signUp({
+            email,
+            first_name: firstname,
+            gender,
+            last_name: surname,
+            phone_number: phone,
+            t_shirt_size: tShirtSize,
+            uin: uin,
+            password,
+            citizen_of_kz: isCitizenOfKazakhstan,
+            employment_status: employmentStatus,
+            region_id: selectedRegion,
+            place_of_study_of_work: employmentStatusPlace
+        })
+            .then((_) => {
+                API.login(email, password)
+                    .then((_) => {
+                        API.registerChampionship()
+                            .then((_) => {
+                                toast.success(t("registration:success"));
+                                router.push("/");
+                            })
+                            .catch((err) => {
+                                toast.errorFromError(err);
+                            });
+                    })
+                    .catch((err) => {
+                        toast.errorFromError(err);
+                    });
+            })
+            .catch((err) => {
+                toast.errorFromError(err);
+            });
     };
 
     useEffect(() => { }, []);
@@ -400,15 +402,6 @@ const Registration = () => {
                                         required
                                         className={classes.form__select}
                                     >
-                                        <option
-                                            disabled
-                                            selected
-                                            hidden
-                                            value=""
-                                            className={classes.form__select_option}
-                                        >
-                                            -- select an option --
-                                        </option>
                                         {
                                             regionList.map((region, index, self) => {
                                                 return (
@@ -428,54 +421,6 @@ const Registration = () => {
                             <>
                             </>}
 
-                        {/* <div className={classes.form__group_item}>
-                            <label className={classes.form__label}>
-                                {t("registration:education-institution")}
-                            </label>
-                            <input
-                                className={classes.form__input}
-                                type="text"
-                                value={educationInstitution}
-                                onChange={(event) =>
-                                    setEducationInstitution(
-                                        event.currentTarget.value
-                                    )
-                                }
-                                required
-                            />
-                        </div>
-                        <div className={classes.form__group_item}>
-                            <label className={classes.form__label}>
-                                {t("registration:end-education-year")}
-                            </label>
-                            <input
-                                className={classes.form__input}
-                                type="number"
-                                value={yearOfEducation}
-                                min={1900}
-                                max={2300}
-                                onChange={(event) =>
-                                    setYearOfEducation(
-                                        Number.parseInt(
-                                            event.currentTarget.value
-                                        )
-                                    )
-                                }
-                                required
-                            />
-                        </div>
-                    </div>
-                    <div className={classes.form__group}>
-                        <div className={classes.form__checkbox}>
-                            <input
-                                ref={ruleCheckboxRef}
-                                type="checkbox"
-                                defaultChecked={false}
-                            />
-                            <Link href={"#"} target={"_blank"}>
-                                {t("registration:checkbox")}
-                            </Link>
-                        </div> */}
                         <button type="submit">
                             {t("registration:register")}
                         </button>
