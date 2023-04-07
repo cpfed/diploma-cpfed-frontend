@@ -74,7 +74,7 @@ const PersonalInfo = () => {
             setSurname(res.last_name);
             setTShirtSize(res.t_shirt_size);
             setUin(res.uin);
-            setselectedRegion(2);
+            setselectedRegion(res.region_id);
         })
     }
 
@@ -90,7 +90,8 @@ const PersonalInfo = () => {
             gender: gender,
             phone_number: phone,
             place_of_study_of_work: employmentStatusPlace,
-            t_shirt_size: tShirtSize
+            t_shirt_size: tShirtSize,
+            region_id: selectedRegion
         }).then(
             res=>{
                 setEmail(res.email);
@@ -100,6 +101,7 @@ const PersonalInfo = () => {
                 setIsCitizenOfKazakhstan(res.citizen_of_kz);
                 setPhone(res.phone_number);
                 setTShirtSize(res.t_shirt_size);
+                setselectedRegion(res.region_id);
             }
         )
         .catch(err=>{
@@ -110,8 +112,6 @@ const PersonalInfo = () => {
             setIsEditMode(false);
         })
     };
-
-    useEffect(() => { }, []);
 
     return (
         <section className={classes.personalInfo}>
@@ -419,7 +419,7 @@ const PersonalInfo = () => {
                                         {t("registration:city-region")}
                                     </label>
                                     <select
-                                        disabled={true}
+                                        disabled={!isEditMode}
                                         onChange={(e) => {
                                             setselectedRegion(Number(e.target.value))
                                         }}

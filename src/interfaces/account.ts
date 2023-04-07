@@ -6,7 +6,6 @@ export const cpfedAccountUpdateFieldsExclude = [
     "first_name",
     "last_name",
     "uin",
-    "region_id",
 ]
 
 export interface CpfedAccount {
@@ -27,4 +26,4 @@ export interface CpfedAccountWithPassword extends CpfedAccount {
     password: string
 }
 
-export type CpfedAccountUpdate = Omit<CpfedAccount,  "first_name"|"last_name"|"uin"|"region_id" >
+export type CpfedAccountUpdate = Omit<CpfedAccount,  "first_name"|"last_name"|"uin">
