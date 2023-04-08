@@ -1,4 +1,7 @@
 {
     "title": "Спорттық бағдарламалаудан Қазақстан чемпионаты",
-    "button": "Тіркелу"
+    "button": "Тіркелу",
+    "general-partner": "-бас серіктес",
+    "successfully-registered": "Сәтті тіркелдіңіз",
+    "unavailable-register": "Тіркелу мүмкін емес"
 }
