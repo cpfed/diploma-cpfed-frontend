@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 const Intro = () => {
     const router = useRouter();
     const { t } = useTranslation();
-    // const [account, setAccount] = useState<CpfedAccount | undefined>(undefined);
+
     const [isRegistrationPossible, setIsRegistrationPossible] =
         useState<boolean>(false);
     const [isRegistered, setIsRegistered] = useState<boolean>(false);
@@ -43,8 +43,8 @@ const Intro = () => {
                             {t("intro:title")}
                         </p>
                         {
-                            isRegistered ? <p className={classes.intro__subdescription}>Успешно зарегистрирован на чемп</p>
-                            : !isRegistrationPossible ? <p className={classes.intro__subdescription}>Регаться нельзя</p>
+                            isRegistered ? <p className={classes.intro__subdescription}>{t("intro:successfully-registered")}</p>
+                            : !isRegistrationPossible ? <p className={classes.intro__subdescription}>{t("intro:unavailable-register")}</p>
                             : <button
                                 onClick={() => router.push("/signUp")}
                                 className={classes.intro__button}
