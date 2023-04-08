@@ -46,7 +46,7 @@ const PersonalInfo = () => {
                 return icons.blueAvatar.src;
             case Gender.WOMAN:
                 return icons.pinkAvatar.src;
-            case Gender.NON_BINARY:
+            default:
                 return icons.purpleAvatar.src;
         }
     };
@@ -121,7 +121,7 @@ const PersonalInfo = () => {
                     <div className={classes.form__group}>
                         <div className={classes.form__group_itemhor} >
                             <img className={classes.personalInfo__pencil} src={icons.pencil.src} hidden={isEditMode}/>
-                            <p className={classes.form__editor} onClick={()=>setIsEditMode(true)} hidden={isEditMode}>Редактировать</p>
+                            <p className={classes.form__editor} onClick={()=>setIsEditMode(true)} hidden={isEditMode}>{t("registration:edit")}</p>
                         </div>
 
                         <div

@@ -7,6 +7,8 @@ import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
 
 import { elements } from ".";
+import "@/utils/icons"
+import icons from "@/utils/icons";
 
 const Documents = () => {
     const { t } = useTranslation();
@@ -27,7 +29,7 @@ const Documents = () => {
                                             {t(element.title)}
                                         </p>
                                         <img
-                                            src="images/document_link_button.png"
+                                            src={icons.documentLinkButton.src}
                                             className={classes.document__img}
                                         ></img>
                                     </Link>
