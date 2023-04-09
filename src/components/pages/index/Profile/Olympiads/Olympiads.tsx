@@ -115,7 +115,7 @@ const Olympiads = () => {
             }>
                 {userOlympiadList.map((userOlympiad, index, self) => {
                     return (
-                        <div className={classes.olympiads__container}>
+                        <div className={classes.olympiads__container} key={index}>
                             <div className={classes.olympiads__subcontainer}>
                                 <label
                                     htmlFor="name"
@@ -169,10 +169,10 @@ const Olympiads = () => {
                                         -- select an option --
                                     </option>
                                     {
-                                        achievements.map((achievement, index, self) => {
+                                        achievements.map((achievement, index2, self) => {
                                             return (
                                                 <option
-                                                    key={index}
+                                                    key={index2}
                                                     value={achievement}
                                                     className={classes.olympiads__select_option}
                                                 >
@@ -251,7 +251,7 @@ const Olympiads = () => {
                         <p className={classes.olympiads__title}>{t("profile-olympiads:olympiads")}</p>
                         {fetchedUserOlympiadList?.map((userOlympiad, index, self) => {
                             return (
-                                <div className={[
+                                <div key={index} className={[
                                     classes.editable,
                                     userOlympiad.isEditing ? classes.is_editing : undefined,
                                 ].join(" ")}>
@@ -334,10 +334,10 @@ const Olympiads = () => {
                                                         -- select an option --
                                                     </option>
                                                     {
-                                                        achievements.map((achievement, index, self) => {
+                                                        achievements.map((achievement, index2, self) => {
                                                             return (
                                                                 <option
-                                                                    key={index}
+                                                                    key={index2}
                                                                     value={achievement}
                                                                     className={classes.olympiads__select_option}
                                                                 >
