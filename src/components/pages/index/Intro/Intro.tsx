@@ -7,6 +7,7 @@ import icons from "@/utils/icons";
 import { API } from "@/api/cpdefAPI";
 import { CpfedAccount } from "@/interfaces/account";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Intro = () => {
     const router = useRouter();
@@ -36,7 +37,8 @@ const Intro = () => {
                     <img src={icons.developer.src} />
                     <div className={classes.intro__content}>
                         <div className={classes.intro__partner}>
-                            <img src={icons.freedomLogo.src} />
+                            <Link href="https://ffin.kz" target={"_blank"}><img src={icons.freedomLogo.src} /></Link>
+                            {/* <img src={icons.freedomLogo.src} /> */}
                             <p>{t("intro:general-partner")}</p>
                         </div>
                         <p className={classes.intro__description}>
