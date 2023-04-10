@@ -66,6 +66,10 @@ section.intro {
 
         a img {
             width: 500px;
+
+            @media screen and (max-width: $break-s) {
+                width: 300px;
+            }
         }
 
         margin-bottom: 50px;
