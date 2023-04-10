@@ -55,13 +55,13 @@ section.intro {
 
     &__partner {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
 
         p {
-            @include font(15px, 700, 18px, #387C22);
+            @include font(20px, 700, 24px, #387C22);
         }
 
         a img {

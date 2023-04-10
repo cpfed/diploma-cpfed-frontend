@@ -37,23 +37,31 @@ const Intro = () => {
                     <img src={icons.developer.src} />
                     <div className={classes.intro__content}>
                         <div className={classes.intro__partner}>
-                            <Link href="https://ffin.kz" target={"_blank"}><img src={icons.freedomLogo.src} /></Link>
+                            <Link href="https://ffin.kz" target={"_blank"}>
+                                <img src={icons.freedomLogo.src} />
+                            </Link>
                             {/* <img src={icons.freedomLogo.src} /> */}
                             <p>{t("intro:general-partner")}</p>
                         </div>
                         <p className={classes.intro__description}>
                             {t("intro:title")}
                         </p>
-                        {
-                            isRegistered ? <p className={classes.intro__subdescription}>{t("intro:successfully-registered")}</p>
-                            : !isRegistrationPossible ? <p className={classes.intro__subdescription}>{t("intro:unavailable-register")}</p>
-                            : <button
+                        {isRegistered ? (
+                            <p className={classes.intro__subdescription}>
+                                {t("intro:successfully-registered")}
+                            </p>
+                        ) : !isRegistrationPossible ? (
+                            <p className={classes.intro__subdescription}>
+                                {t("intro:unavailable-register")}
+                            </p>
+                        ) : (
+                            <button
                                 onClick={() => router.push("/signUp")}
                                 className={classes.intro__button}
                             >
                                 {t("intro:button")}
                             </button>
-                        }
+                        )}
                     </div>
                 </div>
             </Container>
