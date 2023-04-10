@@ -41,7 +41,7 @@ const Intro = () => {
                                 <img src={icons.freedomLogo.src} />
                             </Link>
                             {/* <img src={icons.freedomLogo.src} /> */}
-                            <p>{t("intro:general-partner")}</p>
+                            {/* <p>{t("intro:general-partner")}</p> */}
                         </div>
                         <p className={classes.intro__description}>
                             {t("intro:title")}
