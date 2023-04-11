@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Container from "@/components/ui/Container";
 import classes from "./FAQ.module.scss";
 import useTranslation from 'next-translate/useTranslation'
+import Link from "next/link";
 
 import { elements } from ".";
 
@@ -41,12 +42,13 @@ const FAQ = () => {
                                                 <span className={classes.faq__cardList_card_answer}>
                                                     {t(element.answer)}
                                                     {element.withLink ? (
-                                                        <a 
-                                                            href={element.link} 
+                                                        <Link 
+                                                            href={t(element.link)}
+                                                            target="_blank" 
                                                             className={classes.faq__cardList_card_link}
                                                         >
-                                                            {element.link}
-                                                        </a>
+                                                            {t(element.linkTitle)}
+                                                        </Link>
                                                     ) : (
                                                         <></>
                                                     )}
