@@ -11,10 +11,10 @@ interface FAQElement {
 	linkTitle: string
 }
 
-const maxFaq = 7;
+const maxFaq = 8;
 
 export const elements: FAQElement[] = range(maxFaq).map(value=>{
-	if (value == 5 || value == maxFaq) {
+	if (value == 5 || value == 7) {
 		return {
 			question: `faq:faq-${value}`,
 			answer: `faq:faq-${value}-content`,
