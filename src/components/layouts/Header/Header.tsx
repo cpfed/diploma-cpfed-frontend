@@ -36,7 +36,11 @@ const Header = () => {
                 onBurger();
             }
         });
-    });
+    }, []);
+
+    useEffect(() => {
+        onBurger();
+    }, [router.asPath])
 
     return (
         <header className={classes.header} ref={headerRef}>
