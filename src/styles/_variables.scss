@@ -57,6 +57,10 @@ $break-xxl: 1440px;
 	@include font(18px, 600, 20px, $black);
     padding: 12px;
     color: #000000AD;
+
+	@media screen and (max-width: $break-sl) {
+		@include font(16px, 600, 18px, $black);
+	}
 }
 
 .input_select_container {

@@ -163,6 +163,10 @@ section.registration {
         @extend .select_container;
         width: 511px;
 
+        @media screen and (max-width: $break-sl) {
+            width: 320px;
+        }
+
         &_option {
             @extend .input_select_text;
         }
