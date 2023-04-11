@@ -18,6 +18,13 @@ const Header = () => {
 
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>();
 
+    const offBurger = () => {
+        headerRef.current?.classList.remove(classes.header__active);
+        burgerRef.current?.classList.remove(classes.header__active);
+        mobileContentRef.current?.classList.add(classes.disabled);
+        document.body.classList.remove("lock");
+    }
+
     const onBurger = () => {
         headerRef.current?.classList.toggle(classes.header__active);
         burgerRef.current?.classList.toggle(classes.burger__active);
@@ -39,7 +46,7 @@ const Header = () => {
     }, []);
 
     useEffect(() => {
-        onBurger();
+        offBurger();
     }, [router.asPath])
 
     return (
