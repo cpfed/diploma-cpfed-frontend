@@ -29,7 +29,7 @@ const Registration = () => {
     const [employmentStatus, setEmploymentStatus] = useState<EmploymentStatus>(
         EmploymentStatus.NOT_WORKING_AND_STUDYING
     );
-    const [employmentStatusPlace, setEmploymentStatusPlace] = useState<string | null>(null);
+    const [employmentStatusPlace, setEmploymentStatusPlace] = useState<string>("");
     const [regionList, setRegionList] = useState<Region[]>([]);
     const employmentStatusList = [
         EmploymentStatus.NOT_WORKING_AND_STUDYING,

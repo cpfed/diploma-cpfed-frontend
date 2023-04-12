@@ -117,7 +117,7 @@ export const API = {
 
     signUp: async (account: CpfedAccountWithPassword): Promise<void> => {
         try {
-            await publicInstance.post("/authentication/v1/sign-up/", account);
+            await publicInstance.post("/authentication/v1/sign-up/", {...account, place_of_study_of_work: account.place_of_study_of_work == "" ? null : account.place_of_study_of_work });
         } catch (error) {
             throw error;
         }
