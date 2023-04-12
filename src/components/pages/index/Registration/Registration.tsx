@@ -12,8 +12,11 @@ import useTranslation from "next-translate/useTranslation";
 import icons from "@/utils/icons";
 import { EmploymentStatus } from "@/enums/employmentStatus";
 import { RegionList, Region } from "@/interfaces/region";
+import { login } from "@/store/account/thunk";
+import { useAppDispatch } from "@/hooks/reduxHooks";
 
 const Registration = () => {
+    const dispatch = useAppDispatch();
     const router = useRouter();
     const { t } = useTranslation();
 
@@ -29,13 +32,14 @@ const Registration = () => {
     const [employmentStatus, setEmploymentStatus] = useState<EmploymentStatus>(
         EmploymentStatus.NOT_WORKING_AND_STUDYING
     );
-    const [employmentStatusPlace, setEmploymentStatusPlace] = useState<string>("");
+    const [employmentStatusPlace, setEmploymentStatusPlace] =
+        useState<string>("");
     const [regionList, setRegionList] = useState<Region[]>([]);
     const employmentStatusList = [
         EmploymentStatus.NOT_WORKING_AND_STUDYING,
         EmploymentStatus.STUDYING,
         EmploymentStatus.WORKING,
-    ]
+    ];
     const [selectedRegion, setselectedRegion] = useState<number>(1);
     const [uin, setUin] = useState<string>("");
 
@@ -60,16 +64,17 @@ const Registration = () => {
             .catch((err) => {
                 toast.error(err);
             });
-    }
+    };
 
-    useEffect(() => { fetchRegions() }, []);
+    useEffect(() => {
+        fetchRegions();
+    }, []);
 
-    useEffect(()=>{
-        if(employmentStatus == EmploymentStatus.NOT_WORKING_AND_STUDYING)
-        {
+    useEffect(() => {
+        if (employmentStatus == EmploymentStatus.NOT_WORKING_AND_STUDYING) {
             setEmploymentStatusPlace("");
         }
-    }, [employmentStatus])
+    }, [employmentStatus]);
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -91,10 +96,11 @@ const Registration = () => {
             citizen_of_kz: isCitizenOfKazakhstan,
             employment_status: employmentStatus,
             region_id: selectedRegion,
-            place_of_study_of_work: employmentStatusPlace
+            place_of_study_of_work: employmentStatusPlace,
         })
             .then((_) => {
-                API.login(email, password)
+                dispatch(login({ email, password }))
+                    .unwrap()
                     .then((_) => {
                         API.registerChampionship()
                             .then((_) => {
@@ -114,13 +120,12 @@ const Registration = () => {
             });
     };
 
-    useEffect(() => { }, []);
+    useEffect(() => {}, []);
 
     return (
         <section className={classes.registration}>
             <Container>
                 <form className={classes.form} onSubmit={handleSubmit}>
-
                     {/* GROUP 1 */}
                     <div className={classes.form__group}>
                         <div
@@ -334,17 +339,25 @@ const Registration = () => {
                                     <input
                                         type="radio"
                                         checked={isCitizenOfKazakhstan}
-                                        onChange={(_) => setIsCitizenOfKazakhstan(true)}
+                                        onChange={(_) =>
+                                            setIsCitizenOfKazakhstan(true)
+                                        }
                                     />
-                                    <label className={classes.radio}>{t("registration:yes")}</label>
+                                    <label className={classes.radio}>
+                                        {t("registration:yes")}
+                                    </label>
                                 </div>
                                 <div className={classes.form__group_item}>
                                     <input
                                         type="radio"
                                         checked={!isCitizenOfKazakhstan}
-                                        onChange={(_) => setIsCitizenOfKazakhstan(false)}
+                                        onChange={(_) =>
+                                            setIsCitizenOfKazakhstan(false)
+                                        }
                                     />
-                                    <label className={classes.radio}>{t("registration:no")}</label>
+                                    <label className={classes.radio}>
+                                        {t("registration:no")}
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -362,38 +375,50 @@ const Registration = () => {
                             </label>
                             <select
                                 onChange={(e) => {
-                                    setEmploymentStatus(e.target.value as EmploymentStatus)
+                                    setEmploymentStatus(
+                                        e.target.value as EmploymentStatus
+                                    );
                                 }}
                                 required
                                 className={classes.form__select}
                             >
-                                {
-                                    employmentStatusList.map((employmentStatus, index, self) => {
+                                {employmentStatusList.map(
+                                    (employmentStatus, index, self) => {
                                         return (
                                             <option
                                                 key={index}
                                                 value={employmentStatus}
-                                                className={classes.form__select_option}
+                                                className={
+                                                    classes.form__select_option
+                                                }
                                             >
-                                                {t("education-or-job:" + employmentStatus)}
+                                                {t(
+                                                    "education-or-job:" +
+                                                        employmentStatus
+                                                )}
                                             </option>
-                                        )
-                                    })
-                                }
+                                        );
+                                    }
+                                )}
                             </select>
                         </div>
-                        {employmentStatus != EmploymentStatus.NOT_WORKING_AND_STUDYING ?
+                        {employmentStatus !=
+                        EmploymentStatus.NOT_WORKING_AND_STUDYING ? (
                             <>
                                 <div className={classes.form__group_item}>
                                     <label className={classes.form__label}>
-                                        {t("registration:education-or-job-place")}
+                                        {t(
+                                            "registration:education-or-job-place"
+                                        )}
                                     </label>
                                     <input
                                         className={classes.form__input}
                                         type="education-or-job-place"
                                         value={employmentStatusPlace ?? ""}
                                         onChange={(event) =>
-                                            setEmploymentStatusPlace(event.currentTarget.value)
+                                            setEmploymentStatusPlace(
+                                                event.currentTarget.value
+                                            )
                                         }
                                         required
                                     />
@@ -404,29 +429,37 @@ const Registration = () => {
                                     </label>
                                     <select
                                         onChange={(e) => {
-                                            setselectedRegion(Number(e.target.value))
+                                            setselectedRegion(
+                                                Number(e.target.value)
+                                            );
                                         }}
                                         required
                                         className={classes.form__select}
                                     >
-                                        {
-                                            regionList.map((region, index, self) => {
+                                        {regionList.map(
+                                            (region, index, self) => {
                                                 return (
                                                     <option
                                                         key={index}
                                                         value={region.id}
-                                                        className={classes.form__select_option}
+                                                        className={
+                                                            classes.form__select_option
+                                                        }
                                                     >
-                                                        {t("regions:" + region.name)}
+                                                        {t(
+                                                            "regions:" +
+                                                                region.name
+                                                        )}
                                                     </option>
-                                                )
-                                            })
-                                        }
+                                                );
+                                            }
+                                        )}
                                     </select>
                                 </div>
-                            </> :
-                            <>
-                            </>}
+                            </>
+                        ) : (
+                            <></>
+                        )}
 
                         <button type="submit">
                             {t("registration:register")}
