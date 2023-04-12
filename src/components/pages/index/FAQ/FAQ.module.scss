@@ -37,10 +37,10 @@ section.faq {
                 border: solid 1px #00000033;
                 margin: 2px 0px 2px 0px;
                 padding: 30px 50px 30px 50px;
-                cursor: pointer;
 
                 &_text {
                     @include font(25px, 600, 31px, $black);
+                    cursor: pointer;
 
                     @media screen and (max-width: $break-l) {
                         @include font(20px, 600, 25px, $black);
@@ -55,6 +55,10 @@ section.faq {
                         @include font(25px, 600, 31px, $black);
                     }
                 }
+            }
+
+            &_link{
+                text-decoration: underline;
             }
 
             &_answer {

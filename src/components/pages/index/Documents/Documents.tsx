@@ -24,7 +24,7 @@ const Documents = () => {
                         {elements.map((element, index, self) => {
                             return (
                                 <li key={index} className={classes.item}>
-                                    <Link href={t(element.link)} className={classes.document}>
+                                    <Link href={t(element.link)} target={"_blank"} className={classes.document}>
                                         <p className={classes.document__text}>
                                             {t(element.title)}
                                         </p>
