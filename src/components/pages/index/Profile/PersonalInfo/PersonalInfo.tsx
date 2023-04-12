@@ -28,7 +28,7 @@ const PersonalInfo = () => {
     const [employmentStatus, setEmploymentStatus] = useState<EmploymentStatus>(
         EmploymentStatus.NOT_WORKING_AND_STUDYING
     );
-    const [employmentStatusPlace, setEmploymentStatusPlace] = useState<string>("");
+    const [employmentStatusPlace, setEmploymentStatusPlace] = useState<string | null>(null);
     const [regionList, setRegionList] = useState<Region[]>([]);
     const employmentStatusList = [
         EmploymentStatus.NOT_WORKING_AND_STUDYING,
@@ -79,6 +79,13 @@ const PersonalInfo = () => {
     }
 
     useEffect(() => { fetchRegions(); fetchInfo() }, []);
+
+    useEffect(()=>{
+        if(employmentStatus == EmploymentStatus.NOT_WORKING_AND_STUDYING)
+        {
+            setEmploymentStatusPlace("");
+        }
+    }, [employmentStatus])
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -407,7 +414,7 @@ const PersonalInfo = () => {
 
                                         className={classes.form__input}
                                         type="education-or-job-place"
-                                        value={employmentStatusPlace}
+                                        value={employmentStatusPlace ?? ""}
                                         onChange={(event) =>
                                             setEmploymentStatusPlace(event.currentTarget.value)
                                         }
