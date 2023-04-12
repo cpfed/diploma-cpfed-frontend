@@ -32,9 +32,7 @@ const Footer = () => {
                     </div>
                     <div className={classes.contacts}>
                         <p className={classes.contacts__text}>{t("footer:contacts")}</p>
-                        <Link href={"tel:+77277255527"}><p className={classes.contacts__link}>8 (727) 725 - 55 - 27</p></Link>
-                        <Link href={"mailto:cpfed@gmail.com"}><p className={classes.contacts__link}>cpfed@gmail.com</p></Link>
-                        <p className={classes.contacts__location}>{t("footer:location")}</p>
+                        <Link href={"mailto:cpfed@gmail.com"}><p className={classes.contacts__link}>admin@cpfed.kz</p></Link>
                     </div>
 
                     <div className={classes.usefull_links}>
