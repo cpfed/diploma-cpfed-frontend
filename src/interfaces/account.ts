@@ -19,7 +19,7 @@ export interface CpfedAccount {
     t_shirt_size: TShirtSize
     gender: Gender
     citizen_of_kz: boolean
-    place_of_study_of_work: string
+    place_of_study_of_work: string | null
 }
 
 export interface CpfedAccountWithPassword extends CpfedAccount {

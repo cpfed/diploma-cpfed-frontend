@@ -64,6 +64,13 @@ const Registration = () => {
 
     useEffect(() => { fetchRegions() }, []);
 
+    useEffect(()=>{
+        if(employmentStatus == EmploymentStatus.NOT_WORKING_AND_STUDYING)
+        {
+            setEmploymentStatusPlace("");
+        }
+    }, [employmentStatus])
+
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
@@ -84,7 +91,7 @@ const Registration = () => {
             citizen_of_kz: isCitizenOfKazakhstan,
             employment_status: employmentStatus,
             region_id: selectedRegion,
-            place_of_study_of_work: employmentStatusPlace
+            place_of_study_of_work: employmentStatusPlace == "" ? null : employmentStatusPlace
         })
             .then((_) => {
                 API.login(email, password)
