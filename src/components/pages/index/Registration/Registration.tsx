@@ -36,7 +36,7 @@ const Registration = () => {
         EmploymentStatus.STUDYING,
         EmploymentStatus.WORKING,
     ]
-    const [selectedRegion, setselectedRegion] = useState<number>(0);
+    const [selectedRegion, setselectedRegion] = useState<number>(1);
     const [uin, setUin] = useState<string>("");
 
     const [gender, setGender] = useState<Gender>(Gender.NON_BINARY);
