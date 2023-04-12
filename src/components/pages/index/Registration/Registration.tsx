@@ -29,7 +29,7 @@ const Registration = () => {
     const [employmentStatus, setEmploymentStatus] = useState<EmploymentStatus>(
         EmploymentStatus.NOT_WORKING_AND_STUDYING
     );
-    const [employmentStatusPlace, setEmploymentStatusPlace] = useState<string>("");
+    const [employmentStatusPlace, setEmploymentStatusPlace] = useState<string | null>(null);
     const [regionList, setRegionList] = useState<Region[]>([]);
     const employmentStatusList = [
         EmploymentStatus.NOT_WORKING_AND_STUDYING,
@@ -91,7 +91,7 @@ const Registration = () => {
             citizen_of_kz: isCitizenOfKazakhstan,
             employment_status: employmentStatus,
             region_id: selectedRegion,
-            place_of_study_of_work: employmentStatusPlace == "" ? null : employmentStatusPlace
+            place_of_study_of_work: employmentStatusPlace
         })
             .then((_) => {
                 API.login(email, password)
@@ -391,7 +391,7 @@ const Registration = () => {
                                     <input
                                         className={classes.form__input}
                                         type="education-or-job-place"
-                                        value={employmentStatusPlace}
+                                        value={employmentStatusPlace ?? ""}
                                         onChange={(event) =>
                                             setEmploymentStatusPlace(event.currentTarget.value)
                                         }
