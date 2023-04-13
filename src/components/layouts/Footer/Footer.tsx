@@ -32,7 +32,7 @@ const Footer = () => {
                     </div>
                     <div className={classes.contacts}>
                         <p className={classes.contacts__text}>{t("footer:contacts")}</p>
-                        <Link href={"mailto:cpfed@gmail.com"}><p className={classes.contacts__link}>admin@cpfed.kz</p></Link>
+                        <Link href={"mailto:admin@cpfed.kz"}><p className={classes.contacts__link}>admin@cpfed.kz</p></Link>
                     </div>
 
                     <div className={classes.usefull_links}>
