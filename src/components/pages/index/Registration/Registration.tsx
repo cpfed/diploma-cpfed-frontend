@@ -26,6 +26,8 @@ const Registration = () => {
     const [surname, setSurname] = useState<string>("");
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
+    const [repeatPassword, setRepeatPassword] = useState<string>("");
+    const [isPasswordsEqual, setIsPasswordsEqual] = useState<boolean>(true);
     const [phone, setPhone] = useState<string>("+7");
     const [isCitizenOfKazakhstan, setIsCitizenOfKazakhstan] =
         useState<boolean>(false);
@@ -76,8 +78,16 @@ const Registration = () => {
         }
     }, [employmentStatus]);
 
+    const passConfirm = () => {
+        setIsPasswordsEqual(password == repeatPassword);
+    }
+
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+
+        if (isPasswordsEqual == false) {
+            return;
+        }
 
         if (ruleCheckboxRef.current?.checked == false) {
             toast.warn(t("registration:warn"));
@@ -208,7 +218,7 @@ const Registration = () => {
                                             setGender(Gender.WOMAN)
                                         }
                                     />
-                                    <label className={classes.radio}>F</label>
+                                    <label className={classes.radio}>{t("registration:woman")}</label>
                                 </div>
                                 <div className={classes.form__group_item}>
                                     <input
@@ -216,7 +226,7 @@ const Registration = () => {
                                         checked={Gender.MAN == gender}
                                         onChange={(_) => setGender(Gender.MAN)}
                                     />
-                                    <label className={classes.radio}>M</label>
+                                    <label className={classes.radio}>{t("registration:man")}</label>
                                 </div>
                                 <div className={classes.form__group_item}>
                                     <input
@@ -226,7 +236,7 @@ const Registration = () => {
                                             setGender(Gender.NON_BINARY)
                                         }
                                     />
-                                    <label className={classes.radio}>N-B</label>
+                                    <label className={classes.radio}>{t("registration:non-binary")}</label>
                                 </div>
                             </div>
                         </div>
@@ -287,10 +297,48 @@ const Registration = () => {
                                 onChange={(event) =>
                                     setPassword(event.currentTarget.value)
                                 }
+                                onKeyUp={() =>
+                                    passConfirm() 
+                                }
                                 minLength={8}
                                 required
                             />
                         </div>
+                        <div className={classes.form__group_item}>
+                            <label className={classes.form__label}>
+                                {t("registration:repeat-password")}
+                            </label>
+                            <input
+                                className={classes.form__input}
+                                type="password"
+                                value={repeatPassword}
+                                onChange={(event) =>
+                                    setRepeatPassword(event.currentTarget.value)
+                                }
+                                onKeyUp={() =>
+                                    passConfirm() 
+                                }
+                                minLength={8}
+                                required
+                            />
+                        </div>
+                        {!isPasswordsEqual ? 
+                            (<>
+                                <div className={classes.form__group_item}>
+                                    <p className={[
+                                                classes.form__warning,
+                                                // classes.form__label,
+                                            ].join(" ")
+                                        }>
+                                        {t("registration:password-does-not-match")}
+                                    </p>
+                                </div>
+                            </>
+                            ) : (
+                                <></>
+                            )
+                        }
+
                         <div className={classes.form__group_item}>
                             <label className={classes.form__label}>
                                 {t("registration:iin")}
@@ -370,9 +418,6 @@ const Registration = () => {
                             </p>
                         </div>
                         <div className={classes.form__group_item}>
-                            <label className={classes.form__label}>
-                                {t("registration:education-or-job")}
-                            </label>
                             <select
                                 onChange={(e) => {
                                     setEmploymentStatus(
@@ -407,9 +452,10 @@ const Registration = () => {
                             <>
                                 <div className={classes.form__group_item}>
                                     <label className={classes.form__label}>
-                                        {t(
-                                            "registration:education-or-job-place"
-                                        )}
+                                        {employmentStatus == EmploymentStatus.STUDYING ? 
+                                            t("registration:education-place") : 
+                                            t("registration:job-place")
+                                        }
                                     </label>
                                     <input
                                         className={classes.form__input}
@@ -425,7 +471,10 @@ const Registration = () => {
                                 </div>
                                 <div className={classes.form__group_item}>
                                     <label className={classes.form__label}>
-                                        {t("registration:city-region")}
+                                        {employmentStatus == EmploymentStatus.STUDYING ? 
+                                            t("registration:city-region-education") : 
+                                            t("registration:city-region-job")
+                                        }
                                     </label>
                                     <select
                                         onChange={(e) => {

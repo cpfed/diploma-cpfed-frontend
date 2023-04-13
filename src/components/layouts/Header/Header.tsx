@@ -10,6 +10,7 @@ import { setIsLoggedIn } from "@/store/account/slice";
 import { useDispatch } from "react-redux";
 import { getTokens } from "@/utils/tokens";
 import { useTypedSelector } from "@/hooks/reduxHooks";
+import icons from "@/utils/icons";
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Header = () => {
     const burgerRef = useRef<HTMLDivElement>(null);
     const mobileContentRef = useRef<HTMLDivElement>(null);
 
-    const { isLoggedIn } = useTypedSelector((state)=>(state.account))
+    const { isLoggedIn } = useTypedSelector((state) => (state.account))
 
     const offBurger = () => {
         headerRef.current?.classList.remove(classes.header__active);
@@ -112,11 +113,31 @@ const Header = () => {
                         classes.header__navigation_mobile,
                     ].join(" ")}
                 >
-                    <div
-                        ref={burgerRef}
-                        className={classes.burger}
-                        onClick={onBurger}
-                    ></div>
+                    <div className={classes.header__top}>
+                        <div>
+                            <div
+                                ref={burgerRef}
+                                className={classes.burger}
+                                onClick={onBurger}
+                            ></div>
+                        </div>
+
+                        <div className={classes.header__top_icon_box}>
+                            {isLoggedIn ? (
+                                <Link href={"/profile"}>
+                                    <img
+                                        src={icons.myAccount.src}
+                                    ></img>
+                                </Link>
+                            ) : (
+                                <Link href={"/login"}>
+                                    <img
+                                        src={icons.singIn.src}
+                                    ></img>
+                                </Link>
+                            )}
+                        </div>
+                    </div>
 
                     <div className={classes.disabled} ref={mobileContentRef}>
                         <ul

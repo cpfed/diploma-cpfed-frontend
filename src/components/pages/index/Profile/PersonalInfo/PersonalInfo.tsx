@@ -221,7 +221,7 @@ const PersonalInfo = () => {
                                             setGender(Gender.WOMAN)
                                         }
                                     />
-                                    <label className={classes.radio}>F</label>
+                                    <label className={classes.radio}>{t("registration:woman")}</label>
                                 </div>
                                 <div className={classes.form__group_item}>
                                     <input
@@ -231,7 +231,7 @@ const PersonalInfo = () => {
                                         checked={Gender.MAN == gender}
                                         onChange={(_) => setGender(Gender.MAN)}
                                     />
-                                    <label className={classes.radio}>M</label>
+                                    <label className={classes.radio}>{t("registration:man")}</label>
                                 </div>
                                 <div className={classes.form__group_item}>
                                     <input
@@ -243,7 +243,7 @@ const PersonalInfo = () => {
                                             setGender(Gender.NON_BINARY)
                                         }
                                     />
-                                    <label className={classes.radio}>N-B</label>
+                                    <label className={classes.radio}>{t("registration:non-binary")}</label>
                                 </div>
                             </div>
                         </div>
@@ -377,9 +377,6 @@ const PersonalInfo = () => {
                             </p>
                         </div>
                         <div className={classes.form__group_item}>
-                            <label className={classes.form__label}>
-                                {t("registration:education-or-job")}
-                            </label>
                             <select
                                 disabled={!isEditMode}
                                 onChange={(e) => {
@@ -407,7 +404,10 @@ const PersonalInfo = () => {
                             <>
                                 <div className={classes.form__group_item}>
                                     <label className={classes.form__label}>
-                                        {t("registration:education-or-job-place")}
+                                        {employmentStatus == EmploymentStatus.STUDYING ? 
+                                            t("registration:education-place") : 
+                                            t("registration:job-place")
+                                        }
                                     </label>
                                     <input
                                         disabled={!isEditMode}
@@ -423,7 +423,10 @@ const PersonalInfo = () => {
                                 </div>
                                 <div className={classes.form__group_item}>
                                     <label className={classes.form__label}>
-                                        {t("registration:city-region")}
+                                        {employmentStatus == EmploymentStatus.STUDYING ? 
+                                            t("registration:city-region-education") : 
+                                            t("registration:city-region-job")
+                                        }
                                     </label>
                                     <select
                                         disabled={!isEditMode}

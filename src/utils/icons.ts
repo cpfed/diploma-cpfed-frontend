@@ -14,6 +14,8 @@ import purpleAvatar from "public/images/avatars/purple_avatar.png";
 import pencil from 'public/images/pencil.png';
 import championshipIntro from "public/images/championship_intro.png";
 import documentLinkButton from "public/images/document_link_button.png"
+import myAccount from "public/images/my_account.png"
+import singIn from "public/images/sign_in.png"
 
 const icons = {
     headerEnter,
@@ -32,6 +34,8 @@ const icons = {
     pencil,
     championshipIntro,
     documentLinkButton,
+    myAccount,
+    singIn
 };
 
 export default icons;

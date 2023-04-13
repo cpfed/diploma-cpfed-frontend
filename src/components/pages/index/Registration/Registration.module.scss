@@ -41,6 +41,15 @@ section.registration {
 }
 
 
+.common_label {
+    @include font(14px, 400, 18px, rgba(0, 0, 0, 0.56));
+    margin-bottom: 4px;
+
+    @media screen and (max-width: $break-sl) {
+        @include font(12px, 400, 18px, #667085);
+    }
+}
+
 .form {
     display: flex;
 	flex-direction: row;
@@ -77,12 +86,7 @@ section.registration {
     }
 
     label {
-		@include font(14px, 400, 18px, rgba(0, 0, 0, 0.56));
-		margin-bottom: 4px;
-
-        @media screen and (max-width: $break-sl) {
-            @include font(12px, 400, 18px, #667085);
-        }
+		@extend .common_label
     }
 
     label.radio {
@@ -163,12 +167,21 @@ section.registration {
         @extend .select_container;
         width: 511px;
 
-        @media screen and (max-width: $break-sl) {
+        @media screen and (max-width: $break-l) {
             width: 320px;
+            height: 40px;
+            padding: 0px 0px 0px 10px;
+            border-radius: 3px;
         }
+
 
         &_option {
             @extend .input_select_text;
         }
+    }
+
+    &__warning{
+        @extend .common_label;
+        color: red;
     }
 }

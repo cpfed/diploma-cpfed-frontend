@@ -179,6 +179,13 @@ section.personalInfo {
         @extend .select_container;
         width: 511px;
 
+        @media screen and (max-width: $break-l) {
+            width: 320px;
+            height: 40px;
+            padding: 0px 0px 0px 10px;
+            border-radius: 3px;
+        }
+
         &_option {
             @extend .input_select_text;
         }
