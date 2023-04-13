@@ -1,6 +1,6 @@
 {
     "locales": ["ru", "kz"],
-    "defaultLocale": "ru",
+    "defaultLocale": "kz",
     "pages": {
         "*": [
             "championship-intro", 
