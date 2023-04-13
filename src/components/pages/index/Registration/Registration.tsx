@@ -228,16 +228,6 @@ const Registration = () => {
                                     />
                                     <label className={classes.radio}>{t("registration:man")}</label>
                                 </div>
-                                <div className={classes.form__group_item}>
-                                    <input
-                                        type="radio"
-                                        checked={Gender.NON_BINARY == gender}
-                                        onChange={(_) =>
-                                            setGender(Gender.NON_BINARY)
-                                        }
-                                    />
-                                    <label className={classes.radio}>{t("registration:non-binary")}</label>
-                                </div>
                             </div>
                         </div>
                     </div>
