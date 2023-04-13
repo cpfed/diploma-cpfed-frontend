@@ -2,13 +2,17 @@ import React, { HtmlHTMLAttributes, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 import Container from "@/components/ui/Container";
-import { getTokens } from "@/utils/tokens";
 import classes from "./Header.module.scss";
 import { elements, authElements } from ".";
 import { useRouter } from "next/router";
 import useTranslation from "next-translate/useTranslation"
+import { setIsLoggedIn } from "@/store/account/slice";
+import { useDispatch } from "react-redux";
+import { getTokens } from "@/utils/tokens";
+import { useTypedSelector } from "@/hooks/reduxHooks";
 
 const Header = () => {
+    const dispatch = useDispatch();
     const router = useRouter();
     const { t } = useTranslation();
 
@@ -16,7 +20,7 @@ const Header = () => {
     const burgerRef = useRef<HTMLDivElement>(null);
     const mobileContentRef = useRef<HTMLDivElement>(null);
 
-    const [isLoggedIn, setIsLoggedIn] = useState<boolean>();
+    const { isLoggedIn } = useTypedSelector((state)=>(state.account))
 
     const offBurger = () => {
         headerRef.current?.classList.remove(classes.header__active);
@@ -32,8 +36,9 @@ const Header = () => {
         document.body.classList.toggle("lock");
     };
 
+
     useEffect(() => {
-        setIsLoggedIn(getTokens().access !== undefined);
+        dispatch(setIsLoggedIn(getTokens().access !== undefined));
 
         window.addEventListener("resize", (event) => {
             if (
@@ -48,6 +53,7 @@ const Header = () => {
     useEffect(() => {
         offBurger();
     }, [router.asPath])
+
 
     return (
         <header className={classes.header} ref={headerRef}>

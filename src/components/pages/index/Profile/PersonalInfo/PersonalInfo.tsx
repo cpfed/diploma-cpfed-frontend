@@ -80,6 +80,13 @@ const PersonalInfo = () => {
 
     useEffect(() => { fetchRegions(); fetchInfo() }, []);
 
+    useEffect(()=>{
+        if(employmentStatus == EmploymentStatus.NOT_WORKING_AND_STUDYING)
+        {
+            setEmploymentStatusPlace("");
+        }
+    }, [employmentStatus])
+
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
@@ -407,7 +414,7 @@ const PersonalInfo = () => {
 
                                         className={classes.form__input}
                                         type="education-or-job-place"
-                                        value={employmentStatusPlace}
+                                        value={employmentStatusPlace ?? ""}
                                         onChange={(event) =>
                                             setEmploymentStatusPlace(event.currentTarget.value)
                                         }

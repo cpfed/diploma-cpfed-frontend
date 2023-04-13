@@ -107,7 +107,6 @@ export const API = {
                     password,
                 }
             );
-
             setTokens(res.data.tokens);
             return res.data;
         } catch (error: any) {
@@ -115,9 +114,24 @@ export const API = {
         }
     },
 
+    logout: async () => {
+        try {
+			const res = await privateInstance.post(
+				`/authentication/v1/logout/`,
+                {
+					refresh: getTokens().refresh,
+                }
+			);
+			clearTokens();
+            return res.data;
+        } catch (error) {
+            throw error;
+        }
+    },
+
     signUp: async (account: CpfedAccountWithPassword): Promise<void> => {
         try {
-            await publicInstance.post("/authentication/v1/sign-up/", account);
+            await publicInstance.post("/authentication/v1/sign-up/", {...account, place_of_study_of_work: account.place_of_study_of_work == "" ? null : account.place_of_study_of_work });
         } catch (error) {
             throw error;
         }
@@ -347,21 +361,6 @@ export const API = {
             const res = await privateInstance.get<ContestCredentials>(
                 `/platforms/v1/get-contest-credentials/${id}/`
             );
-            return res.data;
-        } catch (error) {
-            throw error;
-        }
-    },
-
-    signOut: async () => {
-        try {
-			clearTokens();
-			const res = await privateInstance.post(
-				`/authentication/v1/logout/`,
-                {
-					refresh: getTokens().refresh,
-                }
-			);
             return res.data;
         } catch (error) {
             throw error;

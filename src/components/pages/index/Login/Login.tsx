@@ -6,27 +6,34 @@ import { API } from "@/api/cpdefAPI";
 import classes from "./Login.module.scss";
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
+import { login } from "@/store/account/thunk";
+import { useAppDispatch } from "@/hooks/reduxHooks";
+import toast from "@/utils/toast";
 
 const Login = () => {
+    const dispatch = useAppDispatch();
+
     const router = useRouter();
     const { t } = useTranslation();
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        setIsIncorrect(false);
 
-        API.login(emailRef.current?.value, passwordRef.current?.value)
-            .then((res) => {
-                router.push("/profile");
-            })
-            .catch((error) => {
-                setIsIncorrect(true);
-            });
+        dispatch(login({
+            email: emailRef.current?.value,
+            password: passwordRef.current?.value
+        }))
+        .unwrap()
+        .then(res=>{
+            router.push("/profile");
+        })
+        .catch(error=>{
+            toast.error(t("login:incorrect"))
+        })
     };
 
     const emailRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
-    const [isIncorrect, setIsIncorrect] = useState(false);
 
     return (
         <section className={classes.login}>
@@ -35,11 +42,6 @@ const Login = () => {
                     <p className={classes.login__title}>{t("login:title")}</p>
 
                     <form onSubmit={handleSubmit} className={classes.form}>
-                        {isIncorrect ? (
-                            <p className={classes.login__message}>
-                                {t("login:incorrect")}
-                            </p>
-                        ) : undefined}
                         <input
                             id="email"
                             type="email"
