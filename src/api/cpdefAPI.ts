@@ -348,7 +348,7 @@ export const API = {
     fetchRegions: async () => {
         try {
             const res = await publicInstance.get<RegionList>(
-                `/locations/v1/regions/`
+                `/locations/v1/regions?limit=100`
             );
             return res.data;
         } catch (error) {
