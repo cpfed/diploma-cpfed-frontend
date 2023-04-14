@@ -45,7 +45,7 @@ const Registration = () => {
     const [selectedRegion, setselectedRegion] = useState<number>(1);
     const [uin, setUin] = useState<string>("");
 
-    const [gender, setGender] = useState<Gender>(Gender.NON_BINARY);
+    const [gender, setGender] = useState<Gender>(Gender.WOMAN);
     const [tShirtSize, setTShirtSize] = useState<TShirtSize>(TShirtSize.M);
     const getAvatarSrc = () => {
         switch (gender) {
@@ -53,7 +53,7 @@ const Registration = () => {
                 return icons.blueAvatar.src;
             case Gender.WOMAN:
                 return icons.pinkAvatar.src;
-            case Gender.NON_BINARY:
+            default:
                 return icons.purpleAvatar.src;
         }
     };

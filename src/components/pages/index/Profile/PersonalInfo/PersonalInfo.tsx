@@ -38,7 +38,7 @@ const PersonalInfo = () => {
     const [selectedRegion, setselectedRegion] = useState<number>(0);
     const [uin, setUin] = useState<string>("");
 
-    const [gender, setGender] = useState<Gender>(Gender.NON_BINARY);
+    const [gender, setGender] = useState<Gender>(Gender.WOMAN);
     const [tShirtSize, setTShirtSize] = useState<TShirtSize>(TShirtSize.M);
     const getAvatarSrc = () => {
         switch (gender) {
