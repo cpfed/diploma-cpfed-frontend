@@ -6,6 +6,7 @@ import { API } from "@/api/cpdefAPI";
 import classes from "./ForgotPassword.module.scss";
 import useTranslation from "next-translate/useTranslation";
 import toast from "@/utils/toast";
+import { parseBackendError } from "@/utils/functions";
 
 const ForgotPassword = () => {
     const { t } = useTranslation();
@@ -20,7 +21,7 @@ const ForgotPassword = () => {
                 setIsSent(true);
             })
             .catch((err) => {
-                toast.error(err);
+                toast.error(t("common:error"));
             });
     };
 

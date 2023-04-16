@@ -64,7 +64,7 @@ const Registration = () => {
                 setRegionList(res.results);
             })
             .catch((err) => {
-                toast.error(err);
+                toast.error(t("common:error"))
             });
     };
 

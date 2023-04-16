@@ -17,8 +17,6 @@ const errorFromError = (err: any) => {
 }
 
 const error = (message: string) => {
-    console.log("ASD");
-        
     toast.error(message, toastOptions);
 }
 
