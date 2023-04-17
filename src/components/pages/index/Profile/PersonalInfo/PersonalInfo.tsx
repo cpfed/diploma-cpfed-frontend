@@ -35,7 +35,7 @@ const PersonalInfo = () => {
         EmploymentStatus.STUDYING,
         EmploymentStatus.WORKING,
     ]
-    const [selectedRegion, setselectedRegion] = useState<number>(0);
+    const [selectedRegion, setSelectedRegion] = useState<number>(0);
     const [uin, setUin] = useState<string>("");
 
     const [gender, setGender] = useState<Gender>(Gender.WOMAN);
@@ -74,7 +74,7 @@ const PersonalInfo = () => {
             setSurname(res.last_name);
             setTShirtSize(res.t_shirt_size);
             setUin(res.uin);
-            setselectedRegion(res.region_id);
+            setSelectedRegion(res.region_id);
         })
     }
 
@@ -108,7 +108,7 @@ const PersonalInfo = () => {
                 setIsCitizenOfKazakhstan(res.citizen_of_kz);
                 setPhone(res.phone_number);
                 setTShirtSize(res.t_shirt_size);
-                setselectedRegion(res.region_id);
+                setSelectedRegion(res.region_id);
             }
         )
         .catch(err=>{
@@ -419,7 +419,7 @@ const PersonalInfo = () => {
                                     <select
                                         disabled={!isEditMode}
                                         onChange={(e) => {
-                                            setselectedRegion(Number(e.target.value))
+                                            setSelectedRegion(Number(e.target.value))
                                         }}
                                         required
                                         className={classes.form__select}
