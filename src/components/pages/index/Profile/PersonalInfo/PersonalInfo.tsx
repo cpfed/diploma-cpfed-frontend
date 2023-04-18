@@ -35,7 +35,7 @@ const PersonalInfo = () => {
         EmploymentStatus.STUDYING,
         EmploymentStatus.WORKING,
     ]
-    const [selectedRegion, setSelectedRegion] = useState<number>(0);
+    const [selectedRegionId, setSelectedRegionId] = useState<number>(1);
     const [uin, setUin] = useState<string>("");
 
     const [gender, setGender] = useState<Gender>(Gender.WOMAN);
@@ -74,7 +74,7 @@ const PersonalInfo = () => {
             setSurname(res.last_name);
             setTShirtSize(res.t_shirt_size);
             setUin(res.uin);
-            setSelectedRegion(res.region_id);
+            setSelectedRegionId(res.region_id);
         })
     }
 
@@ -98,7 +98,7 @@ const PersonalInfo = () => {
             phone_number: phone,
             place_of_study_of_work: employmentStatusPlace,
             t_shirt_size: tShirtSize,
-            region_id: selectedRegion
+            region_id: selectedRegionId
         }).then(
             res=>{
                 setEmail(res.email);
@@ -108,7 +108,7 @@ const PersonalInfo = () => {
                 setIsCitizenOfKazakhstan(res.citizen_of_kz);
                 setPhone(res.phone_number);
                 setTShirtSize(res.t_shirt_size);
-                setSelectedRegion(res.region_id);
+                setSelectedRegionId(res.region_id);
             }
         )
         .catch(err=>{
@@ -366,6 +366,7 @@ const PersonalInfo = () => {
                         </div>
                         <div className={classes.form__group_item}>
                             <select
+                                value={employmentStatus}
                                 disabled={!isEditMode}
                                 onChange={(e) => {
                                     setEmploymentStatus(e.target.value as EmploymentStatus)
@@ -374,14 +375,14 @@ const PersonalInfo = () => {
                                 className={classes.form__select}
                             >
                                 {
-                                    employmentStatusList.map((employmentStatus, index, self) => {
+                                    employmentStatusList.map((employmentStatusElement, index, self) => {
                                         return (
                                             <option
                                                 key={index}
-                                                value={employmentStatus}
+                                                value={employmentStatusElement}
                                                 className={classes.form__select_option}
                                             >
-                                                {t("education-or-job:" + employmentStatus)}
+                                                {t("education-or-job:" + employmentStatusElement)}
                                             </option>
                                         )
                                     })
@@ -399,9 +400,8 @@ const PersonalInfo = () => {
                                     </label>
                                     <input
                                         disabled={!isEditMode}
-
                                         className={classes.form__input}
-                                        type="education-or-job-place"
+                                        type="text"
                                         value={employmentStatusPlace ?? ""}
                                         onChange={(event) =>
                                             setEmploymentStatusPlace(event.currentTarget.value)
@@ -419,11 +419,11 @@ const PersonalInfo = () => {
                                     <select
                                         disabled={!isEditMode}
                                         onChange={(e) => {
-                                            setSelectedRegion(Number(e.target.value))
+                                            setSelectedRegionId(Number(e.target.value))
                                         }}
                                         required
                                         className={classes.form__select}
-                                        defaultValue={selectedRegion}
+                                        value={selectedRegionId}
                                     >
                                         {
                                             regionList.map((region, index, self) => {
