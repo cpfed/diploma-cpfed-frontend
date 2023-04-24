@@ -26,7 +26,8 @@
             "subanchors",
             "regions",
             "education-or-job",
-            "contest-info"
+            "contest-info",
+            "partners"
         ] 
     },
     "layouts": {

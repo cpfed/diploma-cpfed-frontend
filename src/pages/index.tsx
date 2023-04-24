@@ -6,6 +6,7 @@ import Benefits from "@/components/pages/index/Benefits";
 import Documents from "@/components/pages/index/Documents";
 import Subanchors from "@/components/ui/Subanchors";
 import { LinkElement } from "@/interfaces/linkElement";
+import Partners from "@/components/pages/index/Partners";
 
 const subanchors: LinkElement[] = [
 	{
@@ -25,6 +26,10 @@ const subanchors: LinkElement[] = [
 		link: "#passOrder"
 	},
 	{
+		title: "subanchors:intro-partners",
+		link: "#partners"
+	},
+	{
 		title: "subanchors:intro-faq",
 		link: "#faq"
 	},
@@ -41,6 +46,7 @@ export default function Home() {
 		<About></About>
 		<Benefits></Benefits>
 		<PassOrder></PassOrder>
+		<Partners></Partners>
 		<FAQ></FAQ>
 		<Documents></Documents>
 	</>

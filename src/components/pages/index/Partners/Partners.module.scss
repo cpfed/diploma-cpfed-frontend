@@ -1,0 +1,45 @@
+@import "/src/styles/variables";
+
+section.partners {
+    background-color: $white;
+    margin: 0px;
+    padding: 50px 0px 50px 0px; 
+}
+
+.partners {
+    width: 100%;
+
+    &__title {
+        @include font(32px, 700, 39px, $black);
+        text-align: center;
+
+        @media screen and (max-width: $break-l) {
+            @include font(25px, 700, 25px, $black);
+        }
+    }
+
+    &__container {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+        justify-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+        margin: 100px 0px 0px 0px;
+
+        @media screen and (max-width: $break-l) {
+            margin: 20px 0px 0px 0px;
+        }
+    }
+}
+
+.img_container {
+    list-style: none;
+    margin: 20px 70px 20px 70px;
+    &__img {
+        max-width: 300px;
+    }    
+}
+
+
