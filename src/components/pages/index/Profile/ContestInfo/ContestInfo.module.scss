@@ -58,6 +58,8 @@ $main_container_width: 700px;
     }
 
     &__subcontainer {
+        display: flex;
+        flex-direction: column;
         padding: 0px 0px 10px 0px;
         width: 90%;
         @media screen and (max-width: $break-l) {
@@ -68,5 +70,6 @@ $main_container_width: 700px;
     &__p {
         @include font(20px, 600, 25px, rgba(0, 0, 0, 0.68));
         padding: 10px;
+        width: 100%;
     }
 }

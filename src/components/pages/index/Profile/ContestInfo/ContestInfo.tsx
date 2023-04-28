@@ -4,11 +4,13 @@ import Container from "@/components/ui/Container";
 import classes from "./ContestInfo.module.scss";
 import useTranslation from "next-translate/useTranslation"
 import { API } from "@/api/cpdefAPI";
+import Link from "next/link";
 
 const ContestInfo = () => {
 
     const { t } = useTranslation();
 
+    const [currentContestLink, setCurrentContestLink] = useState<string>("https://cpfed.contest.codeforces.com");
     const [currentContestID, setCurrentContestID] = useState<number>(0);
     const [currentContest, setCurrentContest] = useState<string>("test");
     const [currentChampionship, setCurrentChampionship] = useState<string>("test2");
@@ -64,6 +66,14 @@ const ContestInfo = () => {
                                     <p className={classes.contestInfo__p}>
                                         {currentContest}
                                     </p>
+                                </div>
+                                <div className={classes.contestInfo__subcontainer}>
+                                    <label className={classes.contestInfo__label}>
+                                        {t("contest-info:link")}
+                                    </label>
+                                    <Link href={currentContestLink} target={"_blank"} className={classes.contestInfo__p}>
+                                        {currentContestLink}
+                                    </Link>
                                 </div>
                                 <div className={classes.contestInfo__subcontainer}>
                                     <label className={classes.contestInfo__label}>
