@@ -3,5 +3,6 @@
     "button": "Зарегистрироваться",
     "general-partner": "-генеральный партнер",
     "successfully-registered": "Успешно зарегистрирован",
-    "unavailable-register": "Регистрация недоступна"
+    "unavailable-register": "Регистрация недоступна",
+    "contest-info": "Данные о контесте"
 }

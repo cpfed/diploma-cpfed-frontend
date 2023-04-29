@@ -35,16 +35,21 @@ section.intro {
         max-width: 400px;
         text-align: center;
 
-        margin-bottom: 84px;
-
         @media screen and (max-width: $break-l) {
             margin-bottom: 20px;
             @include font(25px, 700, 31px, $black);
         }
     }
 
+    &__registration_container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 200px;
+    }
+
     &__subdescription {
-        @include font(32px, 700, 39px, rgba(0,0,0, 0.63));
+        @include font(32px, 700, 39px, rgba(0, 0, 0, 0.63));
         max-width: 400px;
         text-align: center;
 
@@ -76,6 +81,16 @@ section.intro {
 
         @media screen and (max-width: $break-l) {
             margin-bottom: 0px;
+        }
+    }
+
+    &__link {
+        @include font(25px, 600, 32px, $black);
+        text-decoration: underline;
+        text-align: center;
+
+        @media screen and (max-width: $break-l) {
+            @include font(19px, 600, 25px, $black);
         }
     }
 
