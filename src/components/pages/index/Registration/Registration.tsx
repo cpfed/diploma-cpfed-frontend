@@ -58,6 +58,15 @@ const Registration = () => {
         }
     };
     
+    useEffect(() => {
+        API.activeChampionship().
+        then((res) => {
+            if (!res.is_registration_possible) {
+                router.push("/");
+            }
+        })
+        .catch((err) => {});
+    }, []);
 
     const fetchRegions = () => {
         API.fetchRegions()
