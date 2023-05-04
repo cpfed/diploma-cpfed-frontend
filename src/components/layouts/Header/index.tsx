@@ -41,6 +41,14 @@ const loggedOut: AuthElement[] = [
         iconSrc: icons.headerEnter.src,
         href: "/login",
     },
+];
+
+const loggedOutAndRegistrationPossible: AuthElement[] = [
+    {
+        title: "header:login",
+        iconSrc: icons.headerEnter.src,
+        href: "/login",
+    },
     {
         title: "header:sign-up",
         iconSrc: icons.headerAdd.src,
@@ -51,6 +59,7 @@ const loggedOut: AuthElement[] = [
 export const authElements = {
     loggedIn,
     loggedOut,
+    loggedOutAndRegistrationPossible,
 };
 
 export { default } from "./Header";

@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { getTokens } from "@/utils/tokens";
 import { useTypedSelector } from "@/hooks/reduxHooks";
 import icons from "@/utils/icons";
+import { API } from "@/api/cpdefAPI";
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const Header = () => {
     const mobileContentRef = useRef<HTMLDivElement>(null);
 
     const { isLoggedIn } = useTypedSelector((state) => (state.account))
+    const [ isRegistrationPossible, setIsRegistrationPossible ] = useState<boolean>(false); 
 
     const offBurger = () => {
         headerRef.current?.classList.remove(classes.header__active);
@@ -36,6 +38,14 @@ const Header = () => {
         mobileContentRef.current?.classList.toggle(classes.disabled);
         document.body.classList.toggle("lock");
     };
+
+    useEffect(() => {
+        API.activeChampionship().
+        then((res) => {
+            setIsRegistrationPossible(res.is_registration_possible);
+        })
+        .catch((err) => {});
+    }, []);
 
 
     useEffect(() => {
@@ -94,7 +104,9 @@ const Header = () => {
                         <ul className={classes.locale_and_account__item}>
                             {(isLoggedIn
                                 ? authElements.loggedIn
-                                : authElements.loggedOut
+                                : isRegistrationPossible 
+                                    ? authElements.loggedOutAndRegistrationPossible 
+                                    : authElements.loggedOut
                             ).map((value, index) => {
                                 return (
                                     <li key={index}>
@@ -181,7 +193,9 @@ const Header = () => {
                             </ul>
                             {(isLoggedIn
                                 ? authElements.loggedIn
-                                : authElements.loggedOut
+                                : isRegistrationPossible 
+                                    ? authElements.loggedOutAndRegistrationPossible 
+                                    : authElements.loggedOut
                             ).map((element, index) => {
                                 return (
                                     <li
