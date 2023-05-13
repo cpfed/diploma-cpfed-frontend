@@ -1,0 +1,176 @@
+@import "/src/styles/variables";
+
+section.championshipResults {
+    background-color: $white;
+    margin: 50px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 1200px;
+
+    @media screen and (max-width: $break-l) {
+        width: 300px;
+    }
+
+    &__table {
+        text-align: center;
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 20px 0px 0px 0px;
+        // table-layout: fixed;
+        
+        @media screen and (max-width: $break-l) {
+            width: 300px;
+            display: block;
+            overflow-x: scroll;
+            overflow-y: scroll;
+        }
+    }
+}
+
+.container tr td {
+    @include font(17px, 600, 20px, $black);
+    padding: 20px 20px 20px 20px;
+    height: 100px;
+    width: 100px;
+
+    @media screen and (max-width: $break-l) {
+        @include font(16px, 600, 16px, $black);
+    }
+}
+
+.filterSwitcher {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 50px 0px 0px 0px;
+    width: 100%;
+    cursor: pointer;
+
+    &_text {
+        @include font(20px, 600, 25px, $black);
+
+        @media screen and (max-width: $break-l) {
+            @include font(15px, 600, 20px, $black);
+        }
+    }
+
+    &_plus{
+        @include font(30px, 600, 31px, $black);
+        float: right;
+
+        @media screen and (max-width: $break-l) {
+            @include font(25px, 600, 31px, $black);
+        }
+    }
+}
+
+.filterConfiguration {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+    @media screen and (max-width: $break-l) {
+        flex-direction: column;
+    }
+}
+
+.title {
+    @include font(31px, 700, 39px, $black);
+
+    @media screen and (max-width: $break-l) {
+        @include font(25px, 700, 31px, $black);
+    }
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: 20px;
+}
+
+.filterElement {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    &_text {
+        @include font(18px, 600, 20px, $black);
+        text-align: center;
+        margin: 0px 0px 10px 0px;
+        
+    
+        @media screen and (max-width: $break-l) {
+            @include font(15px, 600, 18px, $black);
+        }
+    }
+
+    @media screen and (max-width: $break-l) {
+        margin: 20px 0px 0px 0px;
+    }
+}
+
+.filterApplyButton {
+    margin: 20px 0px 0px 0px;
+    width: 200px;
+}
+
+.pagination {
+    margin: 20px 0px 0px 0px;
+}
+
+.pagination button {
+    background-color: $white;
+    @include font(15px, 600, 20px, $black);
+}
+
+.pagination p {
+    background-color: $white;
+    @include font(15px, 600, 20px, $black);
+}
+
+.filterElement input {
+    @extend .input_select_text;
+    @extend .input_select_container;
+    @include font(15px, 600, 20px, $black);
+    height: 40px;
+    padding: 0px 10px 0px 10px;
+}
+
+.filterElement select {
+    @extend .input_select_text;
+    @extend .input_select_container;
+    @extend .select_container;
+    @include font(15px, 600, 20px, $black);
+    height: 40px;
+    padding: 0px 10px 0px 10px;
+}
+
+.hidden {
+    font-size: 0;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    /* fade out, then shrink */
+    transition: opacity .125s,
+                font-size .2s .125s,
+                margin .2s .125s,
+                padding .2s .125s;
+}

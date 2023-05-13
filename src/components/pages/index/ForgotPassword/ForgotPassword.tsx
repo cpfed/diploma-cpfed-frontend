@@ -1,6 +1,5 @@
 import Container from "@/components/ui/Container";
 import React, { FormEvent, useRef, useState } from "react";
-import { useRouter } from "next/router";
 import { API } from "@/api/cpdefAPI";
 
 import classes from "./ForgotPassword.module.scss";

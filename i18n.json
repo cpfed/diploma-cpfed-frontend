@@ -27,7 +27,8 @@
             "regions",
             "education-or-job",
             "contest-info",
-            "partners"
+            "partners",
+            "championship-results"
         ] 
     },
     "layouts": {

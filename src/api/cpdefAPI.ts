@@ -26,6 +26,7 @@ import {
 import { RegionList } from "@/interfaces/region";
 import { ContestCredentials } from "@/interfaces/contestCredentials";
 import { Contest } from "@/interfaces/contest";
+import { CurrentChampionshipResultsList, CurrentChampionshipResultsRequest } from "@/interfaces/championshipResults";
 
 const publicInstance = axios.create({
     baseURL: process.env.CPFED_API_URL,
@@ -363,6 +364,23 @@ export const API = {
             );
             return res.data;
         } catch (error) {
+            throw error;
+        }
+    },
+
+    fetchChampionshipResults: async (request: CurrentChampionshipResultsRequest) => {
+        try {
+            var filterRegionId = "";
+            if (request.region_id != null) {
+                filterRegionId = `&region_id=${request.region_id}`
+            }
+            console.log(filterRegionId);
+            const res = await privateInstance.get<CurrentChampionshipResultsList>(
+                `/result/v1/championship-results/?page=${request.page}&limit=${request.limit}&fullname=${request.fullname}${filterRegionId}`
+            );
+            return res.data;
+        } catch (error) {
+            console.log(error);
             throw error;
         }
     },
