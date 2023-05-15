@@ -11,7 +11,7 @@ export const elements: ImageElement[] = [
 	{
 		src: icons.partner2.src,
 	},
-	{r
+	{
 		src: icons.partner3.src,
 	},
 	// {

@@ -14,6 +14,10 @@ export const elements: LinkElement[] = [
         title: "header:documents",
         link: "/documents",
     },
+    {
+        title: "header:championship-results",
+        link: "/championship-results",
+    },
 ];
 
 interface AuthElement {

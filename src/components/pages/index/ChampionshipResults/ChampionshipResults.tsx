@@ -142,7 +142,7 @@ const ChampionshipResults = () => {
                                 return (
                                     <>
                                         {index == 0
-                                            ? <tr>
+                                            ? <tr key={index}>
                                                 <td>{t('championship-results:rank')}</td>
                                                 <td>{t('championship-results:fio')}</td>
                                                 {championshipResults.points.map((points, index, self) => {
@@ -152,7 +152,7 @@ const ChampionshipResults = () => {
                                                 <td>{t('championship-results:region')}</td>
                                             </tr>
                                             : <></>}
-                                        <tr>
+                                        <tr key={index}>
                                             <td>{championshipResults.rank}</td>
                                             <td>
                                                 {championshipResults.fullname}

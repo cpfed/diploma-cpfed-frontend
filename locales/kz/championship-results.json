@@ -1,8 +1,10 @@
 {
-    "results": "Результаты чемпионата",
-    "fio": "ФИО",
-    "contest-points-left-part": "Очки за ",
-    "contest-points-right-part": "-й тур",
-    "total-points": "Сумма очков",
-    "region": "Регион"
+    "results": "Чемпионат нәтижелері",
+    "fio": "Толық аты",
+    "contest-points-left-part": "",
+    "contest-points-right-part": "-ші раунд үшін ұпайлар",
+    "total-points": "Ұпайлар қосындысы",
+    "region": "Қалаcы/Облысы",
+    "apply-filter": "Сүзгіні қолдану",
+    "rank": "#"
 }
