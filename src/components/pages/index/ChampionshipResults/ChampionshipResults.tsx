@@ -68,6 +68,12 @@ const ChampionshipResults = () => {
         setIsFilterHidden(!isFilterHidden);
     }
 
+    const resetFilter = () => {
+        setSelectedRegionId(0);
+        setFullname("");
+        fetchChampionshipResults();
+    }
+
     useEffect(() => { fetchChampionshipResults() }, []);
     useEffect(() => { fetchRegions() }, []);
 
@@ -130,13 +136,17 @@ const ChampionshipResults = () => {
                                                 }
                                             />
                                         </div>
+
                                     </div>
-                                    <Button className={classes.filterApplyButton} type="submit" variant="contained" disableElevation>
-                                        {t('championship-results:apply-filter')}
-                                    </Button>
-                                    <Button className={classes.filterApplyButton} type="submit" variant="contained" disableElevation>
-                                        {t('championship-results:apply-filter')}
-                                    </Button>
+
+                                    <div className={classes.filterConfiguration}>
+                                        <Button className={classes.filterApplyButton} type="submit" variant="contained" disableElevation>
+                                            {t('championship-results:apply-filter')}
+                                        </Button>
+                                        <Button className={classes.filterApplyButton} onClick={resetFilter} variant="contained" disableElevation>
+                                            {t('championship-results:reset-filter')}
+                                        </Button>
+                                    </div>
                                 </form>
                             </>
                         }
