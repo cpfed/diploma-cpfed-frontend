@@ -78,7 +78,7 @@ const ChampionshipResults = () => {
                     <div className={classes.container}>
                         <p className={classes.title}>{t('championship-results:results')}</p>
                         <div className={classes.filterSwitcher} onClick={() => handleFilterSwitch()}>
-                            <p className={classes.filterSwitcher_text}>{t('championship-results:results')}</p>
+                            <p className={classes.filterSwitcher_text}>{t('championship-results:set-filter')}</p>
                             <span className={classes.filterSwitcher_plus}>
                                 &#43;
                             </span>
@@ -131,6 +131,9 @@ const ChampionshipResults = () => {
                                             />
                                         </div>
                                     </div>
+                                    <Button className={classes.filterApplyButton} type="submit" variant="contained" disableElevation>
+                                        {t('championship-results:apply-filter')}
+                                    </Button>
                                     <Button className={classes.filterApplyButton} type="submit" variant="contained" disableElevation>
                                         {t('championship-results:apply-filter')}
                                     </Button>

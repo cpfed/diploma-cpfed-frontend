@@ -375,7 +375,7 @@ export const API = {
                 filterRegionId = `&region_id=${request.region_id}`
             }
             console.log(filterRegionId);
-            const res = await privateInstance.get<CurrentChampionshipResultsList>(
+            const res = await publicInstance.get<CurrentChampionshipResultsList>(
                 `/result/v1/championship-results/?page=${request.page}&limit=${request.limit}&fullname=${request.fullname}${filterRegionId}`
             );
             return res.data;
