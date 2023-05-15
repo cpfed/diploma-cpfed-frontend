@@ -142,23 +142,23 @@ const ChampionshipResults = () => {
                                 return (
                                     <>
                                         {index == 0
-                                            ? <tr key={index}>
+                                            ? <tr>
                                                 <td>{t('championship-results:rank')}</td>
                                                 <td>{t('championship-results:fio')}</td>
                                                 {championshipResults.points.map((points, index, self) => {
-                                                    return (<td>{t('championship-results:contest-points-left-part')}{index + 1}{t('championship-results:contest-points-right-part')}</td>)
+                                                    return (<td key={index}>{t('championship-results:contest-points-left-part')}{index + 1}{t('championship-results:contest-points-right-part')}</td>)
                                                 })}
                                                 <td>{t('championship-results:total-points')}</td>
                                                 <td>{t('championship-results:region')}</td>
                                             </tr>
                                             : <></>}
-                                        <tr key={index}>
+                                        <tr>
                                             <td>{championshipResults.rank}</td>
                                             <td>
                                                 {championshipResults.fullname}
                                             </td>
                                             {championshipResults.points.map((points, index, self) => {
-                                                return (<td>{points}</td>)
+                                                return (<td key={index}>{points}</td>)
                                             })}
                                             <td>
                                                 {championshipResults.total_points}
