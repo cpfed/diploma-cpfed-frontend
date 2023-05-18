@@ -101,14 +101,13 @@ const ChampionshipResults = () => {
                                                     setSelectedRegionId(Number(e.target.value))
                                                 }}
                                                 className={classes.form__select}
+                                                value={selectedRegionId}
                                             >
                                                 <option
-                                                    disabled
                                                     selected
-                                                    hidden
-                                                    value=""
+                                                    value={0}
                                                 >
-                                                    -- select an option --
+                                                    {t('championship-results:not-selected')}
                                                 </option>
                                                 {
                                                     regionList.map((region, index, self) => {

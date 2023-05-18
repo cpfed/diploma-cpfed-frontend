@@ -8,5 +8,6 @@
     "set-filter": "Настроить фильтр",
     "apply-filter": "Применить фильтр",
     "reset-filter": "Сбросить фильтр",
-    "rank": "#"
+    "rank": "#",
+    "not-selected": "Не выбран"
 }

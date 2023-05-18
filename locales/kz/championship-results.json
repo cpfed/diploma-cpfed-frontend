@@ -1,12 +1,13 @@
 {
     "results": "Чемпионат нәтижелері",
     "fio": "Толық аты",
-    "contest-points-left-part": "",
+    "contest-points-left-part": " ",
     "contest-points-right-part": "-ші раунд үшін ұпайлар",
     "total-points": "Ұпайлар қосындысы",
     "region": "Қала/Облысы",
     "set-filter": "Сүзгіні теңшеу",
     "apply-filter": "Сүзгіні қолдану",
     "reset-filter": "Сүзгіні қалпына келтіру",
-    "rank": "#"
+    "rank": "#",
+    "not-selected": "Таңдалмаған"
 }
