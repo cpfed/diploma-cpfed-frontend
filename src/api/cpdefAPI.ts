@@ -371,7 +371,7 @@ export const API = {
     fetchChampionshipResults: async (request: CurrentChampionshipResultsRequest) => {
         try {
             var filterRegionId = "";
-            if (request.region_id != null) {
+            if (request.region_id != null && request.region_id != 0) {
                 filterRegionId = `&region_id=${request.region_id}`
             }
             console.log(filterRegionId);

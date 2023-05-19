@@ -24,7 +24,6 @@ const ChampionshipResults = () => {
     const [maxPages, setMaxPages] = useState<number>(0);
 
     const fetchChampionshipResults = () => {
-        console.log(filter);
         API.fetchChampionshipResults(filter)
             .then((res) => {
                 setChampionshipResultsList(res);
@@ -71,6 +70,8 @@ const ChampionshipResults = () => {
     const resetFilter = () => {
         setSelectedRegionId(0);
         setFullname("");
+        filter.region_id = 0;
+        filter.fullname = "";
         fetchChampionshipResults();
     }
 
