@@ -13,6 +13,9 @@ import partner2 from "public/images/partners/partner2.png";
 import partner3 from "public/images/partners/partner3.png";
 import partner4 from "public/images/partners/partner4.png";
 import partner5 from "public/images/partners/partner5.png";
+import partner6 from "public/images/partners/partner6.png";
+import partner7 from "public/images/partners/partner7.png";
+import partner8 from "public/images/partners/partner8.jpg";
 import blueAvatar from "public/images/avatars/blue_avatar.png";
 import pinkAvatar from "public/images/avatars/pink_avatar.png";
 import purpleAvatar from "public/images/avatars/purple_avatar.png";
@@ -38,6 +41,9 @@ const icons = {
     partner3,
     partner4,
     partner5,
+    partner6,
+    partner7,
+    partner8,
     blueAvatar,
     pinkAvatar,
     purpleAvatar,

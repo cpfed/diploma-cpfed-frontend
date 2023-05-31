@@ -20,6 +20,15 @@ export const elements: ImageElement[] = [
 	{
 		src: icons.partner5.src,
 	},
+	{
+		src: icons.partner6.src,
+	},
+	{
+		src: icons.partner7.src,
+	},
+	{
+		src: icons.partner8.src,
+	},
 ]
 
 export { default } from './Partners'
