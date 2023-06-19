@@ -27,7 +27,7 @@ const ChampionshipResults = () => {
         API.fetchChampionshipResults(filter)
             .then((res) => {
                 setChampionshipResultsList(res);
-                setMaxPages(Math.round((res.count + limitPerPage - 1) / limitPerPage));
+                setMaxPages(Math.floor((res.count + limitPerPage - 1) / limitPerPage));
             })
             .catch((err) => {
                 toast.error(t("common:error"))
