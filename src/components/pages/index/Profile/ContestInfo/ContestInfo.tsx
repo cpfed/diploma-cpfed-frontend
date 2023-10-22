@@ -10,7 +10,7 @@ const ContestInfo = () => {
 
     const { t } = useTranslation();
 
-    const [currentContestLink, setCurrentContestLink] = useState<string>("");
+    const [currentContestLink, setCurrentContestLink] = useState<string>("https://esep.cpfed.kz/accounts/login/?next=/contest/kcpc2intro");
     const [currentContestID, setCurrentContestID] = useState<number>(0);
     const [currentContest, setCurrentContest] = useState<string>("test");
     const [currentChampionship, setCurrentChampionship] = useState<string>("test2");
