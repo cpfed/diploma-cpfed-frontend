@@ -20,7 +20,12 @@ const ForgotPassword = () => {
                 setIsSent(true);
             })
             .catch((err) => {
-                toast.error(t("common:error"));
+                if (err.response && err.response.status === 400) {
+                    // Assuming the error message is in err.response.data.message
+                    toast.error(err.response.data.message);
+                } else {
+                    toast.error(t("common:error"));
+                }
             });
     };
 
