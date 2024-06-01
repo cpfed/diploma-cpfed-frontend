@@ -75,6 +75,20 @@ const ChampionshipResults = () => {
         fetchChampionshipResults();
     }
 
+    // Function to normalize points array to ensure it has the same length for every participant
+    const normalizePoints = (points: (number | null | undefined)[], maxContests: number): number[] => {
+        const normalizedPoints = new Array(maxContests).fill(0);
+        points.forEach((point, index) => {
+            normalizedPoints[index] = point ?? 0; // Use the nullish coalescing operator to fall back to 0 if point is null or undefined
+        });
+        return normalizedPoints;
+    };
+
+
+
+    // Find out the max number of contests by checking the participant with the most contests
+    const maxContests = championshipResultsList?.results.reduce((max, current) => Math.max(max, current.points.length), 0) ?? 0;
+
     useEffect(() => { fetchChampionshipResults() }, []);
     useEffect(() => { fetchRegions() }, []);
 
@@ -96,7 +110,8 @@ const ChampionshipResults = () => {
                                 <form className={classes.filter} onSubmit={handleSubmitFilter}>
                                     <div className={classes.filterConfiguration}>
                                         <div className={classes.filterElement}>
-                                            <label className={classes.filterElement_text}>{t('championship-results:region')}</label>
+                                            <label
+                                                className={classes.filterElement_text}>{t('championship-results:region')}</label>
                                             <select
                                                 onChange={(e) => {
                                                     setSelectedRegionId(Number(e.target.value))
@@ -126,7 +141,8 @@ const ChampionshipResults = () => {
                                         </div>
 
                                         <div className={classes.filterElement}>
-                                            <label className={classes.filterElement_text}>{t('championship-results:fio')}</label>
+                                            <label
+                                                className={classes.filterElement_text}>{t('championship-results:fio')}</label>
                                             <input
                                                 className={classes.form__input}
                                                 type="text"
@@ -140,10 +156,12 @@ const ChampionshipResults = () => {
                                     </div>
 
                                     <div className={classes.filterConfiguration}>
-                                        <Button className={classes.filterApplyButton} type="submit" variant="contained" disableElevation>
+                                        <Button className={classes.filterApplyButton} type="submit" variant="contained"
+                                                disableElevation>
                                             {t('championship-results:apply-filter')}
                                         </Button>
-                                        <Button className={classes.filterApplyButton} onClick={resetFilter} variant="contained" disableElevation>
+                                        <Button className={classes.filterApplyButton} onClick={resetFilter}
+                                                variant="contained" disableElevation>
                                             {t('championship-results:reset-filter')}
                                         </Button>
                                     </div>
@@ -151,40 +169,37 @@ const ChampionshipResults = () => {
                             </>
                         }
                         <table className={classes.container__table}>
-                            {championshipResultsList?.results?.map((championshipResults, index, self) => {
+                            {championshipResultsList?.results?.map((championshipResults, index) => {
+                                const normalizedPoints = normalizePoints(championshipResults.points, maxContests);
                                 return (
                                     <>
-                                        {index == 0
-                                            ? <tr>
+                                        {index === 0 && (
+                                            <tr>
                                                 <td>{t('championship-results:rank')}</td>
                                                 <td>{t('championship-results:fio')}</td>
-                                                {championshipResults.points.map((points, index, self) => {
-                                                    return (<td key={index}>{t('championship-results:contest-points-left-part')}{index + 1}{t('championship-results:contest-points-right-part')}</td>)
-                                                })}
+                                                {normalizedPoints.map((_, index) => (
+                                                    <td key={index}>{`${t('championship-results:contest-points-left-part')}${index + 1}${t('championship-results:contest-points-right-part')}`}</td>
+                                                ))}
                                                 <td>{t('championship-results:total-points')}</td>
                                                 <td>{t('championship-results:region')}</td>
                                             </tr>
-                                            : <></>}
+                                        )}
                                         <tr>
                                             <td>{championshipResults.rank}</td>
-                                            <td>
-                                                {championshipResults.fullname}
-                                            </td>
-                                            {championshipResults.points.map((points, index, self) => {
-                                                return (<td key={index}>{points}</td>)
-                                            })}
-                                            <td>
-                                                {championshipResults.total_points}
-                                            </td>
-                                            <td>
-                                                {championshipResults.region.name}
-                                            </td>
+                                            <td>{championshipResults.fullname}</td>
+                                            {normalizedPoints.map((point, index) => (
+                                                <td key={index}>{point}</td>
+                                            ))}
+                                            <td>{championshipResults.total_points}</td>
+                                            <td>{championshipResults.region.name}</td>
                                         </tr>
                                     </>
-                                )
+                                );
                             })}
                         </table>
-                        <Pagination className={classes.pagination} onChange={(_, page) => { handlePageChange(page) }} count={maxPages} variant="outlined"></Pagination>
+                        <Pagination className={classes.pagination} onChange={(_, page) => {
+                            handlePageChange(page)
+                        }} count={maxPages} variant="outlined"></Pagination>
                     </div>
                 </div>
             </Container>
