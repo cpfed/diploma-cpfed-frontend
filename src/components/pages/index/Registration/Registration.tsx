@@ -22,6 +22,7 @@ const Registration = () => {
 
     const ruleCheckboxRef = useRef<HTMLInputElement>(null);
 
+    const [diploma, setDiploma] =  useState<string>("");
     const [firstname, setFirstname] = useState<string>("");
     const [surname, setSurname] = useState<string>("");
     const [email, setEmail] = useState<string>("");
@@ -105,6 +106,7 @@ const Registration = () => {
         }
 
         API.signUp({
+	    diploma,
             email,
             first_name: firstname,
             gender,

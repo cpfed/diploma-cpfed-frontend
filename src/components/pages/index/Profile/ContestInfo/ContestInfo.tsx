@@ -17,6 +17,7 @@ const ContestInfo = () => {
     const [contestLogin, setContestLogin] = useState<string>("");
     const [contestPassword, setContestPassword] = useState<string>("");
     const [isContestInfoAvailable, setIsContestInfoAvailable] = useState<boolean>(false);
+    const [diploma, setDiploma] = useState<string>("");
 
     const activeContest = () => {
         API.activeContest()
@@ -41,7 +42,14 @@ const ContestInfo = () => {
             .catch((err) => { });
     }
 
-    useEffect(() => { activeContest() }, [])
+    const fetchInfo = () => {
+        API.profileMe()
+            .then((res) => {
+                setDiploma(res.diploma);
+            })
+    }
+
+    useEffect(() => { activeContest(); fetchInfo(); }, [])
 
     return (
         <section className={classes.contestInfo} id="intro">
@@ -100,6 +108,24 @@ const ContestInfo = () => {
                             </div>
                         </> :
                         <></>
+                    }
+                    { diploma &&
+                        <>
+                            <div className={classes.contestInfo__container}>
+                                <div className={classes.contestInfo__subcontainer}>
+                                    <label className={classes.contestInfo__label}>
+                                        {t("contest-info:diploma")}
+                                    </label>
+                                    <p className={classes.contestInfo__p}>
+                                        <Link
+                                            href={diploma}
+                                            target="_blank">
+                                            {t("contest-info:download")}
+                                        </Link>
+                                    </p>
+                                </div>
+                            </div>
+                        </>
                     }
                 </div>
             </Container>

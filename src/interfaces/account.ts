@@ -6,14 +6,16 @@ export const cpfedAccountUpdateFieldsExclude = [
     "first_name",
     "last_name",
     "uin",
+    "diploma"
 ]
 
 export interface CpfedAccount {
+    diploma: string
     email: string
     first_name: string
     last_name: string
     phone_number: string
-    uin: string 
+    uin: string
     employment_status: EmploymentStatus
     region_id: number
     t_shirt_size: TShirtSize
@@ -26,4 +28,4 @@ export interface CpfedAccountWithPassword extends CpfedAccount {
     password: string
 }
 
-export type CpfedAccountUpdate = Omit<CpfedAccount,  "first_name"|"last_name"|"uin">
+export type CpfedAccountUpdate = Omit<CpfedAccount,  "first_name"|"last_name"|"uin"|"diploma">

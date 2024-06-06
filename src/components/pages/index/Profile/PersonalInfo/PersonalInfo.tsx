@@ -63,19 +63,19 @@ const PersonalInfo = () => {
 
     const fetchInfo = () => {
         API.profileMe()
-        .then(res=>{
-            setFirstname(res.first_name);
-            setEmail(res.email);
-            setEmploymentStatus(res.employment_status);
-            setEmploymentStatusPlace(res.place_of_study_of_work);
-            setGender(res.gender);
-            setIsCitizenOfKazakhstan(res.citizen_of_kz);
-            setPhone(res.phone_number);
-            setSurname(res.last_name);
-            setTShirtSize(res.t_shirt_size);
-            setUin(res.uin);
-            setSelectedRegionId(res.region_id);
-        })
+            .then(res => {
+                setFirstname(res.first_name);
+                setEmail(res.email);
+                setEmploymentStatus(res.employment_status);
+                setEmploymentStatusPlace(res.place_of_study_of_work);
+                setGender(res.gender);
+                setIsCitizenOfKazakhstan(res.citizen_of_kz);
+                setPhone(res.phone_number);
+                setSurname(res.last_name);
+                setTShirtSize(res.t_shirt_size);
+                setUin(res.uin);
+                setSelectedRegionId(res.region_id);
+            });
     }
 
     useEffect(() => { fetchRegions(); fetchInfo() }, []);
@@ -99,18 +99,16 @@ const PersonalInfo = () => {
             place_of_study_of_work: employmentStatusPlace,
             t_shirt_size: tShirtSize,
             region_id: selectedRegionId
-        }).then(
-            res=>{
-                setEmail(res.email);
-                setEmploymentStatus(res.employment_status);
-                setEmploymentStatusPlace(res.place_of_study_of_work);
-                setGender(res.gender);
-                setIsCitizenOfKazakhstan(res.citizen_of_kz);
-                setPhone(res.phone_number);
-                setTShirtSize(res.t_shirt_size);
-                setSelectedRegionId(res.region_id);
-            }
-        )
+        }).then(res => {
+            setEmail(res.email);
+            setEmploymentStatus(res.employment_status);
+            setEmploymentStatusPlace(res.place_of_study_of_work);
+            setGender(res.gender);
+            setIsCitizenOfKazakhstan(res.citizen_of_kz);
+            setPhone(res.phone_number);
+            setTShirtSize(res.t_shirt_size);
+            setSelectedRegionId(res.region_id);
+        })
         .catch(err=>{
             toast.errorFromError(err);
             fetchInfo();
@@ -393,8 +391,8 @@ const PersonalInfo = () => {
                             <>
                                 <div className={classes.form__group_item}>
                                     <label className={classes.form__label}>
-                                        {employmentStatus == EmploymentStatus.STUDYING ? 
-                                            t("registration:education-place") : 
+                                        {employmentStatus == EmploymentStatus.STUDYING ?
+                                            t("registration:education-place") :
                                             t("registration:job-place")
                                         }
                                     </label>
@@ -411,8 +409,8 @@ const PersonalInfo = () => {
                                 </div>
                                 <div className={classes.form__group_item}>
                                     <label className={classes.form__label}>
-                                        {employmentStatus == EmploymentStatus.STUDYING ? 
-                                            t("registration:city-region-education") : 
+                                        {employmentStatus == EmploymentStatus.STUDYING ?
+                                            t("registration:city-region-education") :
                                             t("registration:city-region-job")
                                         }
                                     </label>
