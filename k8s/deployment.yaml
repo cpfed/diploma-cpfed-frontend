@@ -21,6 +21,6 @@ spec:
           name: contest-cpfed
           ports:
             - containerPort: 3000
-              name: contest-cpfed-svc
+              name: contest-svc
           resources: {}
       restartPolicy: Always
