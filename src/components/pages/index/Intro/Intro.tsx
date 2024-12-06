@@ -46,29 +46,12 @@ const Intro = () => {
                         <p className={classes.intro__description}>
                             {t("intro:title")}
                         </p>
-                        {isRegistered ? (
-                            <div className={classes.intro__registration_container}>
-                                <p className={classes.intro__subdescription}>
-                                    {t("intro:successfully-registered")}
-                                </p>
-                                <Link href="/profile/contest-info" className={classes.intro__link}>
-                                    {t("intro:contest-info")}
-                                </Link>
-                            </div>
-                        ) : !isRegistrationPossible ? (
-                            <div className={classes.intro__registration_container}>
-                                <p className={classes.intro__subdescription}>
-                                    {t("intro:unavailable-register")}
-                                </p>
-                            </div>
-                        ) : (
-                            <button
-                                onClick={() => router.push("/signUp")}
-                                className={classes.intro__button}
-                            >
-                                {t("intro:button")}
-                            </button>
-                        )}
+                        <button
+                            onClick={() => router.push("https://contest.cpfed.kz/ru")}
+                            className={classes.intro__button}
+                        >
+                            {t("intro:button")}
+                        </button>
                     </div>
                 </div>
             </Container>
