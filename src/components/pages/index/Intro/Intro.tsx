@@ -47,7 +47,7 @@ const Intro = () => {
                             {t("intro:title")}
                         </p>
                         <button
-                            onClick={() => router.push("/signUp")}
+                            onClick={() => router.push("/login")}
                             className={classes.intro__button}
                         >
                             {t("intro:button")}
