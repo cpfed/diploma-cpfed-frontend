@@ -28,7 +28,7 @@ const Layout = ({
 				<meta name="description" content={description} />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<link rel="icon" href="/favicon.ico" />
-				<script defer data-domain="contest.cpfed.kz" src="https://a.cpfed.kz/js/script.js"></script>
+				<script defer data-domain="contest.cpfed.kz,cpfed.kz" src="https://a.cpfed.kz/js/script.outbound-links.js"></script>
 
 			</Head>
 

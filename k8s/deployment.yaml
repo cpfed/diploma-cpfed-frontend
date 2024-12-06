@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contest-cpfed
+  labels:
+    app: contest-cpfed
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: contest-cpfed
+  template:
+    metadata:
+      labels:
+        app: contest-cpfed
+        app.kubernetes.io/name: contest-cpfed
+    spec:
+      containers:
+        - image: zharaskhan/contest-cpfed-master
+          imagePullPolicy: "Always"
+          name: contest-cpfed
+          ports:
+            - containerPort: 3000
+              name: contest-svc
+          resources: {}
+      restartPolicy: Always
