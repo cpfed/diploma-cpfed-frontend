@@ -349,8 +349,9 @@ export const API = {
     fetchRegions: async () => {
         try {
             const res = await publicInstance.get<RegionList>(
-                `/locations/v1/regions/?limit=100`
+                `/regions/`
             );
+            console.log(res.data)
             return res.data;
         } catch (error) {
             throw error;
@@ -376,7 +377,7 @@ export const API = {
             }
             console.log(filterRegionId);
             const res = await publicInstance.get<CurrentChampionshipResultsList>(
-                `/result/v1/championship-results/?page=${request.page}&limit=${request.limit}&fullname=${request.fullname}${filterRegionId}`
+                `/championship-results/?page=${request.page}&limit=${request.limit}&fullname=${request.fullname}${filterRegionId}`
             );
             return res.data;
         } catch (error) {
