@@ -11,3 +11,28 @@ spec:
     port: 31745
     targetPort: contest-svc
   type: LoadBalancer
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: contest-nginx-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - contest.cpfed.kz
+    secretName: contest-tls-secret
+  rules:
+  - host: contest.cpfed.kz
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: contest-cpfed
+              port:
+                number: 31745
