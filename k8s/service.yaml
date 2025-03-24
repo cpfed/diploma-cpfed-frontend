@@ -10,7 +10,7 @@ spec:
     protocol: TCP
     port: 31745
     targetPort: contest-svc
-  type: LoadBalancer
+  type: ClusterIP
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
