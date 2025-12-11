@@ -38,9 +38,9 @@ const Intro = () => {
                     <div className={classes.intro__content}>
                         <div className={classes.intro__partner}>
                             <Link href="https://ffin.kz" target={"_blank"}>
-                                <img src={icons.freedomLogo.src} />
+                                <img src={icons.kaspiLogo.src} />
                             </Link>
-                            {/* <img src={icons.freedomLogo.src} /> */}
+                            {/* <img src={icons.kaspiLogo.src} /> */}
                             {/* <p>{t("intro:general-partner")}</p> */}
                         </div>
                         <p className={classes.intro__description}>
