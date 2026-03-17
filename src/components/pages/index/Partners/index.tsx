@@ -6,9 +6,6 @@ interface ImageElement {
 
 export const elements: ImageElement[] = [
 	{
-		src: icons.partner1.src,
-	},
-	{
 		src: icons.partner2.src,
 	},
 	{
