@@ -1,6 +1,7 @@
 {
     "locales": ["ru", "kz"],
     "defaultLocale": "kz",
+    "loader": false,
     "pages": {
         "*": [
             "championship-intro", 
@@ -29,13 +30,6 @@
             "contest-info",
             "partners",
             "championship-results"
-        ] 
-    },
-    "layouts": {
-        "*": [
-            "header",
-            "footer",
-            "profile-menu-list"
         ] 
     }
 }
