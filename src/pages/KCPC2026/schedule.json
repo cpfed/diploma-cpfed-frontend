@@ -61,18 +61,6 @@
                     }
                 },
                 {
-                    "sourceRow": 12,
-                    "time": "17:50 - 19:00",
-                    "ru": {
-                        "title": "Трансляция пробного тура",
-                        "location": "Alem.ai Contest Zone"
-                    },
-                    "kz": {
-                        "title": "Сынақ турының трансляциясы",
-                        "location": "Alem.ai Contest Zone"
-                    }
-                },
-                {
                     "sourceRow": 13,
                     "time": "18:00 - 19:00",
                     "ru": {
@@ -186,18 +174,6 @@
                     }
                 },
                 {
-                    "sourceRow": 24,
-                    "time": "09:50 - 14:00",
-                    "ru": {
-                        "title": "Трансляция основного тура",
-                        "location": "Alem.ai Contest Zone"
-                    },
-                    "kz": {
-                        "title": "Негізгі турдың трансляциясы",
-                        "location": "Alem.ai Contest Zone"
-                    }
-                },
-                {
                     "sourceRow": 25,
                     "time": "10:00 - 14:00",
                     "ru": {
@@ -242,18 +218,6 @@
                     },
                     "kz": {
                         "title": "Alem.ai бойынша экскурсия",
-                        "location": "Alem.ai, 1-қабат"
-                    }
-                },
-                {
-                    "sourceRow": 33,
-                    "time": "17:50 - 19:00",
-                    "ru": {
-                        "title": "Трансляция церемонии награждения",
-                        "location": "Alem.ai, 1 этаж"
-                    },
-                    "kz": {
-                        "title": "Марапаттау рәсімінің трансляциясы",
                         "location": "Alem.ai, 1-қабат"
                     }
                 },
@@ -317,7 +281,7 @@
                 "dateLabel": "24 августа"
             },
             "kz": {
-                "title": "3-күн - қонақүйден шығу",
+                "title": "3-күн - қонақ үйден шығу",
                 "weekday": "Дүйсенбі",
                 "dateLabel": "24 тамыз"
             },
@@ -345,7 +309,7 @@
                         "location": "Holiday Inn Express"
                     },
                     "kz": {
-                        "title": "Қонақүйден шығу",
+                        "title": "Қонақ үйден шығу",
                         "location": "Holiday Inn Express"
                     }
                 },
