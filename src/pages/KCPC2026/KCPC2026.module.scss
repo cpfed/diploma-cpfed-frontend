@@ -27,7 +27,7 @@
 .hero {
     position: relative;
     margin: 0;
-    min-height: 86svh;
+    min-height: 100vh;
     overflow: hidden;
     padding: 24px;
     display: flex;
@@ -159,10 +159,10 @@
 }
 
 .sectionHeader {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    display: flex;
     gap: 10px;
-    margin-bottom: 26px;
+    justify-content: space-between;
+    margin-bottom: 32px;
 }
 
 .sectionHeader h2 {
@@ -384,7 +384,6 @@
 
 @media screen and (max-width: 560px) {
     .hero {
-        min-height: 78svh;
         padding: 18px;
     }
 

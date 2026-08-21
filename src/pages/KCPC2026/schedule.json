@@ -53,11 +53,11 @@
                     "time": "17:00 - 18:00",
                     "ru": {
                         "title": "Трансфер в Alem.ai",
-                        "location": "Holiday Inn Express -> Alem.ai"
+                        "location": "Holiday Inn Express ➤ Alem.ai"
                     },
                     "kz": {
                         "title": "Alem.ai-ға трансфер",
-                        "location": "Holiday Inn Express -> Alem.ai"
+                        "location": "Holiday Inn Express ➤ Alem.ai"
                     }
                 },
                 {
@@ -77,11 +77,11 @@
                     "time": "19:00 - 19:30",
                     "ru": {
                         "title": "Трансфер на ужин",
-                        "location": "Alem.ai -> SQ Plov"
+                        "location": "Alem.ai ➤ SQ Plov"
                     },
                     "kz": {
                         "title": "Кешкі асқа трансфер",
-                        "location": "Alem.ai -> SQ Plov"
+                        "location": "Alem.ai ➤ SQ Plov"
                     }
                 },
                 {
@@ -166,11 +166,11 @@
                     "time": "08:30 - 09:15",
                     "ru": {
                         "title": "Трансфер в Alem.ai",
-                        "location": "Holiday Inn Express -> Alem.ai"
+                        "location": "Holiday Inn Express ➤ Alem.ai"
                     },
                     "kz": {
                         "title": "Alem.ai-ға трансфер",
-                        "location": "Holiday Inn Express -> Alem.ai"
+                        "location": "Holiday Inn Express ➤ Alem.ai"
                     }
                 },
                 {
@@ -238,11 +238,11 @@
                     "time": "19:00 - 20:00",
                     "ru": {
                         "title": "Трансфер на ужин",
-                        "location": "Alem.ai -> Afterparty"
+                        "location": "Alem.ai ➤ Afterparty"
                     },
                     "kz": {
                         "title": "Кешкі асқа трансфер",
-                        "location": "Alem.ai -> Afterparty"
+                        "location": "Alem.ai ➤ Afterparty"
                     }
                 },
                 {
@@ -262,11 +262,11 @@
                     "time": "23:00 - 23:30",
                     "ru": {
                         "title": "Трансфер в Holiday Inn Express",
-                        "location": "Afterparty -> Holiday Inn Express"
+                        "location": "Afterparty ➤ Holiday Inn Express"
                     },
                     "kz": {
                         "title": "Holiday Inn Express-ке трансфер",
-                        "location": "Afterparty -> Holiday Inn Express"
+                        "location": "Afterparty ➤ Holiday Inn Express"
                     }
                 }
             ]
@@ -311,18 +311,6 @@
                     "kz": {
                         "title": "Қонақ үйден шығу",
                         "location": "Holiday Inn Express"
-                    }
-                },
-                {
-                    "sourceRow": 31,
-                    "time": "15:30 - 18:00",
-                    "ru": {
-                        "title": "Вывоз оборудования в AITU",
-                        "location": "Alem.ai -> AITU"
-                    },
-                    "kz": {
-                        "title": "Жабдықтарды AITU-ға жеткізу",
-                        "location": "Alem.ai -> AITU"
                     }
                 }
             ]
