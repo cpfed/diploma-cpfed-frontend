@@ -1,0 +1,167 @@
+{
+    "copy": {
+        "ru": {
+            "metaTitle": "AlgoBatyr 2026 | Расписание",
+            "metaDescription": "Расписание AlgoBatyr 2026 в Астане: общий этап 2 октября в Astana hub C 4.6 и финал 3 октября в МВЦ.",
+            "dateLabel": "2–3 октября",
+            "cityLabel": "Астана",
+            "scheduleTitle": "Расписание",
+            "scheduleLink": "К расписанию",
+            "scheduleNavLabel": "Перейти к дню соревнования",
+            "languageLabel": "Язык",
+            "locationLabel": "Локация",
+            "dayLabel": "День",
+            "timeNote": "Время местное",
+            "backToTop": "Наверх",
+            "sourceLabel": "Строка источника"
+        },
+        "kz": {
+            "metaTitle": "AlgoBatyr 2026 | Кесте",
+            "metaDescription": "Астанадағы AlgoBatyr 2026 кестесі: 2 қазанда Astana hub C 4.6 алаңында жалпы кезең, 3 қазанда МВЦ алаңында финал өтеді.",
+            "dateLabel": "2–3 қазан",
+            "cityLabel": "Астана",
+            "scheduleTitle": "Кесте",
+            "scheduleLink": "Кестеге өту",
+            "scheduleNavLabel": "Жарыс күніне өту",
+            "languageLabel": "Тіл",
+            "locationLabel": "Орны",
+            "dayLabel": "Күн",
+            "timeNote": "Жергілікті уақыт",
+            "backToTop": "Жоғары",
+            "sourceLabel": "Дереккөз жолы"
+        }
+    },
+    "eventName": "AlgoBatyr 2026",
+    "days": [
+        {
+            "id": "day-1",
+            "sourceRow": 2,
+            "date": "2026-10-02",
+            "ru": {
+                "title": "Общий этап",
+                "weekday": "Пятница",
+                "dateLabel": "2 октября"
+            },
+            "kz": {
+                "title": "Жалпы кезең",
+                "weekday": "Жұма",
+                "dateLabel": "2 қазан"
+            },
+            "items": [
+                {
+                    "sourceRow": 3,
+                    "time": "09:00 - 10:00",
+                    "ru": {
+                        "title": "Регистрация участников",
+                        "location": "Astana hub C 4.6"
+                    },
+                    "kz": {
+                        "title": "Қатысушыларды тіркеу",
+                        "location": "Astana hub C 4.6"
+                    }
+                },
+                {
+                    "sourceRow": 4,
+                    "time": "10:15 - 10:40",
+                    "ru": {
+                        "title": "Инструктаж и приветствие",
+                        "location": "Astana hub C 4.6"
+                    },
+                    "kz": {
+                        "title": "Нұсқаулық және құттықтау",
+                        "location": "Astana hub C 4.6"
+                    }
+                },
+                {
+                    "sourceRow": 5,
+                    "time": "11:00 - 13:00",
+                    "ru": {
+                        "title": "Контесты 1 часть",
+                        "location": "Astana hub C 4.6"
+                    },
+                    "kz": {
+                        "title": "Контесттер, 1-бөлім",
+                        "location": "Astana hub C 4.6"
+                    }
+                },
+                {
+                    "sourceRow": 6,
+                    "time": "11:40 - 15:00",
+                    "ru": {
+                        "title": "Чилл зона",
+                        "location": "Astana hub C 4.6"
+                    },
+                    "kz": {
+                        "title": "Демалыс аймағы",
+                        "location": "Astana hub C 4.6"
+                    }
+                },
+                {
+                    "sourceRow": 7,
+                    "time": "13:00 - 14:00",
+                    "ru": {
+                        "title": "Обед",
+                        "location": "Astana hub C 4.6"
+                    },
+                    "kz": {
+                        "title": "Түскі ас",
+                        "location": "Astana hub C 4.6"
+                    }
+                },
+                {
+                    "sourceRow": 8,
+                    "time": "14:00 - 16:00",
+                    "ru": {
+                        "title": "Контесты 2 часть",
+                        "location": "Astana hub C 4.6"
+                    },
+                    "kz": {
+                        "title": "Контесттер, 2-бөлім",
+                        "location": "Astana hub C 4.6"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "day-2",
+            "sourceRow": 9,
+            "date": "2026-10-03",
+            "ru": {
+                "title": "Финал",
+                "weekday": "Суббота",
+                "dateLabel": "3 октября"
+            },
+            "kz": {
+                "title": "Финал",
+                "weekday": "Сенбі",
+                "dateLabel": "3 қазан"
+            },
+            "items": [
+                {
+                    "sourceRow": 10,
+                    "time": "10:00 - 10:15",
+                    "ru": {
+                        "title": "Приветствие и объявление финальных контестов",
+                        "location": "МВЦ"
+                    },
+                    "kz": {
+                        "title": "Құттықтау және финалдық контесттерді жариялау",
+                        "location": "МВЦ"
+                    }
+                },
+                {
+                    "sourceRow": 11,
+                    "time": "10:15 - 11:30",
+                    "ru": {
+                        "title": "Финальные контесты",
+                        "location": "МВЦ"
+                    },
+                    "kz": {
+                        "title": "Финалдық контесттер",
+                        "location": "МВЦ"
+                    }
+                }
+            ]
+        }
+    ]
+}
