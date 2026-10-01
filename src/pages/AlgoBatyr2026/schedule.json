@@ -50,6 +50,18 @@
             "items": [
                 {
                     "sourceRow": 3,
+                    "time": "09:00 - 09:15",
+                    "ru": {
+                        "title": "Трансфер в Астана хаб",
+                        "location": "Holiday Inn Express"
+                    },
+                    "kz": {
+                        "title": "Astana hub-қа трансфер",
+                        "location": "Holiday Inn Express"
+                    }
+                },
+                {
+                    "sourceRow": 4,
                     "time": "09:00 - 10:00",
                     "ru": {
                         "title": "Регистрация участников",
@@ -61,7 +73,7 @@
                     }
                 },
                 {
-                    "sourceRow": 4,
+                    "sourceRow": 5,
                     "time": "10:15 - 10:40",
                     "ru": {
                         "title": "Инструктаж и приветствие",
@@ -73,8 +85,8 @@
                     }
                 },
                 {
-                    "sourceRow": 5,
-                    "time": "11:00 - 13:00",
+                    "sourceRow": 6,
+                    "time": "10:50 - 12:05",
                     "ru": {
                         "title": "Контесты 1 часть",
                         "location": "Astana hub C 4.6"
@@ -85,7 +97,7 @@
                     }
                 },
                 {
-                    "sourceRow": 6,
+                    "sourceRow": 7,
                     "time": "11:40 - 15:00",
                     "ru": {
                         "title": "Чилл зона",
@@ -97,8 +109,8 @@
                     }
                 },
                 {
-                    "sourceRow": 7,
-                    "time": "13:00 - 14:00",
+                    "sourceRow": 8,
+                    "time": "12:05 - 13:00",
                     "ru": {
                         "title": "Обед",
                         "location": "Astana hub C 4.6"
@@ -109,8 +121,8 @@
                     }
                 },
                 {
-                    "sourceRow": 8,
-                    "time": "14:00 - 16:00",
+                    "sourceRow": 9,
+                    "time": "13:00 - 15:45",
                     "ru": {
                         "title": "Контесты 2 часть",
                         "location": "Astana hub C 4.6"
@@ -124,7 +136,7 @@
         },
         {
             "id": "day-2",
-            "sourceRow": 9,
+            "sourceRow": 10,
             "date": "2026-10-03",
             "ru": {
                 "title": "Финал",
@@ -138,7 +150,7 @@
             },
             "items": [
                 {
-                    "sourceRow": 10,
+                    "sourceRow": 11,
                     "time": "10:00 - 10:15",
                     "ru": {
                         "title": "Приветствие и объявление финальных контестов",
@@ -150,8 +162,8 @@
                     }
                 },
                 {
-                    "sourceRow": 11,
-                    "time": "10:15 - 11:30",
+                    "sourceRow": 12,
+                    "time": "10:15 - 12:20",
                     "ru": {
                         "title": "Финальные контесты",
                         "location": "МВЦ"

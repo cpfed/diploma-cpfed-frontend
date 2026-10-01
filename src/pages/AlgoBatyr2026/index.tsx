@@ -127,17 +127,6 @@ const AlgoBatyr2026: StandalonePage = () => {
                                 priority
                             />
                         </h1>
-                        <div className={styles.heroRobotFrame} aria-hidden="true">
-                            <Image
-                                src="/images/events/AlgoBatyr2026/algobatyr-robot.png"
-                                alt=""
-                                width={1355}
-                                height={1537}
-                                className={styles.heroRobot}
-                                sizes="(max-width: 600px) calc(100vw - 20px), (max-width: 900px) 64vw, 70vw"
-                                priority
-                            />
-                        </div>
                     </div>
 
                     <div className={styles.heroBottom}>

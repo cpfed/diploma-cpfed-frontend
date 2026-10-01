@@ -159,22 +159,6 @@
     height: auto;
 }
 
-.heroRobotFrame {
-    position: absolute;
-    inset: 0 0 0 45%;
-    pointer-events: none;
-}
-
-.heroRobot {
-    position: absolute;
-    right: clamp(-96px, -4vw, -24px);
-    bottom: -2px;
-    display: block;
-    width: auto;
-    height: 100%;
-    max-width: none;
-}
-
 .heroBottom {
     position: relative;
     z-index: 1;
@@ -507,14 +491,6 @@
         padding-left: 28px;
     }
 
-    .heroRobot {
-        width: 64vw;
-        height: auto;
-        max-height: 100%;
-        object-fit: contain;
-        object-position: bottom right;
-    }
-
     .day {
         grid-template-columns: 210px minmax(0, 1fr);
         gap: 28px;
@@ -556,19 +532,6 @@
 
     .heroTitle {
         display: none;
-    }
-
-    .heroRobotFrame {
-        inset: 0;
-        overflow: hidden;
-    }
-
-    .heroRobot {
-        right: 0;
-        bottom: -16px;
-        width: calc(100% - 20px);
-        height: auto;
-        max-height: none;
     }
 
     .topbar {
